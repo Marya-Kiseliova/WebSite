@@ -28,6 +28,7 @@
         background-size: 200% 200%;
         animation: gradient 10s ease-in-out infinite;
         min-height: 100vh;
+        overflow-x: hidden;
     }
 
     @keyframes gradient {
@@ -57,7 +58,6 @@
         padding: 0 2rem;
     }
 
-    /* Логотип для десктопа */
     .logo-img {
         width: 90px;
         height: 90px;
@@ -107,8 +107,6 @@
         border-radius: 2px;
     }
 
-
-    /* Анимация бургера */
     .burger-menu.active .burger-line:nth-child(1) {
         transform: rotate(45deg) translate(6px, 6px);
     }
@@ -129,6 +127,7 @@
         justify-content: center;
         text-align: center;
         padding: 0 2rem;
+        position: relative;
     }
 
     .hero-content h1 {
@@ -166,7 +165,6 @@
         box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
     }
 
-    /* Анимации */
     @keyframes fadeInUp {
         from {
             opacity: 0;
@@ -178,47 +176,232 @@
         }
     }
 
-    /* Навыки */
-    .skills {
-        padding: 5rem 2rem;
+    /* Анимированные окошки */
+    .animated-windows {
+        padding: 3rem 2rem;
         max-width: 1200px;
         margin: 0 auto;
-    }
-
-    .skills h2 {
-        font-size: clamp(1.5rem, 4vw, 2.5rem);
-        text-align: center;
-        margin-bottom: 3rem;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .skills-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: 1fr;
         gap: 2rem;
     }
 
-    .skill-card {
-        background: white;
-        padding: 2.5rem 2rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
+    @media (min-width: 1024px) {
+        .animated-windows {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+    }
+
+    .window {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        border-radius: 25px;
+        padding: 3rem 2rem;
+        box-shadow: 
+            0 25px 50px rgba(0, 0, 0, 0.15),
+            0 10px 30px rgba(102, 126, 234, 0.1);
+        position: relative;
+        overflow: hidden;
+        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         text-align: center;
-        border: 1px solid rgba(102, 126, 234, 0.1);
+        opacity: 0;
+        transform: translateY(100px);
+        transition: all 0.5s ease;
     }
 
-    .skill-card:hover {
+    .window-1 {
+        animation: slideUp 1s ease 0.3s forwards;
+    }
+
+    .window-2 {
+        animation: slideUp 1s ease 0.6s forwards;
+    }
+
+    .window-3 {
+        animation: slideUp 1s ease 0.9s forwards;
+    }
+
+    @keyframes slideUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .window:hover {
         transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        box-shadow: 
+            0 35px 70px rgba(0, 0, 0, 0.2),
+            0 15px 40px rgba(102, 126, 234, 0.15);
     }
 
-    .skill-card h3 {
-        color: var(--primary);
-        margin-bottom: 1rem;
+    .window-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease 1.2s forwards;
+    }
+
+    /* Первое окно - вращающийся текст */
+    .rotating-text {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--dark);
+        animation: rotate3D 6s ease-in-out infinite;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    @keyframes rotate3D {
+        0%, 100% {
+            transform: rotateY(0deg);
+        }
+        25% {
+            transform: rotateY(90deg);
+        }
+        50% {
+            transform: rotateY(180deg);
+        }
+        75% {
+            transform: rotateY(270deg);
+        }
+    }
+
+    /* Второе окно - лупа и появляющийся текст */
+    .seo-animation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .magnifying-glass {
+        width: 80px;
+        height: 80px;
+        border: 4px solid var(--accent);
+        border-radius: 50%;
+        position: relative;
+        animation: searchDrop 2s ease-in-out infinite;
+    }
+
+    .magnifying-glass::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 4px;
+        background: var(--accent);
+        bottom: -15px;
+        right: -10px;
+        transform: rotate(45deg);
+        border-radius: 2px;
+    }
+
+    @keyframes searchDrop {
+        0% {
+            transform: translateY(-50px) scale(0.8);
+            opacity: 0;
+        }
+        50% {
+            transform: translateY(0) scale(1.1);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+    }
+
+    .seo-text {
+        font-size: 1.8rem;
+        font-weight: 700;
+        display: flex;
+        gap: 0.3rem;
+    }
+
+    .seo-letter {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: letterReveal 0.5s ease forwards;
+    }
+
+    .seo-letter:nth-child(1) { animation-delay: 1.4s; }
+    .seo-letter:nth-child(2) { animation-delay: 1.5s; }
+    .seo-letter:nth-child(3) { animation-delay: 1.6s; }
+    .seo-letter:nth-child(4) { animation-delay: 1.7s; }
+    .seo-letter:nth-child(5) { animation-delay: 1.8s; }
+
+    @keyframes letterReveal {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Третье окно - карандаш и контент */
+    .content-animation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .pencil-wrapper {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+.pencil {
+    width: 100px;
+    height: 16px;
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    border-radius: 8px;
+    position: relative;
+    animation: pencilSpin 3.8s ease-out forwards;
+    transform-origin: center;
+    transform-style: preserve-3d;
+}
+
+@keyframes pencilSpin {
+    0% {
+        transform: rotate(0deg);
+        animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    40% {
+        transform: rotate(900deg);
+        animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    }
+    70% {
+        transform: rotate(1200deg);
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    }
+    100% {
+        transform: rotate(1320deg);
+    }
+}
+
+    .content-text {
         font-size: 1.3rem;
+        font-weight: 600;
+        line-height: 1.5;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s ease 1.8s forwards;
     }
 
     /* Контакты */
@@ -239,7 +422,7 @@
 
     .contact-links {
         display: grid;
-        grid-template-columns: 1fr; /* Одна колонка на мобильных */
+        grid-template-columns: 1fr;
         gap: 1rem;
         width: 100%;
         max-width: 400px;
@@ -256,6 +439,7 @@
         font-weight: 500;
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 0.5rem;
     }
 
@@ -271,9 +455,8 @@
         .logo-img {
             height: 85px;
             width: 85px;
-                }
+        }
 
-        /* Бургер-меню */
         .burger-menu {
             display: flex;
         }
@@ -283,11 +466,11 @@
             top: 100%;
             left: 0;
             width: 100%;
-            background:  radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+            background: radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(105, 35, 203, 0.15) 0%, transparent 50%),
                 linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98));
             backdrop-filter: blur(20px);
-           flex-direction: column;
+            flex-direction: column;
             gap: 0;
             padding: 1rem 0;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -309,81 +492,86 @@
             border-radius: 0;
             font-size: 1.1rem;
         }
+        
         .nav-links a:hover {
             background: linear-gradient(135deg, rgba(222, 168, 136, 0.514), rgba(116, 101, 177, 0.372));
             border-color: rgba(102, 126, 234, 0.5);
             transform: translateY(-2px);
         }
-                .nav-content {
+        
+        .nav-content {
             padding: 0.5rem 1rem;
         }
         
-        .contact-links {
-        grid-template-columns: repeat(3, 1fr); /* 3 колонки только на десктопе */
-        max-width: 800px;
-        }
-
-               
-        .contact-link {
-            width: 100%; /* Занимает всю ширину ячейки grid */
-            min-width: auto; /* Убираем фиксированную ширину */
-        }
-                
-        .hero {
-            padding-top: 2rem;
+        .animated-windows {
+            padding: 2rem 1rem;
+            gap: 1.5rem;
         }
         
-        /* Уменьшаем отступы для мобильных */
-        .skills, .contact {
-            padding: 3rem 1rem;
+        .window {
+            padding: 2rem 1.5rem;
+            min-height: 300px;
+        }
+        
+        .window-title {
+            font-size: 1.5rem;
+        }
+        
+        .rotating-text {
+            font-size: 2rem;
+        }
+        
+        .content-text {
+            font-size: 1.1rem;
         }
     }
 
-    /* Для очень маленьких экранов */
     @media (max-width: 480px) {
         .logo-img {
             height: 75px;
             width: 75px;
         }
-        .contact-links {
-            grid-template-columns: 1fr; /* Только одна колонка на мобильных */
-            max-width: 400px;
-            gap: 1rem;
-}
+        
         .hero-content h1 {
             font-size: 2rem;
         }
         
-        .skills-grid {
-            grid-template-columns: 1fr;
+        .window {
+            min-height: 250px;
+            padding: 1.5rem 1rem;
         }
-            }
-            /* Десктопная версия для кнопок контактов */
-        @media (min-width: 769px) {
-            .contact-links {
-                grid-template-columns: repeat(3, 1fr);
-                max-width: 800px;
-                gap: 1.5rem;
-            }
+        
+        .window-title {
+            font-size: 1.3rem;
         }
+        
+        .rotating-text {
+            font-size: 1.6rem;
+        }
+    }
+
+    @media (min-width: 769px) {
+        .contact-links {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 800px;
+            gap: 1.5rem;
+        }
+    }
     </style>
 </head>
 <body>
     <nav>
         <div class="nav-content">
-            <!-- Круглое лого для десктопа -->
             <img src="logo.jpg" alt="Mariya Kiseliova Logo" class="logo-img">
             
-            <!-- Бургер-меню -->
             <div class="burger-menu" id="burgerMenu">
                 <div class="burger-line"></div>
                 <div class="burger-line"></div>
                 <div class="burger-line"></div>
             </div>
             
-            <!-- Навигация -->
             <div class="nav-links" id="navLinks">
-                <a href="#skills">Навыки</a>
+                <a href="#services">Услуги</a>
                 <a href="Projects.html">Проекты</a>
                 <a href="#contact">Контакты</a>
             </div>
@@ -398,20 +586,40 @@
         </div>
     </section>
 
-    <section class="skills" id="skills">
-        <h2>Мои навыки</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3>Frontend</h3>
-                <p>HTML, CSS, JavaScript, React, Vue.js</p>
+    <section class="animated-windows" id="services">
+        <!-- Первое окошко - вращающийся текст -->
+        <div class="window window-1">
+            <h2 class="window-title">Создам уникальный сайт</h2>
+            <div class="rotating-text">
+                с анимацией
             </div>
-            <div class="skill-card">
-                <h3>UI/UX Design</h3>
-                <p>Figma, Adobe XD, User Research</p>
+        </div>
+
+        <!-- Второе окошко - SEO -->
+        <div class="window window-2">
+            <h2 class="window-title">Настрою SEO</h2>
+            <div class="seo-animation">
+                <div class="magnifying-glass"></div>
+                <div class="seo-text">
+                    <span class="seo-letter">П</span>
+                    <span class="seo-letter">О</span>
+                    <span class="seo-letter">И</span>
+                    <span class="seo-letter">С</span>
+                    <span class="seo-letter">К</span>
+                </div>
             </div>
-            <div class="skill-card">
-                <h3>Инструменты</h3>
-                <p>Git, Webpack, npm, VS Code</p>
+        </div>
+
+        <!-- Третье окошко - Контент -->
+        <div class="window window-3">
+            <h2 class="window-title">Помогу с наполнением</h2>
+            <div class="content-animation">
+                <div class="pencil-wrapper">
+                    <div class="pencil"></div>
+                </div>
+                <div class="content-text">
+                    Генерация уникальных изображений, видео и текстов
+                </div>
             </div>
         </div>
     </section>
@@ -467,7 +675,9 @@
         });
 
         // Запуск анимации при загрузке
-        document.addEventListener('DOMContentLoaded', typeWriter);
+        document.addEventListener('DOMContentLoaded', function() {
+            typeWriter();
+        });
 
         // Эффект при скролле для навигации
         window.addEventListener('scroll', function() {
