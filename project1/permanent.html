@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velure - Студия перманентного макияжа</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #E55A2B;
+            --black: #000000;
+            --white: #FFFFFF;
+            --gray-light: #F5F5F5;
+            --gray: #E0E0E0;
+            --gray-dark: #333333;
+            --gray-gradient: linear-gradient(135deg, #F5F5F5 0%, #E0E0E0 100%);
+            --dark-gradient: linear-gradient(135deg, #000000 0%, #333333 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Tenor Sans', sans-serif;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            min-height: 90vh;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Hero Combined */
+        .header-hero {
+          
+            background: url('main.png') no-repeat center top; 
+            background-size: 75% auto;
+            padding: 400px 0 50 auto;
+            color: var(--white);
+            position: relative;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            margin-bottom: 60px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--black);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'Tenor Sans', sans-serif;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .header-contacts {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .header-contacts a {
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .header-contacts a:hover {
+            color: var(--primary);
+        }
+        
+        /* Navigation */
+       nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px; /* было 60px - уменьшите */
+            margin-top: -70px; /* добавьте отрицательный отступ сверху */
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section */
+        .hero1 {
+    text-align: center;
+    color: var(--primary);
+    max-width: 900px; /* увеличил ширину */
+    margin: 2vh auto 0;
+    width: 100%; /* добавил */
+}
+
+.hero1 h1 {
+    font-size: 2em;
+    line-height: 1.0; /* исправил auto на нормальное значение */
+    padding: 10px 10px; /* добавил боковые отступы */
+    white-space: normal; /* убрал nowrap */
+    text-align: center;
+    margin: 0 auto;
+}
+        
+        .hero {
+            text-align: center;
+            max-width: 800px;
+            margin: 75vh auto 0; /* Просто добавь большой отступ сверху */
+            /* остальные стили без изменений */
+            
+        }
+                
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* Buttons */
+        .main-bottom {
+            margin-top: 10vh;
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 16px 45px;
+            border-radius: 35px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+            
+        }
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 16px 45px;
+            border-radius: 35px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.6);
+        }
+        
+        .btn-light {
+            background: transparent;
+            border: 2px solid var(--white);
+            box-shadow: none;
+        }
+        
+        .btn-light:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+        
+        /* Services */
+        .services {
+            padding: 90px 0;
+            background: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--black);
+            font-size: 2.8em;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+                
+        .service-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border: 1px solid var(--gray);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.05);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            color: var(--black);
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        /* Carousel */
+        .carousel {
+            padding: 90px 0;
+            background: var(--gray-gradient);
+        }
+        
+        .carousel-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+        }
+        
+        .carousel-slide img {
+            width: 100%;
+            display: block;
+            height: auto;
+            object-fit: cover;
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: white;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+        }
+        
+        .carousel-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            background: var(--primary-dark);
+        }
+        
+        .carousel-btn.prev {
+            left: 20px;
+        }
+        
+        .carousel-btn.next {
+            right: 20px;
+        }
+        
+        /* About */
+        .about {
+            padding: 90px 0;
+            background: var(--white);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            color: var(--black);
+            margin-bottom: 25px;
+            font-size: 2.2em;
+        }
+        
+        .about-img {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .about-img:hover {
+            transform: scale(1.02);
+        }
+        
+        .about-img img {
+            width: 100%;
+            display: block;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        /* Info Sections */
+        .info-sections {
+            padding: 90px 0;
+            background: var(--gray-gradient);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .info-card {
+            background: var(--white);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--primary);
+            transition: transform 0.3s;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-card h3 {
+            color: var(--black);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4em;
+        }
+        
+        .info-card ul {
+            list-style-position: outside;
+            padding: 20px;
+        }
+        
+        .info-card li {
+            margin-bottom: 12px;
+            position: relative;
+        }
+        
+        .info-card li::before {
+            content: '•';
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+        
+        /* Reviews */
+        .reviews {
+            padding: 90px 0;
+            background: var(--dark-gradient);
+            color: var(--white);
+        }
+        
+        .reviews .section-title {
+            color: var(--white);
+        }
+        
+        .reviews .section-title::after {
+            background: var(--primary);
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .review-card {
+            position: relative;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 20px;
+            font-size: 1.2em;
+        }
+        
+        .review-name {
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+        
+        .review-date {
+            color: var(--primary);
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        
+        .review-text {
+            font-style: italic;
+            line-height: 1.7;
+            font-size: 1em;
+            position: relative;
+        }
+        
+        /* Contacts */
+        .contacts {
+            padding: 90px 0;
+            background: var(--white);
+            color: var(--black);
+        }
+        
+        .contacts h2 {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.8em;
+            position: relative;
+        }
+        
+        .contacts h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .contacts-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: var(--gray-light);
+            border-radius: 15px;
+            transition: all 0.3s;
+        }
+        
+        .contact-item:hover {
+            background: var(--gray);
+            transform: translateX(10px);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--white);
+        }
+        
+        .contact-details h3 {
+            margin-bottom: 8px;
+            color: var(--black);
+        }
+        
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            height: 450px;
+        }
+        
+        .map-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-family: 'Tenor Sans', sans-serif;
+        }
+        
+        .footer-about {
+            margin-bottom: 20px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .footer-links h3, .footer-contacts h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-size: 1.2em;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+            opacity: 0.9;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            opacity: 1;
+        }
+        
+        .footer-contacts p {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.9;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9em;
+        }
+        
+        /* Mobile Responsive */
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .nav-menu {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 5px 0;
+            }
+            
+            .nav-menu a {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+                padding: 10px 0;
+            }
+            
+            .header-contacts {
+                flex-direction: column;
+                gap: 8px;
+                font-size: 0.9em;
+            }
+            
+            nav {
+                height: auto;
+                padding: 2px 0;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 3px;
+            }
+            
+            .nav-menu a {
+                padding: 2px 12px;
+                font-size: 14px;
+                white-space: nowrap;
+            }
+            
+            .hero h1 {
+                font-size: 1.6rem; 
+                margin-bottom: 15px;
+                line-height: 1.3;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 20px;
+                max-width: 90%;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 0.9em;
+            }
+            
+            .about-content, .info-grid, .contacts-content, .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-sections .container {
+                text-align: center;
+            }
+            
+            .info-grid {
+                gap: 15px;
+                padding: 0 10px;
+                justify-items: center;
+            }
+            
+            .info-card {
+                padding: 20px 15px !important;
+                margin: 0 5px;
+                max-width: 95%;
+                width: calc(100% - 10px);
+            }
+            
+            .info-card ul {
+                padding-left: 10px !important;
+                margin-left: 0 !important;
+                text-align: left;
+            }
+            
+            .services-grid, .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+            
+            .section-title {
+                font-size: 2em;
+            }
+        }
+        @media (max-width: 768px) {
+    .header-hero {
+        background-size: 95% auto; /* Увеличиваем изображение для мобильных */
+        padding: 250px 0 30px; /* Уменьшаем отступы */
+        min-height: auto; /* Убираем фиксированную высоту */
+    }
+    
+    .hero1 h1 {
+        font-size: 1.3rem; /* Уменьшаем размер заголовка */
+        line-height: 1.4;
+        padding: 20px 10px;
+        margin-top: 0;
+    }
+    
+    .hero {
+        margin: 30px auto 0; /* Убираем огромный отступ */
+        padding: 0 15px;
+    }
+    
+    .main-bottom {
+        margin-top: 20px; /* Регулируем отступ кнопки */
+    }
+    
+    nav {
+        margin-top: 10px; /* Убираем отрицательный отступ */
+        margin-bottom: 20px;
+    }
+}
+        @media (max-width: 480px) {
+            .header-hero {
+                padding: 20px 0 50px;
+            }
+            
+            .hero h1 {
+                font-size: 1.4rem;
+                margin-bottom: 12px;
+                line-height: 1.2;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+            
+            .header-contacts a {
+                font-size: 0.85em;
+            }
+            
+            .info-card {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Hero Combined -->
+    <section class="header-hero">
+        <div class="container">
+            <div class="header-content">
+                <a href="logo.jpg" class="logo">
+                    <i class="fas fa-crown"></i>
+                    Velure<span>Studio</span>
+                </a>
+                <div class="header-contacts">
+                    <a href="tel:+79991234567"><i class="fas fa-phone"></i> +7 (999) 123-45-67</a>
+                    <a href="mailto:info@velure.ru"><i class="fas fa-envelope"></i> info@velure.ru</a>
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#carousel">Галерея</a></li>
+                    <li><a href="#contraindications">Противопоказания</a></li>
+                    <li><a href="#aftercare">Уход после процедуры</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="hero1">
+                <h1>Профессиональный подход и индивидуальное решение для каждой клиентки</h1>
+            </div>
+            <div class="hero">
+                                <a href="#contacts" class="main-bottom">Записаться на консультацию</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="eyebrows.jpg" alt="Перманент бровей">
+                    </div>
+                    <div class="service-content">
+                        <h3>Перманент бровей</h3>
+                        <p>Создаем идеальную форму бровей, подчеркивая вашу природную красоту. Используем только качественные пигменты и современные техники.</p>
+                        <a href="#contacts" class="btn" style="margin-top: 15px;">Записаться</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="eyes.jpg" alt="Перманент глаз">
+                    </div>
+                    <div class="service-content">
+                        <h3>Перманент глаз</h3>
+                        <p>Подчеркните выразительность вашего взгляда с помощью перманентной подводки или межресничного пространства.</p>
+                        <a href="#contacts" class="btn" style="margin-top: 15px;">Записаться</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="lips.jpg" alt="Перманент губ">
+                    </div>
+                    <div class="service-content">
+                        <h3>Перманент губ</h3>
+                        <p>Коррекция контура и цвета губ для создания идеальной улыбки.  Эффект сохраняется до 5 лет. Остались вопросы? Просто позвоните и мы подробно все обсудим.</p>
+                        <a href="#contacts" class="btn" style="margin-top: 15px;">Связаться с нами</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Carousel -->
+    <section class="carousel" id="carousel">
+        <div class="container">
+            <h2 class="section-title">Наши работы</h2>
+            <div class="carousel-container">
+                <div class="carousel-slides">
+                    <div class="carousel-slide">
+                        <img src="eyebrows.jpg" alt="Перманент бровей">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="eyebrows2.jpg" alt="Перманент бровей">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="eyes.jpg" alt="Перманент глаз">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="lips.jpg" alt="Перманент губ">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="lips2.jpg" alt="Перманент губ">
+                    </div>
+                </div>
+                <button class="carousel-btn prev">&#10094;</button>
+                <button class="carousel-btn next">&#10095;</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">О нас</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Наша история</h2>
+                    <p>Студия перманентного макияжа Velure была основана в 2018 году профессиональным мастером Анной Ивановой. Начав с небольшого кабинета, мы выросли в современную студию с командой опытных специалистов.</p>
+                    <p>Наша философия — индивидуальный подход к каждому клиенту. Мы не просто выполняем процедуры, а создаем гармоничный образ, который подчеркивает вашу природную красоту.</p>
+                    <p>Мы используем только сертифицированные материалы и современное оборудование, чтобы обеспечить безопасность и долговечность результата.</p>
+                    <a href="#contacts" class="btn" style="margin-top: 20px;">Связаться с нами</a>
+                </div>
+                <div class="about-img">
+                    <img src="studio.jpg" alt="Наша студия">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contraindications & Aftercare -->
+    <section class="info-sections">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card" id="contraindications">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Противопоказания</h3>
+                    <ul>
+                        <li>Беременность и период лактации</li>
+                        <li>Сахарный диабет в стадии декомпенсации</li>
+                        <li>Онкологические заболевания</li>
+                        <li>Герпес в активной стадии</li>
+                        <li>Нарушения свертываемости крови</li>
+                        <li>Аллергия на анестетики или пигменты</li>
+                        <li>Кожные заболевания в зоне процедуры</li>
+                        <li>Эпилепсия</li>
+                        <li>Психические расстройства</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card" id="aftercare">
+                    <h3><i class="fas fa-heart"></i> Уход после процедуры</h3>
+                    <ul>
+                        <li>В течение 7-10 дней избегать попадания воды на обработанную зону</li>
+                        <li>Не использовать декоративную косметику в течение 5-7 дней</li>
+                        <li>Избегать прямых солнечных лучей и солярия в течение 2 недель</li>
+                        <li>Не посещать бани, сауны, бассейны в течение 10 дней</li>
+                        <li>Наносить рекомендованный крем для восстановления</li>
+                        <li>Не трогать и не чесать обработанную зону</li>
+                        <li>Избегать физических нагрузок, вызывающих обильное потоотделение</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Reviews -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title">Отзывы наших клиентов</h2>
+            <div class="reviews-grid">
+                <!-- Отзыв 1 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">ЕК</div>
+                        <div>
+                            <div class="review-name">Екатерина К.</div>
+                            <div class="review-date">15 мая 2023</div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "Очень довольна результатом! Брови выглядят естественно и аккуратно. Мастер Анна — профессионал своего дела, все подробно объяснила и сделала безболезненно. Рекомендую!"
+                    </div>
+                </div>
+                
+                <!-- Отзыв 2 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">МС</div>
+                        <div>
+                            <div class="review-name">Марина С.</div>
+                            <div class="review-date">2 июня 2023</div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "Делала перманент губ. Результат превзошел ожидания! Цвет подобрали идеально под мой природный оттенок. Спасибо за профессиональный подход и качественную работу."
+                    </div>
+                </div>
+                
+                <!-- Отзыв 3 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">ОЛ</div>
+                        <div>
+                            <div class="review-name">Ольга Л.</div>
+                            <div class="review-date">28 июня 2023</div>
+                        </div>
+                    </div>
+                    <div class="review-text">
+                        "Хожу в студию Velure уже несколько лет. Всегда качественный сервис и прекрасный результат. Особенно нравится, что используют гипоаллергенные пигменты — у меня чувствительная кожа, но никаких проблем не было."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contacts -->
+    <section class="contacts" id="contacts">
+        <div class="container">
+            <h2>Контакты</h2>
+            <div class="contacts-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Адрес</h3>
+                            <p>г. Москва, ул. Красивая, д. 15</p>
+                            <p>Вход со двора, 2 этаж</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Телефон</h3>
+                            <p>+7 (999) 123-45-67</p>
+                            <p>+7 (495) 123-45-67</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>info@velure.ru</p>
+                            <p>booking@velure.ru</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Режим работы</h3>
+                            <p>Пн-Пт: 10:00 - 20:00</p>
+                            <p>Сб-Вс: 11:00 - 18:00</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.372789963949!2d37.6172992767789!3d55.75582632855125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a50b315e573%3A0xa886bf5a3d9b2e68!2z0JzQvtGB0LrQstCw!5e0!3m2!1sru!2sru!4v1690000000000!5m2!1sru!2sru" 
+                        class="map-frame"
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+             <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Velure<span>Studio</span></div>
+                    <p class="footer-about">Студия перманентного макияжа Velure — это команда профессионалов, создающих красоту и уверенность в себе для каждой женщины.</p>
+                    <div class="social-links">
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="VK"><i class="fab fa-vk"></i></a>
+                        <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                    
+                    </div>
+                </div>
+            </div>
+                
+                <div class="footer-links">
+                    <h3>Услуги</h3>
+                    <ul>
+                        <li><a href="#services">Перманент бровей</a></li>
+                        <li><a href="#services">Перманент глаз</a></li>
+                        <li><a href="#services">Перманент губ</a></li>
+                        <li><a href="#services">Коррекция</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contacts">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Красивая, д. 15</p>
+                    <p><i class="fas fa-phone"></i> +7 (999) 123-45-67</p>
+                    <p><i class="fas fa-envelope"></i> info@velure.ru</p>
+                    <p><i class="fas fa-clock"></i> Пн-Пт: 10:00-20:00</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Velure Studio. Все права защищены.</p>
+            </div>
+        </div>    
+    </footer>
+    
+    <script>
+        // Карусель
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelector('.carousel-slides');
+            const slideCount = document.querySelectorAll('.carousel-slide').length;
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            let currentIndex = 0;
+            
+            function updateCarousel() {
+                slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+            
+            prevBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideCount - 1;
+                updateCarousel();
+            });
+            
+            nextBtn.addEventListener('click', function() {
+                currentIndex = (currentIndex < slideCount - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            });
+            
+            // Автопереключение карусели каждые 5 секунд
+            setInterval(function() {
+                currentIndex = (currentIndex < slideCount - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
