@@ -70,10 +70,13 @@
     <style>
     :root {
         --primary: #667eea;
-        --secondary: #4a26cb75;
+        --secondary: #764ba2;
         --accent: #5facae;
         --dark: #2d3748;
         --light: #f7fafc;
+        --text-dark: #4a5568;
+        --glass-bg: rgba(255, 255, 255, 0.25);
+        --glass-border: rgba(255, 255, 255, 0.3);
     }
 
     * {
@@ -88,9 +91,10 @@
         color: var(--dark);
         background: linear-gradient(-45deg, #636b91, #f7cba0, #8598ec, #ce8252);
         background-size: 200% 200%;
-        animation: gradient 10s ease-in-out infinite;
+        animation: gradient 15s ease infinite;
         min-height: 100vh;
         overflow-x: hidden;
+        padding-top: 80px;
     }
 
     @keyframes gradient {
@@ -105,10 +109,11 @@
         top: 0;
         width: 100%;
         background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(20px);
         z-index: 1000;
         padding: 1rem 0;
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        border-bottom: 1px solid var(--glass-border);
     }
 
     .nav-content {
@@ -120,34 +125,26 @@
         padding: 0 2rem;
     }
 
-    /* Стили для видео-логотипа */
+    /* Логотип */
     .logo-video {
-        width: 110px;
-        height: 110px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
         object-fit: cover;
-        transition: all 0.3s ease;
-        border: 2px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        border: 2px solid var(--glass-border);
         box-shadow: 
-            0 4px 15px rgba(0, 0, 0, 0.1),
+            0 8px 32px rgba(0, 0, 0, 0.1),
             inset 0 1px 0 rgba(255, 255, 255, 0.6);
-        display: block;
+        filter: brightness(1.05) contrast(1.1);
     }
 
     .logo-video:hover {
-        transform: scale(1.05);
+        transform: scale(1.1) rotate(5deg);
         border-color: var(--primary);
         box-shadow: 
-            0 8px 25px rgba(102, 126, 234, 0.3),
+            0 12px 40px rgba(102, 126, 234, 0.3),
             inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    }
-
-    /* Для мобильных устройств */
-    @media (max-width: 768px) {
-        .logo-video {
-            width: 75px;
-            height: 75px;
-        }
     }
 
     .nav-links {
@@ -163,12 +160,29 @@
         font-size: 1rem;
         transition: all 0.3s ease;
         padding: 0.5rem 1rem;
-        border-radius: 8px;
+        border-radius: 12px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nav-links a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .nav-links a:hover::before {
+        left: 100%;
     }
 
     .nav-links a:hover {
         color: var(--primary);
-        background: rgba(102, 126, 234, 0.1);
+        background: rgba(102, 126, 234, 0.05);
         transform: translateY(-2px);
     }
 
@@ -180,7 +194,9 @@
         gap: 4px;
         padding: 0.5rem;
         background: linear-gradient(135deg, var(--primary), var(--secondary));
-        border-radius: 8px;
+        border-radius: 10px;
+        z-index: 1001;
+        transition: all 0.3s ease;
     }
 
     .burger-line {
@@ -210,28 +226,29 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        padding: 2 4rem;
+        padding: 4rem 2rem;
         position: relative;
     }
 
     .hero-content h1 {
-        font-size: clamp(1.5rem, 3vw, 2.5rem);
-        padding: 4rem 2rem  0rem;
-        margin-bottom: 1rem;
-        background: linear-gradient(135deg, rgba(78, 20, 25, 0.806), var(--secondary));
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         animation: fadeInUp 1s ease;
+        line-height: 1.2;
     }
 
     .typewriter {
-        font-size: clamp(1rem, 3vw, 1.5rem);
-        margin-bottom: 2rem;
+        font-size: clamp(1.2rem, 3vw, 2rem);
+        margin-bottom: 3rem;
         color: var(--dark);
         animation: fadeInUp 1s ease 0.5s both;
+        font-weight: 500;
     }
 
-        @keyframes fadeInUp {
+    @keyframes fadeInUp {
         from {
             opacity: 0;
             transform: translateY(30px);
@@ -244,8 +261,8 @@
 
     /* Анимированные окошки */
     .animated-windows {
-        padding: 1rem 2rem 5rem;
-        max-width: 1200px;
+        padding: 2rem 2rem 4rem;
+        max-width: 1400px;
         margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr;
@@ -260,18 +277,18 @@
     }
 
     .window {
-        background: rgba(255, 255, 255, 0.25);
+        background: var(--glass-bg);
         backdrop-filter: blur(20px);
         border-radius: 25px;
-        padding: 2.5rem 1.5rem;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 3rem 2rem;
+        border: 1px solid var(--glass-border);
         box-shadow: 
             0 8px 32px rgba(0, 0, 0, 0.1),
             inset 0 1px 0 rgba(255, 255, 255, 0.6),
             inset 0 -1px 0 rgba(0, 0, 0, 0.1);
         position: relative;
         overflow: hidden;
-        min-height: 350px;
+        min-height: 400px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -279,7 +296,7 @@
         text-align: center;
         opacity: 0;
         transform: translateY(100px);
-        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .window::before {
@@ -289,18 +306,24 @@
         left: 0;
         right: 0;
         height: 1px;
-        background: linear-gradient(90deg, 
-            transparent, 
-            rgba(255, 255, 255, 0.6), 
-            transparent
-        );
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    }
+
+    .window::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
     }
 
     .window:hover {
-        transform: translateY(-8px);
+        transform: translateY(-10px) scale(1.02);
         background: rgba(255, 255, 255, 0.35);
         box-shadow: 
-            0 15px 40px rgba(0, 0, 0, 0.15),
+            0 20px 50px rgba(0, 0, 0, 0.15),
             inset 0 1px 0 rgba(255, 255, 255, 0.8),
             inset 0 -1px 0 rgba(0, 0, 0, 0.05);
     }
@@ -328,149 +351,140 @@
     .window-title {
         font-size: 1.8rem;
         font-weight: 700;
-        margin-bottom: 1.5rem;
-        background: linear-gradient(280deg, var(--accent), var(--secondary));
+        margin-bottom: 2rem;
+        background: linear-gradient(135deg, var(--accent), var(--secondary));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center;
         width: 100%;
     }
 
-    /* Основной текст в окнах */
+    /* Основной текст */
     .window-text {
         font-size: 1.1rem;
         font-weight: 500;
         color: var(--dark);
-        line-height: 1.5;
+        line-height: 1.6;
         text-align: center;
         width: 100%;
     }
 
-/* Акцентный текст с белой обводкой */
-.window-accent {
-    font-size: 1.3rem;
-    font-weight: 450;
-    background: linear-gradient(280deg, rgb(53, 90, 124), rgba(21, 20, 20, 0.856));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: start;
-    width: 100%;
-    padding: 0.5rem 1rem;
-}
+    .window-accent {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--text-dark);
+        text-align: center;
+        width: 100%;
+        padding: 1rem 0;
+    }
 
-    /* Контент для первого окна */
-    .website-animation {
+    /* Анимации для контента окон */
+    .website-animation,
+    .seo-animation,
+    .content-animation {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1.5rem;
+        gap: 2rem;
         width: 100%;
         justify-content: center;
         flex: 1;
     }
 
-    /* ФИКСИРУЕМ РАЗМЕР браузера для всех устройств */
     .browser-window {
-        width: 120px;
-        height: 80px;
+        width: 140px;
+        height: 90px;
         background: white;
-        border-radius: 8px;
+        border-radius: 12px;
         position: relative;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         overflow: hidden;
-        /* Убираем адаптацию - размер постоянный */
+        transition: all 0.3s ease;
+    }
+
+    .browser-window:hover {
+        transform: scale(1.05);
     }
 
     .browser-header {
-        height: 12px;
+        height: 15px;
         background: linear-gradient(135deg, var(--primary), var(--secondary));
         display: flex;
         align-items: center;
-        padding: 0 8px;
-        gap: 4px;
+        padding: 0 10px;
+        gap: 5px;
     }
 
     .browser-dot {
-        width: 6px;
-        height: 6px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.6);
+        background: rgba(255, 255, 255, 0.7);
+        transition: all 0.3s ease;
+    }
+
+    .browser-dot:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: scale(1.2);
     }
 
     .browser-content {
-        height: calc(100% - 12px);
+        height: calc(100% - 15px);
         background: linear-gradient(45deg, #f0f4ff, #e3f2fd);
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.7rem; /* Немного уменьшаем для гарантии */
+        font-size: 0.8rem;
         color: var(--primary);
         font-weight: 600;
     }
 
-    /* Второе окно - SEO */
-    .seo-animation {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-        width: 100%;
-        justify-content: center;
-        flex: 1;
-    }
-
+    /* SEO анимация */
     .magnifying-glass {
-        width: 70px;
-        height: 70px;
+        width: 80px;
+        height: 80px;
         border: 4px solid var(--accent);
         border-radius: 50%;
         position: relative;
-        animation: searchDrop 2s ease-in-out infinite;
+        animation: searchFloat 3s ease-in-out infinite;
     }
 
     .magnifying-glass::after {
         content: '';
         position: absolute;
-        width: 20px;
+        width: 25px;
         height: 4px;
         background: var(--accent);
-        bottom: -15px;
-        right: -10px;
+        bottom: -18px;
+        right: -12px;
         transform: rotate(45deg);
         border-radius: 2px;
     }
 
-    @keyframes searchDrop {
-        0% {
-            transform: translateY(-50px) scale(0.8);
-            opacity: 0;
+    @keyframes searchFloat {
+        0%, 100% {
+            transform: translateY(0px) rotate(0deg);
         }
         50% {
-            transform: translateY(0) scale(1.1);
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(0) scale(1);
-            opacity: 1;
+            transform: translateY(-10px) rotate(5deg);
         }
     }
 
-    /* ИСПРАВЛЯЕМ цвет букв "ПОИСК" */
-.seo-text {
-    font-size: 1.6rem;
-    font-weight: 700;
-    display: flex;
-    gap: 0.3rem;
-    justify-content: center;
-    background: linear-gradient(135deg, var(--accent), #5fd0d2de);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 
-        -1px -1px 0 white,
-        1px -1px 0 rgb(123, 161, 171),
-        -1px 1px 0 rgb(69, 131, 139),
-        1px 1px 0 rgb(131, 131, 205);
-}
+    .seo-text {
+        font-size: 1.8rem;
+        font-weight: 700;
+        display: flex;
+        gap: 0.3rem;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--accent), #5fd0d2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 
+            -1px -1px 0 white,
+            1px -1px 0 rgba(123, 161, 171, 0.3),
+            -1px 1px 0 rgba(69, 131, 139, 0.3),
+            1px 1px 0 rgba(131, 131, 205, 0.3);
+    }
 
     .seo-letter {
         display: inline-block;
@@ -492,31 +506,67 @@
         }
     }
 
-    /* Третье окно - Контент */
-    .content-animation {
+    /* Кнопка портфолио */
+    .portfolio-button-container {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-        width: 100%;
         justify-content: center;
-        flex: 1;
+        align-items: center;
+        padding: 3rem 0;
+        margin: 0 auto;
+        max-width: 1200px;
     }
 
+    .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1.2rem 2.5rem;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: clamp(1rem, 2vw, 1.1rem);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        animation: fadeInUp 1s ease 1s both;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
 
+    .cta-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .cta-button:hover::before {
+        left: 100%;
+    }
+
+    .cta-button:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+    }
 
     /* Контакты */
     .contact {
-        padding: 5rem 2rem;
+        padding: 6rem 2rem;
         text-align: center;
         background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(20px);
         margin-top: 2rem;
+        border-top: 1px solid var(--glass-border);
     }
 
     .contact h2 {
-        font-size: clamp(1.5rem, 4vw, 2.5rem);
-        margin-bottom: 3rem;
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 4rem;
         background: linear-gradient(135deg, var(--primary), var(--secondary));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -525,40 +575,62 @@
     .contact-links {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.5rem;
         width: 100%;
-        max-width: 400px;
+        max-width: 500px;
         margin: 2rem auto 0;
     }
 
+    @media (min-width: 769px) {
+        .contact-links {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 900px;
+            gap: 2rem;
+        }
+    }
+
     .contact-link {
-        padding: 1rem 2rem;
+        padding: 1.2rem 2rem;
         border: 2px solid var(--primary);
-        border-radius: 25px;
+        border-radius: 20px;
         text-decoration: none;
         color: var(--primary);
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         font-weight: 500;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.5rem;
+        gap: 0.8rem;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .contact-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .contact-link:hover::before {
+        left: 100%;
     }
 
     .contact-link:hover {
         background: var(--primary);
         color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
     }
 
     /* Мобильная адаптация */
     @media (max-width: 768px) {
-        .logo-video {
-            width: 75px;
-            height: 75px;
-        }
-
         .burger-menu {
             display: flex;
         }
@@ -568,9 +640,7 @@
             top: 100%;
             left: 0;
             width: 100%;
-            background: radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(105, 35, 203, 0.15) 0%, transparent 50%),
-                linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.98));
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(20px);
             flex-direction: column;
             gap: 0;
@@ -579,133 +649,119 @@
             transition: all 0.3s ease;
             opacity: 0;
             visibility: hidden;
+            z-index: 1000;
         }
         
         .nav-links.active {
             top: 100%;
             opacity: 1;
             visibility: visible;
+            transform: translateY(0);
         }
         
         .nav-links a {
             width: 100%;
             text-align: center;
-            padding: 1rem;
+            padding: 1.2rem 2rem;
             border-radius: 0;
             font-size: 1.1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
         
-        .nav-links a:hover {
-            background: linear-gradient(135deg, rgba(222, 168, 136, 0.514), rgba(116, 101, 177, 0.372));
-            border-color: rgba(102, 126, 234, 0.5);
-            transform: translateY(-2px);
+        .nav-links a:last-child {
+            border-bottom: none;
         }
         
-        .nav-content {
-            padding: 0.5rem 1rem;
+        .hero {
+            min-height: 60vh;
+            padding-top: 2rem;
         }
         
         .animated-windows {
             padding: 2rem 1rem;
-            gap: 1.5rem;
+            gap: 2rem;
         }
         
         .window {
-            padding: 2rem 1.5rem;
-            min-height: 300px;
+            padding: 2.5rem 1.5rem;
+            min-height: 350px;
         }
         
         .window-title {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
         }
         
-        /* УБИРАЕМ адаптацию browser-window для мобильных */
-        
         .seo-text {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
         }
 
         .magnifying-glass {
-            width: 60px;
-            height: 60px;
-        }
-
-        .content-text {
-            font-size: 1.1rem;
+            width: 70px;
+            height: 70px;
         }
     }
 
     @media (max-width: 480px) {
         .logo-video {
-            width: 75px;
-            height: 75px;
+            width: 80px;
+            height: 80px;
         }
         
         .hero-content h1 {
-            font-size: 2rem;
+            font-size: 2.2rem;
         }
         
         .window {
-            min-height: 280px;
-            padding: 1.5rem 1rem;
+            min-height: 320px;
+            padding: 2rem 1rem;
         }
         
         .window-title {
+            font-size: 1.4rem;
+        }
+        
+        .seo-text {
             font-size: 1.3rem;
         }
         
-        /* УБИРАЕМ адаптацию browser-window для маленьких экранов */
-        
-        .seo-text {
-            font-size: 1.2rem;
-        }
-    }
-
-    @media (min-width: 769px) {
         .contact-links {
-            grid-template-columns: repeat(3, 1fr);
-            max-width: 800px;
-            gap: 1.5rem;
+            gap: 1rem;
+        }
+        
+        .contact-link {
+            padding: 1rem 1.5rem;
+            font-size: 0.9rem;
         }
     }
-        /* Контейнер для кнопки портфолио */
-    .portfolio-button-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 2rem 0;
-        margin: 0 auto;
-        max-width: 1200px;
-    }
-    .cta-button {
-        display: inline-block;
-        padding: 1rem 2rem;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: white;
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: 600;
-        font-size: clamp(0.9rem, 2vw, 1rem);
-        transition: all 0.3s ease;
-        animation: fadeInUp 1s ease 1s both;
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+
+    /* Параллакс эффект для глубины */
+    .parallax-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.3;
     }
 
-    .cta-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    /* Скрытый текст для SEO */
+    .seo-hidden {
+        display: none;
+        aria-hidden: true;
     }
     </style>
 </head>
 <body>
+    <!-- Параллакс фон -->
+    <div class="parallax-bg"></div>
+
     <nav>
         <div class="nav-content">
-        <video class="logo-video" autoplay muted loop playsinline
-            style="width: 110px; height: 110px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: block;">
-            <source src="logo.mp4" type="video/mp4">
-            <img src="logo.jpg" alt="Mariya Kiseliova Logo" 
-                style="width: 90px; height: 90px; border-radius: 50%; object-fit: cover;">
-        </video>
+            <video class="logo-video" autoplay muted loop playsinline>
+                <source src="logo.mp4" type="video/mp4">
+                <img src="logo.jpg" alt="Mariya Kiseliova Logo">
+            </video>
                     
             <div class="burger-menu" id="burgerMenu">
                 <div class="burger-line"></div>
@@ -723,9 +779,8 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Привет и добро пожаловать! Я Мария Киселёва</h1>
+            <h1>Привет и добро пожаловать!<br>Я Мария Киселёва</h1>
             <div class="typewriter" id="typewriter"></div>
-           
         </div>
     </section>
 
@@ -744,11 +799,8 @@
                         your_site.com
                     </div>
                 </div>
-                <div class="accent-container">
-                    <div class="content-text window-accent">
-                        Современный дизайн для мобильных, планшетов и десктопов, который реально адаптируется под разрешение любых экранов.
-                    </div>
-                </div>
+                <div class="window-accent">
+                    Современный дизайн для мобильных, планшетов и десктопов, который реально адаптируется под разрешение любых экранов.
                 </div>
             </div>
         </div>
@@ -756,14 +808,12 @@
         <!-- Второе окошко - SEO -->
         <div class="window window-2">
             <h2 class="window-title">Настрою SEO</h2>
-            <div class="accent-container">
-                <div class="content-text window-accent">
-                    Поисковые системы "полюбят" ваш website.
-                </div>
+            <div class="window-accent">
+                Поисковые системы "полюбят" ваш website.
             </div>
             <div class="seo-animation">
                 <div class="magnifying-glass"></div>
-                <div class="seo-text window-accent">
+                <div class="seo-text">
                     <span class="seo-letter">П</span>
                     <span class="seo-letter">О</span>
                     <span class="seo-letter">И</span>
@@ -777,18 +827,18 @@
         <div class="window window-3">
             <h2 class="window-title">Помогу с наполнением</h2>
             <div class="content-animation">
-                <div class="accent-container">
-                    <div class="content-text window-accent">
-                        Генерация оригинальных изображений, видео и текстов при помощи ИИ-инструментов. Экономия времени и ресурсов на создание качественного контента.
-                    </div>
+                <div class="window-accent">
+                    Генерация оригинальных изображений, видео и текстов при помощи ИИ-инструментов. Экономия времени и ресурсов на создание качественного контента.
                 </div>
             </div>
         </div>
     </section>
  
     <div class="portfolio-button-container">
-    <a href="Projects.html" class="cta-button">Посмотреть портфолио</a>
-</div>
+        <a href="Projects.html" class="cta-button">
+            🎨 Посмотреть портфолио
+        </a>
+    </div>
 
     <section class="contact" id="contact">
         <h2>Давайте работать вместе</h2>
@@ -800,7 +850,7 @@
     </section>
 
     <!-- Скрытый текст для SEO -->
-    <div style="display: none;" aria-hidden="true">
+    <div class="seo-hidden">
         <h1>Frontend разработчик в Бресте</h1>
         <p>Мария Киселёва - профессиональный веб-дизайнер и фронтенд разработчик из Бреста. Создание качественных сайтов недорого с адаптивным дизайном и SEO оптимизацией. Предлагаю услуги по разработке, дизайну и наполнению сайтов для бизнеса в Беларуси.</p>
     </div>
@@ -826,6 +876,7 @@
         burgerMenu.addEventListener('click', function() {
             this.classList.toggle('active');
             navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
         });
 
         // Закрытие меню при клике на ссылку
@@ -833,6 +884,7 @@
             link.addEventListener('click', function() {
                 burgerMenu.classList.remove('active');
                 navLinks.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
 
@@ -849,18 +901,46 @@
         // Запуск анимации при загрузке
         document.addEventListener('DOMContentLoaded', function() {
             typeWriter();
-        });
+            
+            // Параллакс эффект
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.parallax-bg');
+                if (parallax) {
+                    parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+                
+                // Эффект для навигации
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 100) {
+                    nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                    nav.style.padding = '0.8rem 0';
+                    nav.style.backdropFilter = 'blur(25px)';
+                } else {
+                    nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                    nav.style.padding = '1rem 0';
+                    nav.style.backdropFilter = 'blur(20px)';
+                }
+            });
 
-        // Эффект при скролле для навигации
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(255, 255, 255, 0.98)';
-                nav.style.padding = '0.5rem 0';
-            } else {
-                nav.style.background = 'rgba(255, 255, 255, 0.95)';
-                nav.style.padding = '1rem 0';
-            }
+            // Анимация при скролле для окон
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.window').forEach(window => {
+                observer.observe(window);
+            });
         });
     </script>
 </body>
