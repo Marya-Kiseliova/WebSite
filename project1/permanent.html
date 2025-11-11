@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Tenor+Sans&display=swap" rel="stylesheet">
     <style>
+        /* ===== CSS VARIABLES ===== */
         :root {
             --primary: #FF6B35;
             --primary-dark: #E55A2B;
@@ -15,14 +16,17 @@
             --gray-light: #F5F5F5;
             --gray: #E0E0E0;
             --gray-dark: #333333;
-            --gray-gradient: linear-gradient(135deg, #F5F5F5 0%, #E0E0E0 100%);
-            --dark-gradient: linear-gradient(135deg, #000000 0%, #333333 100%);
         }
         
+        /* ===== RESET & BASE STYLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
         }
         
         body {
@@ -30,6 +34,7 @@
             color: var(--black);
             line-height: 1.6;
             font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -40,27 +45,41 @@
         
         .container {
             max-width: 1200px;
-            min-height: 90vh;
             margin: 0 auto;
             padding: 0 20px;
         }
         
-        /* Header & Hero Combined */
-        .header-hero {
-          
-            background: url('main.png') no-repeat center top; 
-            background-size: 75% auto;
-            padding: 400px 0 50 auto;
-            color: var(--white);
-            position: relative;
+        /* ===== HEADER ===== */
+        .header {
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
         
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
-            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            background: none;
+            border: none;
+            z-index: 1000;
         }
         
         .logo {
@@ -71,7 +90,6 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            font-family: 'Tenor Sans', sans-serif;
         }
         
         .logo span {
@@ -84,7 +102,7 @@
         }
         
         .header-contacts a {
-            color: var(--white);
+            color: var(--black);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -97,76 +115,31 @@
             color: var(--primary);
         }
         
-        /* Navigation */
-       nav {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px; /* было 60px - уменьшите */
-            margin-top: -70px; /* добавьте отрицательный отступ сверху */
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 40px 0 30px;
+            text-align: center;
+            background: var(--white);
         }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-            margin: 0;
+        
+        .hero-title {
+            color: var(--black);
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-image {
+            max-width: 75%;
+            margin: 0 auto 30px;
+            display: block;
             padding: 0;
         }
-
-        .nav-menu a {
-            color: var(--primary-dark);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            height: 100%;
-            padding: 8px 16px;
-            border-radius: 25px;
-            font-size: 16px;
-        }
-
-        .nav-menu a:hover {
-            color: var(--primary);
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
         
-        /* Hero Section */
-        .hero1 {
-    text-align: center;
-    color: var(--primary);
-    max-width: 900px; /* увеличил ширину */
-    margin: 2vh auto 0;
-    width: 100%; /* добавил */
-}
-
-.hero1 h1 {
-    font-size: 2em;
-    line-height: 1.0; /* исправил auto на нормальное значение */
-    padding: 10px 10px; /* добавил боковые отступы */
-    white-space: normal; /* убрал nowrap */
-    text-align: center;
-    margin: 0 auto;
-}
-        
-        .hero {
-            text-align: center;
-            max-width: 800px;
-            margin: 75vh auto 0; /* Просто добавь большой отступ сверху */
-            /* остальные стили без изменений */
-            
-        }
-                
-        .hero p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
-        
-        /* Buttons */
-        .main-bottom {
-            margin-top: 10vh;
+        .hero-button {
             display: inline-block;
             background: var(--primary);
             color: var(--white);
@@ -178,56 +151,168 @@
             border: none;
             cursor: pointer;
             box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
-            position: relative;
-            overflow: hidden;
-            font-family: 'Montserrat', sans-serif;
-            
-        }
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: var(--white);
-            padding: 16px 45px;
-            border-radius: 35px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
-            position: relative;
-            overflow: hidden;
             font-family: 'Montserrat', sans-serif;
         }
         
-        .btn:hover {
+        .hero-button:hover {
             background: var(--primary-dark);
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(255, 107, 53, 0.6);
         }
         
-        .btn-light {
-            background: transparent;
-            border: 2px solid var(--white);
-            box-shadow: none;
-        }
-        
-        .btn-light:hover {
+        /* ===== NAVIGATION ===== */
+        .main-nav {
             background: var(--white);
-            color: var(--black);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--gray);
         }
         
-        /* Services */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-menu a {
+            color: var(--primary-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary);
+            background: rgba(255, 107, 53, 0.1);
+        }
+        
+        /* ===== BURGER MENU ===== */
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+            background: none;
+            border: none;
+            z-index: 1000;
+        }
+        
+        .burger-line {
+            width: 25px;
+            height: 3px;
+            background: var(--black);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 999;
+            transition: right 0.4s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav-menu {
+            list-style: none;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+        }
+        
+        .mobile-nav-menu li {
+            margin: 15px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+        }
+        
+        .mobile-nav.active .mobile-nav-menu li {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Задержка анимации для каждого пункта */
+        .mobile-nav.active .mobile-nav-menu li:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-nav.active .mobile-nav-menu li:nth-child(2) { transition-delay: 0.2s; }
+        .mobile-nav.active .mobile-nav-menu li:nth-child(3) { transition-delay: 0.3s; }
+        .mobile-nav.active .mobile-nav-menu li:nth-child(4) { transition-delay: 0.4s; }
+        .mobile-nav.active .mobile-nav-menu li:nth-child(5) { transition-delay: 0.5s; }
+        .mobile-nav.active .mobile-nav-menu li:nth-child(6) { transition-delay: 0.6s; }
+        .mobile-nav.active .mobile-nav-menu li:nth-child(7) { transition-delay: 0.7s; }
+        
+        .mobile-nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: block;
+            padding: 12px 30px;
+            transition: all 0.3s;
+        }
+        
+        .mobile-nav-menu a:hover {
+            color: var(--primary);
+        }
+        
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .burger-menu.active .burger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        .burger-menu.active .burger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .burger-menu.active .burger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+        
+        body.menu-open {
+            overflow: hidden;
+        }
+        
+        /* ===== SERVICES SECTION ===== */
         .services {
-            padding: 90px 0;
+            padding: 80px 0;
             background: var(--white);
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             color: var(--black);
-            font-size: 2.8em;
+            font-size: 2.5em;
             position: relative;
         }
         
@@ -244,21 +329,21 @@
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 35px;
+            gap: 30px;
         }
-                
+        
         .service-card {
             background: var(--white);
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
             border: 1px solid var(--gray);
         }
         
         .service-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
         
         .service-img {
@@ -278,19 +363,40 @@
         }
         
         .service-content {
-            padding: 25px;
+            padding: 20px;
         }
         
         .service-content h3 {
             color: var(--black);
             margin-bottom: 15px;
-            font-size: 1.4em;
+            font-size: 1.3em;
         }
         
-        /* Carousel */
+        /* ===== BUTTON STYLES ===== */
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9em;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* ===== OTHER SECTIONS ===== */
         .carousel {
-            padding: 90px 0;
-            background: var(--gray-gradient);
+            padding: 80px 0;
+            background: var(--gray-light);
         }
         
         .carousel-container {
@@ -298,8 +404,7 @@
             max-width: 900px;
             margin: 0 auto;
             overflow: hidden;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
         }
         
         .carousel-slides {
@@ -314,7 +419,7 @@
         .carousel-slide img {
             width: 100%;
             display: block;
-            height: auto;
+            height: 400px;
             object-fit: cover;
         }
         
@@ -324,123 +429,96 @@
             transform: translateY(-50%);
             background: var(--primary);
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            font-size: 20px;
+            font-size: 18px;
             cursor: pointer;
             transition: all 0.3s;
             color: white;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
         }
         
         .carousel-btn:hover {
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
             background: var(--primary-dark);
         }
         
         .carousel-btn.prev {
-            left: 20px;
+            left: 15px;
         }
         
         .carousel-btn.next {
-            right: 20px;
+            right: 15px;
         }
         
-        /* About */
         .about {
-            padding: 90px 0;
+            padding: 80px 0;
             background: var(--white);
         }
         
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 50px;
             align-items: center;
         }
         
         .about-text h2 {
             color: var(--black);
-            margin-bottom: 25px;
-            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-size: 2em;
         }
         
         .about-img {
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .about-img:hover {
-            transform: scale(1.02);
         }
         
         .about-img img {
             width: 100%;
             display: block;
-            height: 400px;
+            height: 350px;
             object-fit: cover;
         }
         
-        /* Info Sections */
         .info-sections {
-            padding: 90px 0;
-            background: var(--gray-gradient);
+            padding: 80px 0;
+            background: var(--gray-light);
         }
         
         .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 30px;
         }
         
         .info-card {
             background: var(--white);
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-left: 5px solid var(--primary);
-            transition: transform 0.3s;
-        }
-        
-        .info-card:hover {
-            transform: translateY(-5px);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary);
         }
         
         .info-card h3 {
             color: var(--black);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.4em;
+            gap: 10px;
+            font-size: 1.3em;
         }
         
         .info-card ul {
             list-style-position: outside;
-            padding: 20px;
+            padding-left: 20px;
         }
         
         .info-card li {
-            margin-bottom: 12px;
-            position: relative;
+            margin-bottom: 10px;
         }
         
-        .info-card li::before {
-            content: '•';
-            color: var(--primary);
-            font-weight: bold;
-            position: absolute;
-            left: -15px;
-        }
-        
-        /* Reviews */
         .reviews {
-            padding: 90px 0;
-            background: var(--dark-gradient);
+            padding: 80px 0 100px;
+            background: var(--black);
             color: var(--white);
         }
         
@@ -448,46 +526,28 @@
             color: var(--white);
         }
         
-        .reviews .section-title::after {
-            background: var(--primary);
-        }
-        
         .reviews-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 25px;
         }
         
         .review-card {
-            position: relative;
-            padding: 35px;
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s;
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            min-height: 280px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        
-        .review-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .review-header {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .review-avatar {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: var(--primary);
             display: flex;
@@ -495,123 +555,80 @@
             justify-content: center;
             color: white;
             font-weight: bold;
-            margin-right: 20px;
-            font-size: 1.2em;
+            margin-right: 15px;
         }
         
-        .review-name {
-            font-weight: 700;
-            font-size: 1.1em;
-        }
-        
-        .review-date {
-            color: var(--primary);
-            font-size: 0.9em;
-            opacity: 0.8;
-        }
-        
-        .review-text {
-            font-style: italic;
-            line-height: 1.7;
-            font-size: 1em;
-            position: relative;
-        }
-        
-        /* Contacts */
         .contacts {
-            padding: 90px 0;
+            padding: 80px 0 100px;
             background: var(--white);
-            color: var(--black);
-        }
-        
-        .contacts h2 {
-            text-align: center;
-            margin-bottom: 60px;
-            font-size: 2.8em;
-            position: relative;
-        }
-        
-        .contacts h2::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--primary);
-            margin: 15px auto;
-            border-radius: 2px;
         }
         
         .contacts-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 40px;
             align-items: start;
         }
         
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 20px;
         }
         
         .contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 20px;
-            padding: 20px;
+            gap: 15px;
+            padding: 15px;
             background: var(--gray-light);
-            border-radius: 15px;
-            transition: all 0.3s;
-        }
-        
-        .contact-item:hover {
-            background: var(--gray);
-            transform: translateX(10px);
+            border-radius: 10px;
         }
         
         .contact-icon {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
             color: var(--white);
-        }
-        
-        .contact-details h3 {
-            margin-bottom: 8px;
-            color: var(--black);
+            flex-shrink: 0;
         }
         
         .map-container {
-            border-radius: 20px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            height: 450px;
+            height: 400px;
         }
         
         .map-frame {
             width: 100%;
             height: 100%;
             border: none;
-            border-radius: 20px;
         }
         
-        /* Footer */
         footer {
+            text-decoration: none;
             background: var(--black);
             color: var(--white);
             padding: 40px 0 20px;
+            margin-top: 0;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
-            gap: 40px;
+            gap: 30px;
             margin-bottom: 30px;
+        }
+        
+        .footer-links a {
+            text-decoration: none;
+            color: var(--white);
+            margin-bottom: 15px;
+            padding: 0 5px;
         }
         
         .footer-logo {
@@ -619,47 +636,6 @@
             font-weight: 700;
             margin-bottom: 15px;
             color: var(--primary);
-            font-family: 'Tenor Sans', sans-serif;
-        }
-        
-        .footer-about {
-            margin-bottom: 20px;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        .footer-links h3, .footer-contacts h3 {
-            margin-bottom: 20px;
-            color: var(--primary);
-            font-size: 1.2em;
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.3s;
-            opacity: 0.9;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-            opacity: 1;
-        }
-        
-        .footer-contacts p {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            opacity: 0.9;
         }
         
         .social-links {
@@ -683,210 +659,424 @@
         
         .social-links a:hover {
             background: var(--primary);
-            transform: translateY(-3px);
         }
         
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--white) !important;
             opacity: 0.7;
             font-size: 0.9em;
         }
-        
-        /* Mobile Responsive */
 
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .nav-menu {
-                gap: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
-                padding: 5px 0;
+        .footer-bottom p {
+            color: inherit;
+            margin: 0;
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        
+        /* iPad Pro и большие планшеты (1024px и меньше) */
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
             }
             
-            .nav-menu a {
-                padding: 6px 12px;
-                font-size: 14px;
+            .reviews-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about-content {
+                gap: 40px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .hero-title {
+                font-size: 2.2em;
+            }
+            
+            .hero-image {
+                max-width: 85%;
+            }
+            
+            /* Исправление для iPad - мобильное меню уже */
+            .mobile-nav {
+                width: 70%;
+                max-width: 400px;
             }
         }
-
+        
+        /* iPad и планшеты (768px и меньше) */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-                padding: 10px 0;
+            .header-left {
+                justify-content: space-between;
+                width: 100%;
             }
-            
+
+            .burger-menu {
+                display: flex;
+            }
+
             .header-contacts {
-                flex-direction: column;
-                gap: 8px;
-                font-size: 0.9em;
+                display: none;
             }
             
-            nav {
-                height: auto;
-                padding: 2px 0;
+            .main-nav {
+                display: none;
             }
             
-            .nav-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 3px;
+            .burger-menu {
+                display: flex;
             }
             
-            .nav-menu a {
-                padding: 2px 12px;
-                font-size: 14px;
-                white-space: nowrap;
+            .hero {
+                padding: 40px 0 30px;
             }
             
-            .hero h1 {
-                font-size: 1.6rem; 
-                margin-bottom: 15px;
-                line-height: 1.3;
+            .hero-title {
+                font-size: 1.8em;
+                margin-bottom: 30px;
             }
             
-            .hero p {
-                font-size: 1rem;
-                margin-bottom: 20px;
+            .hero-image {
                 max-width: 90%;
+                margin-bottom: 25px;
             }
             
-            .btn {
-                padding: 12px 30px;
-                font-size: 0.9em;
-            }
-            
-            .about-content, .info-grid, .contacts-content, .footer-content {
+            .services-grid,
+            .reviews-grid,
+            .about-content,
+            .contacts-content {
                 grid-template-columns: 1fr;
             }
             
-            .info-sections .container {
-                text-align: center;
+            .services,
+            .carousel,
+            .about,
+            .info-sections,
+            .reviews,
+            .contacts {
+                padding: 60px 0;
+            }
+            
+            .reviews,
+            .contacts {
+                padding-bottom: 90px !important;
+            }
+            
+            .section-title {
+                font-size: 2em;
+                margin-bottom: 40px;
             }
             
             .info-grid {
-                gap: 15px;
-                padding: 0 10px;
-                justify-items: center;
-            }
-            
-            .info-card {
-                padding: 20px 15px !important;
-                margin: 0 5px;
-                max-width: 95%;
-                width: calc(100% - 10px);
-            }
-            
-            .info-card ul {
-                padding-left: 10px !important;
-                margin-left: 0 !important;
-                text-align: left;
-            }
-            
-            .services-grid, .reviews-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carousel-slide img {
+                height: 300px;
             }
             
             .map-container {
                 height: 300px;
             }
             
-            .section-title {
-                font-size: 2em;
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-about {
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            /* Компактное мобильное меню */
+            .mobile-nav {
+                width: 85%;
+                max-width: 320px;
+            }
+            
+            .mobile-nav-menu a {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+            
+            .mobile-nav-menu li {
+                margin: 10px 0;
             }
         }
-        @media (max-width: 768px) {
-    .header-hero {
-        background-size: 95% auto; /* Увеличиваем изображение для мобильных */
-        padding: 250px 0 30px; /* Уменьшаем отступы */
-        min-height: auto; /* Убираем фиксированную высоту */
-    }
-    
-    .hero1 h1 {
-        font-size: 1.3rem; /* Уменьшаем размер заголовка */
-        line-height: 1.4;
-        padding: 20px 10px;
-        margin-top: 0;
-    }
-    
-    .hero {
-        margin: 30px auto 0; /* Убираем огромный отступ */
-        padding: 0 15px;
-    }
-    
-    .main-bottom {
-        margin-top: 20px; /* Регулируем отступ кнопки */
-    }
-    
-    nav {
-        margin-top: 10px; /* Убираем отрицательный отступ */
-        margin-bottom: 20px;
-    }
-}
+        
+        /* Большие смартфоны (600px и меньше) */
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero-title {
+                font-size: 1.6em;
+            }
+            
+            .hero-button {
+                padding: 14px 35px;
+                font-size: 0.9em;
+            }
+            
+            .section-title {
+                font-size: 1.8em;
+            }
+            
+            .services-grid,
+            .reviews-grid {
+                gap: 20px;
+            }
+            
+            .service-img {
+                height: 200px;
+            }
+            
+            .carousel-slide img {
+                height: 250px;
+            }
+            
+            .map-container {
+                height: 250px;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .contact-icon {
+                align-self: center;
+            }
+            
+            /* Еще более компактное меню для смартфонов */
+            .mobile-nav {
+                width: 90%;
+                max-width: 300px;
+            }
+            
+            .mobile-nav-menu a {
+                font-size: 0.95rem;
+                padding: 8px 15px;
+            }
+        }
+        
+        /* Смартфоны (480px и меньше) */
         @media (max-width: 480px) {
-            .header-hero {
-                padding: 20px 0 50px;
+            .hero-title {
+                font-size: 1.5em;
             }
             
-            .hero h1 {
-                font-size: 1.4rem;
-                margin-bottom: 12px;
-                line-height: 1.2;
+            .section-title {
+                font-size: 1.7em;
             }
             
-            .hero p {
+            .service-img {
+                height: 180px;
+            }
+            
+            .carousel-slide img {
+                height: 220px;
+            }
+            
+            .map-container {
+                height: 220px;
+            }
+            
+            .mobile-nav-menu a {
                 font-size: 0.9rem;
-                margin-bottom: 15px;
+            }
+        }
+        
+        /* Для iPhone 14 и подобных устройств */
+        @media only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
+            .container {
+                padding: 0 15px;
             }
             
-            .header-contacts a {
-                font-size: 0.85em;
+            .hero-title {
+                font-size: 1.4em;
+                line-height: 1.3;
             }
             
-            .info-card {
-                padding: 20px 15px;
+            .hero-image {
+                max-width: 95%;
+            }
+            
+            .hero-button {
+                padding: 12px 30px;
+                font-size: 0.9em;
+            }
+            
+            .section-title {
+                font-size: 1.6em;
+            }
+            
+            .service-img {
+                height: 180px;
+            }
+            
+            .carousel-slide img {
+                height: 220px;
+            }
+            
+            .map-container {
+                height: 220px;
+            }
+        }
+        
+        /* iPad в портретной ориентации */
+        @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .reviews-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero-title {
+                font-size: 2.2em;
+            }
+            
+            .hero-image {
+                max-width: 80%;
+            }
+            
+            .service-img {
+                height: 220px;
+            }
+            
+            .carousel-slide img {
+                height: 400px;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        /* iPad в альбомной ориентации */
+        @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .reviews-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .hero-title {
+                font-size: 2.4em;
+            }
+            
+            .hero-image {
+                max-width: 75%;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        /* Маленькие планшеты и большие телефоны */
+        @media (min-width: 481px) and (max-width: 767px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mobile-nav {
+                width: 80%;
+                max-width: 350px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header & Hero Combined -->
-    <section class="header-hero">
+    <!-- Header -->
+    <header class="header">
         <div class="container">
             <div class="header-content">
-                <a href="logo.jpg" class="logo">
-                    <i class="fas fa-crown"></i>
-                    Velure<span>Studio</span>
-                </a>
+                <!-- Левая часть: логотип + бургер (на мобильных) -->
+                <div class="header-left">
+                    <a href="#" class="logo">
+                        <i class="fas fa-crown"></i>
+                        Velure<span>Studio</span>
+                    </a>
+                    
+                    <button class="burger-menu" aria-label="Открыть меню">
+                        <div class="burger-line"></div>
+                        <div class="burger-line"></div>
+                        <div class="burger-line"></div>
+                    </button>
+                </div>
+
+                <!-- Правая часть: контакты (только на десктопе) -->
                 <div class="header-contacts">
                     <a href="tel:+79991234567"><i class="fas fa-phone"></i> +7 (999) 123-45-67</a>
                     <a href="mailto:info@velure.ru"><i class="fas fa-envelope"></i> info@velure.ru</a>
                 </div>
             </div>
-            
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#services">Услуги</a></li>
-                    <li><a href="#about">О нас</a></li>
-                    <li><a href="#carousel">Галерея</a></li>
-                    <li><a href="#contraindications">Противопоказания</a></li>
-                    <li><a href="#aftercare">Уход после процедуры</a></li>
-                    <li><a href="#reviews">Отзывы</a></li>
-                    <li><a href="#contacts">Контакты</a></li>
-                </ul>
-            </nav>
-            <div class="hero1">
-                <h1>Профессиональный подход и индивидуальное решение для каждой клиентки</h1>
-            </div>
-            <div class="hero">
-                                <a href="#contacts" class="main-bottom">Записаться на консультацию</a>
-            </div>
+        </div>
+    </header>
+    <!-- Desktop Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#carousel">Галерея</a></li>
+                <li><a href="#contraindications">Противопоказания</a></li>
+                <li><a href="#aftercare">Уход после процедуры</a></li>
+                <li><a href="#reviews">Отзывы</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <button class="close-menu" aria-label="Закрыть меню">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-nav-menu">
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#carousel">Галерея</a></li>
+            <li><a href="#contraindications">Противопоказания</a></li>
+            <li><a href="#aftercare">Уход после процедуры</a></li>
+            <li><a href="#reviews">Отзывы</a></li>
+            <li><a href="#contacts">Контакты</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Профессиональный подход и индивидуальное решение для каждой клиентки</h1>
+            <img src="main.png" alt="Студия перманентного макияжа Velure" class="hero-image">
+            <a href="#contacts" class="hero-button">Забронировать консультацию</a>
         </div>
     </section>
-    
-    <!-- Services -->
+
+    <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
             <h2 class="section-title">Наши услуги</h2>
@@ -897,8 +1087,8 @@
                     </div>
                     <div class="service-content">
                         <h3>Перманент бровей</h3>
-                        <p>Создаем идеальную форму бровей, подчеркивая вашу природную красоту. Используем только качественные пигменты и современные техники.</p>
-                        <a href="#contacts" class="btn" style="margin-top: 15px;">Записаться</a>
+                        <p>Создаем идеальную форму бровей, подчеркивая вашу природную красоту.</p>
+                        <a href="#contacts" class="btn">Записаться</a>
                     </div>
                 </div>
                 
@@ -908,8 +1098,8 @@
                     </div>
                     <div class="service-content">
                         <h3>Перманент глаз</h3>
-                        <p>Подчеркните выразительность вашего взгляда с помощью перманентной подводки или межресничного пространства.</p>
-                        <a href="#contacts" class="btn" style="margin-top: 15px;">Записаться</a>
+                        <p>Подчеркните выразительность вашего взгляда с помощью перманентной подводки.</p>
+                        <a href="#contacts" class="btn">Записаться</a>
                     </div>
                 </div>
                 
@@ -919,8 +1109,8 @@
                     </div>
                     <div class="service-content">
                         <h3>Перманент губ</h3>
-                        <p>Коррекция контура и цвета губ для создания идеальной улыбки.  Эффект сохраняется до 5 лет. Остались вопросы? Просто позвоните и мы подробно все обсудим.</p>
-                        <a href="#contacts" class="btn" style="margin-top: 15px;">Связаться с нами</a>
+                        <p>Коррекция контура и цвета губ для создания идеальной улыбки.</p>
+                        <a href="#contacts" class="btn">Связаться с нами</a>
                     </div>
                 </div>
             </div>
@@ -949,8 +1139,8 @@
                         <img src="lips2.jpg" alt="Перманент губ">
                     </div>
                 </div>
-                <button class="carousel-btn prev">&#10094;</button>
-                <button class="carousel-btn next">&#10095;</button>
+                <button class="carousel-btn prev">Previous</button>
+                <button class="carousel-btn next">Next</button>
             </div>
         </div>
     </section>
@@ -979,7 +1169,7 @@
         <div class="container">
             <div class="info-grid">
                 <div class="info-card" id="contraindications">
-                    <h3><i class="fas fa-exclamation-triangle"></i> Противопоказания</h3>
+                    <h3>Противопоказания</h3>
                     <ul>
                         <li>Беременность и период лактации</li>
                         <li>Сахарный диабет в стадии декомпенсации</li>
@@ -994,7 +1184,7 @@
                 </div>
                 
                 <div class="info-card" id="aftercare">
-                    <h3><i class="fas fa-heart"></i> Уход после процедуры</h3>
+                    <h3>Уход после процедуры</h3>
                     <ul>
                         <li>В течение 7-10 дней избегать попадания воды на обработанную зону</li>
                         <li>Не использовать декоративную косметику в течение 5-7 дней</li>
@@ -1126,19 +1316,17 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-             <div class="footer-content">
+            <div class="footer-content">
                 <div class="footer-about">
                     <div class="footer-logo">Velure<span>Studio</span></div>
-                    <p class="footer-about">Студия перманентного макияжа Velure — это команда профессионалов, создающих красоту и уверенность в себе для каждой женщины.</p>
+                    <p>Студия перманентного макияжа Velure — это команда профессионалов, создающих красоту и уверенность в себе для каждой женщины.</p>
                     <div class="social-links">
                         <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="#" title="VK"><i class="fab fa-vk"></i></a>
                         <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                         <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
-                    
                     </div>
                 </div>
-            </div>
                 
                 <div class="footer-links">
                     <h3>Услуги</h3>
@@ -1166,8 +1354,40 @@
     </footer>
     
     <script>
-        // Карусель
+        // Burger Menu Functionality
         document.addEventListener('DOMContentLoaded', function() {
+            const burgerMenu = document.querySelector('.burger-menu');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const closeMenu = document.querySelector('.close-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-menu a');
+            const body = document.body;
+            
+            function openMenu() {
+                mobileNav.classList.add('active');
+                burgerMenu.classList.add('active');
+                body.classList.add('menu-open');
+            }
+            
+            function closeMenuHandler() {
+                mobileNav.classList.remove('active');
+                burgerMenu.classList.remove('active');
+                body.classList.remove('menu-open');
+            }
+            
+            // Исправленный обработчик для бургер-меню
+            if (burgerMenu) {
+                burgerMenu.addEventListener('click', openMenu);
+            }
+            
+            if (closeMenu) {
+                closeMenu.addEventListener('click', closeMenuHandler);
+            }
+            
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', closeMenuHandler);
+            });
+
+            // Carousel Functionality
             const slides = document.querySelector('.carousel-slides');
             const slideCount = document.querySelectorAll('.carousel-slide').length;
             const prevBtn = document.querySelector('.carousel-btn.prev');
@@ -1175,24 +1395,47 @@
             let currentIndex = 0;
             
             function updateCarousel() {
-                slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+                if (slides) {
+                    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+                }
             }
             
-            prevBtn.addEventListener('click', function() {
-                currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideCount - 1;
-                updateCarousel();
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', function() {
+                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slideCount - 1;
+                    updateCarousel();
+                });
+                
+                nextBtn.addEventListener('click', function() {
+                    currentIndex = (currentIndex < slideCount - 1) ? currentIndex + 1 : 0;
+                    updateCarousel();
+                });
+                
+                setInterval(function() {
+                    currentIndex = (currentIndex < slideCount - 1) ? currentIndex + 1 : 0;
+                    updateCarousel();
+                }, 5000);
+            }
+
+            // Smooth Scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        // Закрываем мобильное меню при клике
+                        if (mobileNav.classList.contains('active')) {
+                            closeMenuHandler();
+                        }
+                    }
+                });
             });
-            
-            nextBtn.addEventListener('click', function() {
-                currentIndex = (currentIndex < slideCount - 1) ? currentIndex + 1 : 0;
-                updateCarousel();
-            });
-            
-            // Автопереключение карусели каждые 5 секунд
-            setInterval(function() {
-                currentIndex = (currentIndex < slideCount - 1) ? currentIndex + 1 : 0;
-                updateCarousel();
-            }, 5000);
         });
     </script>
 </body>
