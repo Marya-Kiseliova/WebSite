@@ -237,7 +237,7 @@
     .project-gallery {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
+        gap: 0.5rem;
         margin: 1.5rem 0;
         width: 100%;
     }
@@ -878,8 +878,8 @@
                 <div class="gallery-item" onclick="openModal('project4/figma3.png')">
                     <img src="project4/figma3.png" alt="Пост в инстаграмм">
                 </div>
-                <div class="gallery-item" onclick="openModal('project4')">
-                    <img src="project4" alt="Настройки">
+                <div class="gallery-item" onclick="openModal('project4/figma4.png')">
+                    <img src="project4/figma4.png" alt="Настройки">
                 </div>
             </div>
 
@@ -919,7 +919,56 @@
                 <strong>Технологии:</strong> Python, Tkinter, Pandas, SQLite.
             </div>
         </div>
+        <!-- HTML5 Шпаргалка -->
+<div class="project-row">
+    <div class="project-header">
+        <div>
+            <h3 class="project-title">HTML5 & CSS Шпаргалка для разработчиков</h3>
+            <div class="project-category">Educational Resource • Frontend Documentation</div>
+        </div>
+        <div class="project-year">2024</div>
+    </div>
+    
+    <div class="project-gallery">
+        <div class="gallery-item" onclick="openModal('cheatsheet/main.jpg')">
+            <img src="cheatsheet/main.jpg" alt="Главная страница шпаргалки">
+        </div>
+        <div class="gallery-item" onclick="openModal('cheatsheet/semantic.jpg')">
+            <img src="cheatsheet/semantic.jpg" alt="Семантические теги">
+        </div>
+        <div class="gallery-item" onclick="openModal('cheatsheet/mobile.jpg')">
+            <img src="cheatsheet/mobile.jpg" alt="Мобильная версия">
+        </div>
+        <div class="gallery-item" onclick="openModal('cheatsheet/interactive.jpg')">
+            <img src="cheatsheet/interactive.jpg" alt="Интерактивные примеры">
+        </div>
+    </div>
 
+    <div class="book-info">
+        <h4>О проекте</h4>
+        <p>В процессе глубокого изучения веб-разработки я столкнулась с необходимостью систематизировать знания HTML5 и CSS. Вместо того чтобы использовать готовые материалы, я создала собственную интерактивную шпаргалку, которая объединяет теорию с практическими примерами.</p>
+        
+        <p><strong>Ключевые особенности:</strong></p>
+        <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+            <li>Полное покрытие семантических тегов HTML5 с реальными use-cases</li>
+            <li>Интерактивные демонстрации CSS свойств и анимаций</li>
+            <li>Адаптивный дизайн с мобильным бургер-меню</li>
+            <li>Практические примеры верстки с пояснениями</li>
+            <li>Готовые сниппеты для быстрого использования</li>
+        </ul>
+        
+        <p>Этот проект стал не просто сборником информации, а живым документом, который продолжает развиваться вместе с моими знаниями. Я верю, что такой подход к обучению через создание полезных ресурсов может помочь и другим разработчикам.</p>
+    </div>
+    
+    <div class="project-tech">
+        <strong>Технологии:</strong> HTML5, CSS3, JavaScript, Mobile-First Design, Semantic Markup, CSS Grid & Flexbox.
+    </div>
+    
+    <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="Conspect.html" class="btn">Смотреть шпору</a>
+        <a href="https://github.com/Marya-Kiseliova/HTML5-conspect/blob/main/Conspect.html" class="btn btn-outline">Исходный код</a>
+    </div>
+</div>
         <!-- Video Project 2 -->
         <div class="project-row">
             <div class="project-header">

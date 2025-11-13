@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>🎯 Шпаргалка верстальщика - HTML & CSS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -38,6 +38,8 @@
             color: var(--text);
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         .container {
@@ -773,6 +775,170 @@
         a:hover {
             color: var(--secondary);
         }
+          
+        
+        /* ===== BURGER MENU STYLES ===== */
+        header {
+            position: relative;
+            z-index: 100;
+        }
+
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 5px;
+            z-index: 1001;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+
+        .burger-line {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 999;
+            transition: right 0.4s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            padding: 60px 20px 20px;
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav-menu li {
+            margin: 10px 0;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.4s ease;
+        }
+
+        .mobile-nav.active .mobile-nav-menu li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .mobile-nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: block;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .mobile-nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--primary);
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .burger-menu.active .burger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .burger-menu.active .burger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-menu.active .burger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        /* ===== MOBILE STYLES ===== */
+        @media (max-width: 767px) {
+            .container {
+                width: 100%;
+                padding: 0 10px;
+                overflow-x: hidden;
+            }
+            
+            section {
+                padding: 20px 15px;
+                margin: 20px 0;
+            }
+            
+            .code-block {
+                font-size: 0.8rem;
+                padding: 15px;
+                overflow-x: auto;
+            }
+            
+            .info-table {
+                font-size: 0.85rem;
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            .info-table th,
+            .info-table td {
+                min-width: 120px;
+                padding: 10px 8px;
+            }
+            
+            .burger-menu {
+                display: flex;
+            }
+            
+            nav.toc {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
 
         /* ===== TABLET STYLES ===== */
         @media (min-width: 768px) {
@@ -847,6 +1013,7 @@
     </style>
 </head>
 <body>
+    <!-- Остальной HTML код остается без изменений -->
     <!-- Feedback Button -->
     <button class="feedback-btn" onclick="openModal()">
         <i class="fas fa-comment-dots"></i>
@@ -878,6 +1045,12 @@
     <header>
         <div class="container">
             <div class="header-content">
+                    <!-- Бургер кнопка> -->
+    <button class="burger-menu" aria-label="Открыть меню">
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+    </button>
                 <h1>Шпаргалка верстальщика</h1>
                 <p class="subtitle">HTML, CSS и всё, что нужно знать для создания современных сайтов</p>
             </div>
@@ -927,6 +1100,10 @@
                 <div class="toc-item" onclick="scrollToSection('inline-elements')">
                     <i class="fas fa-text-width"></i>
                     <span>Строчные элементы</span>
+                </div>
+                <div class="toc-item" onclick="scrollToSection('burger-menu')">
+                    <i class="fas fa-bars"></i>
+                    <span>Бургер-меню</span>
                 </div>
                 <div class="toc-item" onclick="scrollToSection('semantic-tags')">
                     <i class="fas fa-sitemap"></i>
@@ -999,69 +1176,147 @@
         </section>
 
         <!-- Семантические теги -->
-        <section id="semantic-tags">
-            <h2><i class="fas fa-sitemap"></i> СЕМАНТИЧЕСКИЕ ТЕГИ</h2>
-            
-            <div class="comparison-table">
-                <div class="comparison-card">
-                    <h4><i class="fas fa-cubes"></i> Структурные теги</h4>
-                    <table class="info-table">
-                        <tr><td><code>&lt;header&gt;</code></td><td>Шапка сайта или раздела</td></tr>
-                        <tr><td><code>&lt;nav&gt;</code></td><td>Навигационное меню</td></tr>
-                        <tr><td><code>&lt;main&gt;</code></td><td>Основное содержимое страницы</td></tr>
-                        <tr><td><code>&lt;section&gt;</code></td><td>Тематический раздел</td></tr>
-                        <tr><td><code>&lt;footer&gt;</code></td><td>Подвал сайта или раздела</td></tr>
-                    </table>
-                </div>
-                <div class="comparison-card">
-                    <h4><i class="fas fa-file-alt"></i> Контентные теги</h4>
-                    <table class="info-table">
-                        <tr><td><code>&lt;article&gt;</code></td><td>Самостоятельный контент (статья)</td></tr>
-                        <tr><td><code>&lt;aside&gt;</code></td><td>Боковая панель, дополнительный контент</td></tr>
-                        <tr><td><code>&lt;figure&gt;</code></td><td>Иллюстрации с подписью</td></tr>
-                        <tr><td><code>&lt;time&gt;</code></td><td>Дата и время</td></tr>
-                        <tr><td><code>&lt;mark&gt;</code></td><td>Выделенный текст</td></tr>
-                    </table>
-                </div>
-            </div>
+<!-- Семантические теги -->
+<section id="semantic-tags">
+    <h2><i class="fas fa-sitemap"></i> СЕМАНТИЧЕСКИЕ ТЕГИ</h2>
+    
+    <h3><i class="fas fa-cubes"></i> Структурные семантические теги</h3>
+    <table class="info-table">
+        <thead>
+            <tr>
+                <th>Тег</th>
+                <th>Назначение</th>
+                <th>Пример использования</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>&lt;header&gt;</code></td>
+                <td>Шапка сайта или раздела</td>
+                <td><code>&lt;header&gt;Логотип и навигация&lt;/header&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;nav&gt;</code></td>
+                <td>Навигационное меню</td>
+                <td><code>&lt;nav&gt;&lt;a href="#"&gt;Главная&lt;/a&gt;&lt;/nav&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;main&gt;</code></td>
+                <td>Основное содержимое страницы</td>
+                <td><code>&lt;main&gt;Основной контент...&lt;/main&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;section&gt;</code></td>
+                <td>Тематический раздел</td>
+                <td><code>&lt;section&gt;&lt;h2&gt;О нас&lt;/h2&gt;...&lt;/section&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;article&gt;</code></td>
+                <td>Самостоятельный контент (статья)</td>
+                <td><code>&lt;article&gt;&lt;h2&gt;Заголовок статьи&lt;/h2&gt;...&lt;/article&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;aside&gt;</code></td>
+                <td>Боковая панель, дополнительный контент</td>
+                <td><code>&lt;aside&gt;Рекомендации...&lt;/aside&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;footer&gt;</code></td>
+                <td>Подвал сайта или раздела</td>
+                <td><code>&lt;footer&gt;Контакты и ссылки&lt;/footer&gt;</code></td>
+            </tr>
+        </tbody>
+    </table>
 
-            <h3><i class="fas fa-code-branch"></i> DIV vs SECTION vs CONTAINER</h3>
-            <div class="property-details">
-                <div class="property-group">
-                    <span class="property-name">&lt;div&gt; - Универсальный контейнер</span>
-                    <span>Используется для группировки элементов без семантического значения. Идеален для стилизации и расположения элементов.</span>
-                    <div class="code-block">
+    <h3><i class="fas fa-file-alt"></i> Контентные семантические теги</h3>
+    <table class="info-table">
+        <thead>
+            <tr>
+                <th>Тег</th>
+                <th>Назначение</th>
+                <th>Пример использования</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>&lt;figure&gt;</code></td>
+                <td>Иллюстрации с подписью</td>
+                <td><code>&lt;figure&gt;&lt;img src="..."&gt;&lt;figcaption&gt;Описание&lt;/figcaption&gt;&lt;/figure&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;figcaption&gt;</code></td>
+                <td>Подпись для figure</td>
+                <td><code>&lt;figcaption&gt;Мое фото&lt;/figcaption&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;time&gt;</code></td>
+                <td>Дата и время</td>
+                <td><code>&lt;time datetime="2024-01-15"&gt;15 января&lt;/time&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;mark&gt;</code></td>
+                <td>Выделенный текст</td>
+                <td><code>Это &lt;mark&gt;важный&lt;/mark&gt; текст</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;strong&gt;</code></td>
+                <td>Важный текст (семантическое)</td>
+                <td><code>&lt;strong&gt;Внимание!&lt;/strong&gt; Это важно</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;em&gt;</code></td>
+                <td>Акцентированный текст (семантическое)</td>
+                <td><code>Это &lt;em&gt;очень&lt;/em&gt; интересно</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;blockquote&gt;</code></td>
+                <td>Блочная цитата</td>
+                <td><code>&lt;blockquote&gt;Цитата...&lt;/blockquote&gt;</code></td>
+            </tr>
+            <tr>
+                <td><code>&lt;cite&gt;</code></td>
+                <td>Цитирование источника</td>
+                <td><code>&lt;cite&gt;Название книги&lt;/cite&gt;</code></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3><i class="fas fa-code-branch"></i> DIV vs SECTION vs ARTICLE</h3>
+    <div class="property-details">
+        <div class="property-group">
+            <span class="property-name">&lt;div&gt; - Универсальный контейнер</span>
+            <span>Используется для группировки элементов без семантического значения. Идеален для стилизации и расположения элементов.</span>
+            <div class="code-block">
 <span class="tag">&lt;div class="user-card"&gt;</span><br>
 &nbsp;&nbsp;<span class="tag">&lt;img src="avatar.jpg" alt="Аватар"&gt;</span><br>
 &nbsp;&nbsp;<span class="tag">&lt;h3&gt;</span>Имя пользователя<span class="tag">&lt;/h3&gt;</span><br>
 <span class="tag">&lt;/div&gt;</span>
-                    </div>
-                </div>
-                
-                <div class="property-group">
-                    <span class="property-name">&lt;section&gt; - Тематический раздел</span>
-                    <span>Используется для логического разделения контента. Должен иметь заголовок. Улучшает SEO и доступность.</span>
-                    <div class="code-block">
+            </div>
+        </div>
+        
+        <div class="property-group">
+            <span class="property-name">&lt;section&gt; - Тематический раздел</span>
+            <span>Используется для логического разделения контента. Должен иметь заголовок. Улучшает SEO и доступность.</span>
+            <div class="code-block">
 <span class="tag">&lt;section class="services"&gt;</span><br>
 &nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span>Наши услуги<span class="tag">&lt;/h2&gt;</span><br>
 &nbsp;&nbsp;<span class="tag">&lt;div class="service-card"&gt;</span>...<span class="tag">&lt;/div&gt;</span><br>
 <span class="tag">&lt;/section&gt;</span>
-                    </div>
-                </div>
-                
-                <div class="property-group">
-                    <span class="property-name">.container - CSS класс</span>
-                    <span>Не HTML-тег, а класс для центрирования контента и ограничения максимальной ширины.</span>
-                    <div class="code-block">
-<span class="tag">.container</span> {<br>
-&nbsp;&nbsp;<span class="attribute">max-width</span>: <span class="value">1200px</span>;<br>
-&nbsp;&nbsp;<span class="attribute">margin</span>: <span class="value">0 auto</span>;<br>
-&nbsp;&nbsp;<span class="attribute">padding</span>: <span class="value">0 20px</span>;<br>
-}
-                    </div>
-                </div>
             </div>
-        </section>
+        </div>
+        
+        <div class="property-group">
+            <span class="property-name">&lt;article&gt; - Независимый контент</span>
+            <span>Для самостоятельного контента, который может быть использован отдельно (статьи, посты, карточки товаров).</span>
+            <div class="code-block">
+<span class="tag">&lt;article class="blog-post"&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span>Заголовок поста<span class="tag">&lt;/h2&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>Содержание...<span class="tag">&lt;/p&gt;</span><br>
+<span class="tag">&lt;/article&gt;</span>
+            </div>
+        </div>
+    </div>
+</section>
 
         <!-- Структура и иерархия -->
         <section id="structure">
@@ -1739,6 +1994,107 @@
             </div>
         </section>
 
+        <!-- Бургер-меню -->
+<section id="burger-menu">
+    <h2><i class="fas fa-bars"></i> БУРГЕР-МЕНЮ</h2>
+    
+    <h3><i class="fas fa-mobile-alt"></i> Что такое бургер-меню?</h3>
+    <p>Бургер-меню — это иконка из трёх горизонтальных линий, которая открывает навигационное меню на мобильных устройствах. Название происходит от сходства с булочками гамбургера.</p>
+    
+    <h3><i class="fas fa-code"></i> HTML структура</h3>
+    <div class="code-block">
+<span class="comment">&lt;!-- Кнопка бургер-меню --&gt;</span><br>
+<span class="tag">&lt;button class="burger-menu" aria-label="Открыть меню"&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;div class="burger-line"&gt;&lt;/div&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;div class="burger-line"&gt;&lt;/div&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;div class="burger-line"&gt;&lt;/div&gt;</span><br>
+<span class="tag">&lt;/button&gt;</span><br><br>
+<span class="comment">&lt;!-- Мобильное меню --&gt;</span><br>
+<span class="tag">&lt;div class="mobile-nav"&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;button class="close-menu" aria-label="Закрыть меню"&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;i class="fas fa-times"&gt;&lt;/i&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/button&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;ul class="mobile-nav-menu"&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;li&gt;&lt;a href="#section"&gt;Пункт меню&lt;/a&gt;&lt;/li&gt;</span><br>
+&nbsp;&nbsp;<span class="tag">&lt;/ul&gt;</span><br>
+<span class="tag">&lt;/div&gt;</span>
+    </div>
+
+    <h3><i class="fas fa-paint-brush"></i> Основные CSS свойства</h3>
+    <table class="info-table">
+        <thead>
+            <tr>
+                <th>Свойство</th>
+                <th>Значение</th>
+                <th>Назначение</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>position: fixed</code></td>
+                <td>-</td>
+                <td>Фиксирует меню относительно окна браузера</td>
+            </tr>
+            <tr>
+                <td><code>right: -100%</code></td>
+                <td>-</td>
+                <td>Скрывает меню за правым краем экрана</td>
+            </tr>
+            <tr>
+                <td><code>transition</code></td>
+                <td><code>right 0.4s ease-in-out</code></td>
+                <td>Плавная анимация появления</td>
+            </tr>
+            <tr>
+                <td><code>z-index</code></td>
+                <td><code>999</code></td>
+                <td>Размещает меню поверх других элементов</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3><i class="fas fa-cogs"></i> JavaScript логика</h3>
+    <div class="code-block">
+<span class="comment">// Открытие меню</span><br>
+<span class="tag">function openMenu()</span> {<br>
+&nbsp;&nbsp;mobileNav.classList.add('active');<br>
+&nbsp;&nbsp;burgerMenu.classList.add('active');<br>
+&nbsp;&nbsp;body.classList.add('menu-open');<br>
+}<br><br>
+<span class="comment">// Закрытие меню</span><br>
+<span class="tag">function closeMenuHandler()</span> {<br>
+&nbsp;&nbsp;mobileNav.classList.remove('active');<br>
+&nbsp;&nbsp;burgerMenu.classList.remove('active');<br>
+&nbsp;&nbsp;body.classList.remove('menu-open');<br>
+}
+    </div>
+
+    <h3><i class="fas fa-lightbulb"></i> Лучшие практики</h3>
+    <div class="do-dont-grid">
+        <div class="do-card">
+            <h4><i class="fas fa-check"></i> Правильно</h4>
+            <ul>
+                <li>Используйте семантические теги button</li>
+                <li>Добавляйте aria-label для доступности</li>
+                <li>Создавайте плавные анимации</li>
+                <li>Закрывайте меню при клике на пункт</li>
+                <li>Блокируйте прокрутку страницы при открытом меню</li>
+            </ul>
+        </div>
+        
+        <div class="dont-card">
+            <h4><i class="fas fa-times"></i> Неправильно</h4>
+            <ul>
+                <li>Использовать div вместо button</li>
+                <li>Забывать про закрывающую кнопку</li>
+                <li>Создавать резкие анимации</li>
+                <li>Игнорировать мобильную оптимизацию</li>
+                <li>Не блокировать прокрутку body</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
         <!-- Layouts и макеты -->
         <section id="layouts">
             <h2><i class="fas fa-th-large"></i> LAYOUTS И МАКЕТЫ</h2>
@@ -1901,13 +2257,66 @@
             </div>
         </section>
 
+        <!-- Mobile Navigation -->
+<div class="mobile-nav">
+    <button class="close-menu" aria-label="Закрыть меню">
+        <i class="fas fa-times"></i>
+    </button>
+    <ul class="mobile-nav-menu">
+        <li><a href="#html-basics">Основы HTML</a></li>
+        <li><a href="#semantic-tags">Семантика</a></li>
+        <li><a href="#structure">Структура</a></li>
+        <li><a href="#spacing">Отступы</a></li>
+        <li><a href="#css-basics">Основы CSS</a></li>
+        <li><a href="#buttons">Кнопки</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+        <li><a href="#animations">Анимации</a></li>
+        <li><a href="#inline-elements">Строчные элементы</a></li>
+        <li><a href="#layouts">Layouts</a></li>
+        <li><a href="#modern-css">Modern CSS</a></li>
+        <li><a href="#accessibility">Доступность</a></li>
+        <li><a href="#performance">Производительность</a></li>
+        <li><a href="#workflow">Рабочий процесс</a></li>
+        <li><a href="#best-practices">Лучшие практики</a></li>
+        <li><a href="#advanced-techniques">Продвинутые техники</a></li>
+    </ul>
+</div>
+
         <footer>
-            <p><i class="fas fa-graduation-cap"></i> Поздравляю! Теперь у вас есть полная шпаргалка верстальщика</p>
-            <p>Сохраните эту страницу и используйте как справочник!</p>
+            <p><i class="fas fa-graduation-cap"></i> Надеюь, этот конспект поможет тебе перейти "на ты" с HTML и воплащать творческие мечты.</p>
+            <p>Сохрани эту страницу и используйте как справочник!</p>
         </footer>
     </div>
 
-    <script>
+
+        <script>
+                // Burger Menu Functionality
+        const burgerMenu = document.querySelector('.burger-menu');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const closeMenu = document.querySelector('.close-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-menu a');
+        const body = document.body;
+
+        function openMenu() {
+            mobileNav.classList.add('active');
+            burgerMenu.classList.add('active');
+            body.classList.add('menu-open');
+        }
+
+        function closeMenuHandler() {
+            mobileNav.classList.remove('active');
+            burgerMenu.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+
+        // Вешаем обработчики событий
+        burgerMenu.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeMenuHandler);
+
+        // Закрываем меню при клике на любой пункт
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMenuHandler);
+        });
         // Функции для модального окна
         function openModal() {
             document.getElementById('feedbackModal').style.display = 'block';
@@ -1985,5 +2394,6 @@
             }, 1000);
         });
     </script>
+    
 </body>
 </html>
