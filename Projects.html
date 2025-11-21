@@ -195,6 +195,9 @@
         transform: translateY(50px);
         width: 100%;
     }
+    .project-row {
+    will-change: transform, opacity; /* Подсказка браузеру */
+    }
 
     .project-row.visible {
         opacity: 1;
@@ -244,7 +247,7 @@
 
     .gallery-item {
         position: relative;
-        border-radius: 12px;
+        border-radius: 20px;
         overflow: hidden;
         aspect-ratio: 4/3;
         cursor: pointer;
@@ -263,37 +266,67 @@
     }
 
     /* Book Project */
-    .book-images {
-        display: grid;
-        gap: 2rem;
-        grid-template-columns: repeat(3, 1fr);
-        margin: 1.5rem 0;
-        width: 100%;
+   .book-images {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 1.5rem 0;
+    width: 100%;
+    align-items: start; /* Выравнивание по верху */
+}
+
+.book-image {
+    overflow: hidden;
+    width: 100%; 
+    height: 400px; /* Фиксированная высота */
+    border-radius: 20px;
+    background: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; /* Отступы внутри */
+    box-sizing: border-box;
+}
+
+.book-image img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 20px;
+    object-fit: contain;
+}
+
+    /* HTML Projects Gallery */
+    .html-gallery {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(1, 1fr);
+    margin: 1.5rem 0;
+    width: 100%;
     }
-    .book-image {
+
+    .html-item {
         overflow: hidden;
-        width: 100%; 
-        border-radius: 40px;
+        width: 100%;
+        border-radius: 20px;
         background: #ffffff;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .book-image img {
+    .html-item img {
         width: 100%;
-        height: 100%;
+        height: auto;
+        max-width: 800px;
         object-fit: contain;
-    }
-
-    .book-info {
-        padding: 1.5rem;
-        text-align: left;
-        background: linear-gradient(135deg, #f8f9ff, #f0f2ff);
         border-radius: 15px;
-        margin: 1.5rem 0;
-        width: 100%;
+        loading: lazy; /* Современный lazy loading */
     }
-
-    /* Bar Image Fix */
+        /* Bar Image Fix */
     .bar-img {
         max-width: 200px;
         height: auto;
@@ -596,6 +629,21 @@
         .book-images {
             grid-template-columns: repeat(2, 1fr);
         }
+        .html-gallery {
+        grid-template-columns: 1fr;
+        gap: clamp(0.8rem, 3vw, 1rem);
+        }
+        
+        .html-item {
+            margin: 0 auto;
+            max-width: 100%;
+        }
+        
+        .html-item img {
+            max-width: 100%;
+            height: auto;
+        }
+    
 
         .video-previews {
             grid-template-columns: 1fr;
@@ -671,6 +719,17 @@
         .project-row {
             padding: 1.2rem;
             margin: 1.2rem 0;
+        }
+        .html-gallery {
+            gap: 0.8rem;
+        }
+        
+        .html-item {
+            border-radius: 15px;
+        }
+        
+        .html-item img {
+            border-radius: 10px;
         }
 
         .hero-content h1 {
@@ -766,16 +825,19 @@
                 <div class="project-year">2024</div>
             </div>
             
-            <div class="book-images">
-                <div class="book-image" onclick="openModal('project1/main.png')">
+            <div class="project-gallery">
+                <div class="gallery-item" onclick="openModal('project1/main.png')">
                     <img src="project1/main.png" alt="Главная страница">
                 </div>
-                <div class="book-image" onclick="openModal('project1/mobile.png')">
+                                <div class="gallery-item" onclick="openModal('project1/studio1.webp')">
+                    <img src="project1/studio1.webp" alt="студия">
+                </div>
+
+                <div class="gallery-item" onclick="openModal('project1/mobile.png')">
                     <img src="project1/mobile.png" alt="Следующая страница-продолжение, мобильная адаптация">
                 </div>
-                <div class="book-image" onclick="openModal('project1/studio.jpg')">
-                    <img src="project1/studio1.png" alt="студия">
-                </div>
+
+                
             </div>
 
             <p>Пример landing-странички полностью готовой к работе в HTML с  применением CSS. В процессе возникали конфликты текста с изображением в "шапке", но поработав с масштабированием и позициями навигации, получился визуально привлекательный современный лендинг с адаптивной навигацией в бургер-меню, что делает Сайт максимально удобным для пользователя не только на декстопах, но также на планшетах и мобильных устройствах. Основная  работа заняла около 3 часов, включая генерацию контента. Исправление ошибок и отладка бургера дорабатывалась позже.</p>
@@ -839,20 +901,20 @@
                 <div class="book-image" onclick="openModal('project3/book_cover.png')">
                     <img src="project3/book_cover.png" alt="Обложка книги">
                 </div>
-                <div class="book-image" onclick="openModal('project3/book1.png')">
-                    <img src="project3/book1.png" alt="Мобильная версия">
+                <div class="book-image" onclick="openModal('project3/book1.webp')">
+                    <img src="project3/book1.webp" alt="Мобильная версия">
                 </div>
-                <div class="book-image" onclick="openModal('project3/book2.png')">
-                    <img src="project3/book2.png" alt="Продолжение книги">
+                <div class="book-image" onclick="openModal('project3/book2.webp')">
+                    <img src="project3/book2.webp" alt="Продолжение книги">
                 </div>
             </div>
             
-            <div class="book-info">
+            
                 <h4>О проекте</h4>
                 <p>Устали заставлять ребенка учиться читать? Современная адаптация детской книги в интерактивную  версию для планшета, компьютера и мобильного. Красивые картинки привлекают внимание, активные кнопки с диалогами рыбок вовлекают ребёнка в сюжет, а правдивые факты об океане и его жителях развивают кругозор.</p>
                 <div class="project-tech" style="margin: 0.8rem 0;">
                     <strong>Стек:</strong> Структура: HTML5, CSS, JavaScript; Дизайн обложки: Adobe Photoshop; Картинки: Generative AI.
-                </div>
+   
                 <a href="project3/mermaid/mermaid1.html" class="btn">Читать книгу</a>
             </div>
         </div>
@@ -863,7 +925,7 @@
             <div class="project-header">
                 <div>
                     <h3 class="project-title">Примеры моих работ в Figma</h3>
-                    <div class="project-category"> Frontend</div>
+                    <div class="project-category"> Design</div>
                 </div>
                 <div class="project-year">2025</div>
             </div>
@@ -883,10 +945,9 @@
                 </div>
             </div>
 
-            <p>Создание сайта для актуального агроусадебного бизнеса. С удовольствием создавала сайт с нуля от "скелета", логотипа и обработки фото до размещения на хостинге и регистрации в БелГИЭ. В перспективе подключение PayPal. Имела место идея о подключении онлайн-бронирования через CRM, но сошлись во мнении, что для малого бизнеса она нерентабельна.</p>
-            
+            <p>Приветствую в моем мире дизайна! Здесь вы найдете не просто пиксели, а воплощение идей в самых разных форматах. От постов для соцсетей до дизайна сайтов. Мои работы — это погружение в продуманные детали, где каждый элемент служит своей цели, будь то веб-проект, мобильное приложение или совершенно новый взгляд на предметный дизайн.</p>
             <div class="project-tech">
-                <strong>Технологии:</strong> HTML5, CSS, JavaScript, Generative AI, Adobe Photoshop.
+                <strong>Технологии:</strong> Figma, Photoshop.
             </div>
             
         <!-- Video Project 1 - Store App -->
@@ -907,7 +968,7 @@
                     <div class="store-app-block">
                         <a href="https://youtu.be/V9gFIPHuxeg?si=cKo7cnHEGqs-mvQw" class="store-app-btn">
                             Смотреть видео 
-                            <img src="bar.png" alt="Магазин разливных напитков" class="bar-img">
+                            <img src="bar.webp" alt="Магазин разливных напитков" class="bar-img">
                         </a>
                     </div>
                 </div>
@@ -923,28 +984,20 @@
 <div class="project-row">
     <div class="project-header">
         <div>
-            <h3 class="project-title">HTML5 & CSS Шпаргалка для разработчиков</h3>
+            <h3 class="project-title">HTML5 & CSS Конспект-шпаргалка для разработчиков</h3>
             <div class="project-category">Educational Resource • Frontend Documentation</div>
         </div>
         <div class="project-year">2024</div>
     </div>
     
-    <div class="project-gallery">
-        <div class="gallery-item" onclick="openModal('cheatsheet/main.jpg')">
-            <img src="cheatsheet/main.jpg" alt="Главная страница шпаргалки">
+    <div class="html-gallery">
+        <div class="html-item" onclick="openModal('conspect.webp')">
+            <img src="conspect.webp" alt="Шпоргалка по информатике">
         </div>
-        <div class="gallery-item" onclick="openModal('cheatsheet/semantic.jpg')">
-            <img src="cheatsheet/semantic.jpg" alt="Семантические теги">
-        </div>
-        <div class="gallery-item" onclick="openModal('cheatsheet/mobile.jpg')">
-            <img src="cheatsheet/mobile.jpg" alt="Мобильная версия">
-        </div>
-        <div class="gallery-item" onclick="openModal('cheatsheet/interactive.jpg')">
-            <img src="cheatsheet/interactive.jpg" alt="Интерактивные примеры">
-        </div>
+        
     </div>
 
-    <div class="book-info">
+    
         <h4>О проекте</h4>
         <p>В процессе глубокого изучения веб-разработки я столкнулась с необходимостью систематизировать знания HTML5 и CSS. Вместо того чтобы использовать готовые материалы, я создала собственную интерактивную шпаргалку, которая объединяет теорию с практическими примерами.</p>
         
@@ -958,14 +1011,14 @@
         </ul>
         
         <p>Этот проект стал не просто сборником информации, а живым документом, который продолжает развиваться вместе с моими знаниями. Я верю, что такой подход к обучению через создание полезных ресурсов может помочь и другим разработчикам.</p>
-    </div>
+   
     
     <div class="project-tech">
         <strong>Технологии:</strong> HTML5, CSS3, JavaScript, Mobile-First Design, Semantic Markup, CSS Grid & Flexbox.
     </div>
     
     <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-        <a href="Conspect.html" class="btn">Смотреть шпору</a>
+        <a href="Conspect.html" class="btn">Смотреть "шпору"</a>
         <a href="https://github.com/Marya-Kiseliova/HTML5-conspect/blob/main/Conspect.html" class="btn btn-outline">Исходный код</a>
     </div>
 </div>
@@ -980,14 +1033,14 @@
             </div>
 
             <div class="book-images">
-                <div class="book-image" onclick="openModal('project6/5.1.png')">
-                    <img src="project6/5.1.png" alt="Start of game">
+                <div class="book-image" onclick="openModal('project5/5.1.png')">
+                    <img src="project5/5.1.png" alt="Start of game">
                 </div>
-                <div class="book-image" onclick="openModal('project6/5.2.png')">
-                    <img src="project6/5.2.png" alt="Fight">
+                <div class="book-image" onclick="openModal('project5/5.2.png')">
+                    <img src="project5/5.2.png" alt="Fight">
                 </div>
-                <div class="book-image" onclick="openModal('project6/5.3.png')">
-                    <img src="project6/5.3.png" alt="Girl with motobike">
+                <div class="book-image" onclick="openModal('project5/5.3.png')">
+                    <img src="project5/5.3.png" alt="Girl with motobike">
                 </div>
             </div>
 
