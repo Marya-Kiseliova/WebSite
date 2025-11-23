@@ -195,9 +195,6 @@
         transform: translateY(50px);
         width: 100%;
     }
-    .project-row {
-    will-change: transform, opacity; /* Подсказка браузеру */
-    }
 
     .project-row.visible {
         opacity: 1;
@@ -235,265 +232,151 @@
         color: var(--accent);
         font-weight: 600;
     }
-/* Обновленные стили для YouTube контейнера */
-.youtube-container {
-    max-width: 700px;
-    margin: 1.5rem auto;
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    background: #000;
-}
 
-.youtube-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-}
+    /* ПРОСТОЙ И РАБОЧИЙ СТИЛЬ ДЛЯ YOUTUBE ПРЕВЬЮ */
+    .youtube-preview {
+        max-width: 750px;
+        margin: 1.5rem auto;
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        background: #b6b3dc;
+        cursor: pointer;
+    }
 
-/* Контейнер превью */
-.youtube-preview {
-    position: relative;
-    cursor: pointer;
-    aspect-ratio: 16/9;
-    background: #bea1a1;
-}
+    .youtube-preview:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
 
-/* Миниатюра YouTube */
-.youtube-thumbnail {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
+    .youtube-thumbnail {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+    }
 
-.youtube-preview:hover .youtube-thumbnail {
-    transform: scale(1.05);
-}
+    .youtube-preview:hover .youtube-thumbnail {
+        transform: scale(1.05);
+    }
 
-/* Кнопка воспроизведения */
-.youtube-play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
-}
+    .youtube-play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease;
+        filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+        z-index: 2;
+    }
 
-.youtube-preview:hover .youtube-play-button {
-    transform: translate(-50%, -50%) scale(1.1);
-}
+    .youtube-preview:hover .youtube-play-button {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
 
-/* Оверлей для эффекта при наведении */
-.youtube-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(74, 38, 203, 0.1));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
+    .youtube-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, rgba(179, 188, 228, 0.1), rgba(108, 102, 127, 0.1));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+    }
 
-.youtube-preview:hover .youtube-overlay {
-    opacity: 1;
-}
+    .youtube-preview:hover .youtube-overlay {
+        opacity: 0.5;
+    }
 
-/* Контейнер для iframe */
-.youtube-iframe-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    height: 0;
-    display: none;
-}
+    /* Стиль для вертикальных видео (shorts) */
+    .youtube-short {
+        max-width: 300px;
+    }
 
-.youtube-iframe-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-}
+    .youtube-short .youtube-thumbnail {
+        aspect-ratio: 3/4;
+        object-fit: cover;
+    }
 
-/* Стили для аккордеона источников */
-.sources-accordion {
-    margin: 1.5rem 0;
-    border-radius: 15px;
-    background: rgba(102, 126, 234, 0.05);
-    border: 1px solid rgba(102, 126, 234, 0.1);
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
+    /* Стили для аккордеона источников */
+    .sources-accordion {
+        margin: 1.5rem 0;
+        border-radius: 15px;
+        background: rgba(102, 126, 234, 0.05);
+        border: 1px solid rgba(102, 126, 234, 0.1);
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
 
-.sources-header {
-    padding: 1.2rem 1.5rem;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.3s ease;
-}
+    .sources-header {
+        padding: 1.2rem 1.5rem;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
 
-.sources-header:hover {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    transform: translateY(-2px);
-}
+    .sources-header:hover {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        transform: translateY(-2px);
+    }
 
-.accordion-arrow {
-    transition: transform 0.3s ease;
-}
+    .accordion-arrow {
+        transition: transform 0.3s ease;
+    }
 
-.sources-accordion.active .accordion-arrow {
-    transform: rotate(180deg);
-}
+    .sources-accordion.active .accordion-arrow {
+        transform: rotate(180deg);
+    }
 
-.sources-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-}
+    .sources-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+    }
 
-.sources-accordion.active .sources-content {
-    max-height: 500px;
-}
+    .sources-accordion.active .sources-content {
+        max-height: 500px;
+    }
 
-.sources-list {
-    padding: 1.5rem;
-    list-style: none;
-}
+    .sources-list {
+        padding: 1.5rem;
+        list-style: none;
+    }
 
-.sources-list li {
-    margin-bottom: 0.8rem;
-    padding: 0.8rem;
-    background: white;
-    border-radius: 10px;
-    border-left: 4px solid var(--primary);
-    transition: all 0.3s ease;
-}
+    .sources-list li {
+        margin-bottom: 0.8rem;
+        padding: 0.8rem;
+        background: white;
+        border-radius: 10px;
+        border-left: 4px solid var(--primary);
+        transition: all 0.3s ease;
+    }
 
-.sources-list li:hover {
-    transform: translateX(5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
+    .sources-list li:hover {
+        transform: translateX(5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
 
-.sources-list a {
-    text-decoration: none;
-    color: var(--dark);
-    font-weight: 500;
-    display: block;
-    transition: color 0.3s ease;
-}
+    .sources-list a {
+        text-decoration: none;
+        color: var(--dark);
+        font-weight: 500;
+        display: block;
+        transition: color 0.3s ease;
+    }
 
-.sources-list a:hover {
-    color: var(--primary);
-}
-
-/* Альтернативный стиль для выпадающего списка */
-.sources-dropdown {
-    position: relative;
-    margin: 1.5rem 0;
-}
-
-.sources-toggle-btn {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.sources-toggle-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
-}
-
-.sources-dropdown-content {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    padding: 1.5rem;
-    margin-top: 0.5rem;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    z-index: 100;
-}
-
-.sources-dropdown.active .sources-dropdown-content {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.sources-grid {
-    display: grid;
-    gap: 1rem;
-}
-
-.source-card {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: rgba(102, 126, 234, 0.05);
-    border-radius: 10px;
-    text-decoration: none;
-    color: var(--dark);
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
-}
-
-.source-card:hover {
-    background: rgba(102, 126, 234, 0.1);
-    border-color: var(--primary);
-    transform: translateY(-2px);
-}
-
-.source-number {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-.source-title {
-    font-weight: 500;
-    flex: 1;
-}
-
-
-/* Активное состояние - когда видео загружено */
-.youtube-container.video-loaded .youtube-preview {
-    display: none;
-}
-
-.youtube-container.video-loaded .youtube-iframe-container {
-    display: block;
-}
+    .sources-list a:hover {
+        color: var(--primary);
+    }
 
     /* Project Galleries */
     .project-gallery {
@@ -525,45 +408,45 @@
     }
 
     /* Book Project */
-   .book-images {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(3, 1fr);
-    margin: 1.5rem 0;
-    width: 100%;
-    align-items: start; /* Выравнивание по верху */
-}
+    .book-images {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 1.5rem 0;
+        width: 100%;
+        align-items: start;
+    }
 
-.book-image {
-    overflow: hidden;
-    width: 100%; 
-    height: 400px; /* Фиксированная высота */
-    border-radius: 20px;
-    background: #ffffff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px; /* Отступы внутри */
-    box-sizing: border-box;
-}
+    .book-image {
+        overflow: hidden;
+        width: 100%; 
+        height: 400px;
+        border-radius: 20px;
+        background: #ffffff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        box-sizing: border-box;
+    }
 
-.book-image img {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 20px;
-    object-fit: contain;
-}
+    .book-image img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 20px;
+        object-fit: contain;
+    }
 
     /* HTML Projects Gallery */
     .html-gallery {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(1, 1fr);
-    margin: 1.5rem 0;
-    width: 100%;
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(1, 1fr);
+        margin: 1.5rem 0;
+        width: 100%;
     }
 
     .html-item {
@@ -583,9 +466,9 @@
         max-width: 800px;
         object-fit: contain;
         border-radius: 15px;
-        loading: lazy; /* Современный lazy loading */
     }
-        /* Bar Image Fix */
+
+    /* Bar Image Fix */
     .bar-img {
         max-width: 200px;
         height: auto;
@@ -593,33 +476,6 @@
         margin-right: 10px;
         vertical-align: middle;
         display: inline-block;
-    }
-
-    /* Video Projects */
-    .video-previews {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        margin: 1.5rem 0;
-        width: 100%;
-    }
-
-    .video-item {
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        padding: 1.5rem;
-        border-radius: 15px;
-        color: white;
-        text-align: center;
-        transition: transform 0.3s ease;
-    }
-
-    .video-item:hover {
-        transform: translateY(-5px);
-    }
-
-    .video-icon {
-        font-size: 2.5rem;
-        margin-bottom: 0.8rem;
     }
 
     /* Buttons */
@@ -690,7 +546,7 @@
         z-index: 2001;
     }
 
-    /*Навыки*/
+    /* Навыки */
     .skills-tags {
         display: flex;
         flex-wrap: wrap;
@@ -722,7 +578,7 @@
         box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
     }
 
-    /* Ключевые кадры анимации*/
+    /* Ключевые кадры анимации */
     @keyframes fadeInUp {
         from {
             opacity: 0;
@@ -872,18 +728,10 @@
             border-bottom: none;
         }
 
-        .nav-links a:hover {
-            background: rgba(102, 126, 234, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .nav-content {
-            padding: 0.5rem 1rem;
-        }
-         .youtube-container {
-        max-width: 90%;
-        margin: 1rem auto;
-        border-radius: 15px;
+        .youtube-preview {
+            max-width: 90%;
+            margin: 1rem auto;
+            border-radius: 15px;
         }
         
         .youtube-play-button {
@@ -895,9 +743,10 @@
             width: 60px;
             height: 60px;
         }
-              .sources-header {
-        padding: 1rem 1.2rem;
-        font-size: 0.9rem;
+
+        .sources-header {
+            padding: 1rem 1.2rem;
+            font-size: 0.9rem;
         }
         
         .sources-list {
@@ -907,11 +756,7 @@
         .sources-list li {
             padding: 0.6rem;
         }
-        
-        .sources-dropdown-content {
-            position: relative;
-            margin-top: 1rem;
-        }
+
         .project-gallery {
             grid-template-columns: repeat(2, 1fr);
         }
@@ -919,9 +764,10 @@
         .book-images {
             grid-template-columns: repeat(2, 1fr);
         }
+
         .html-gallery {
-        grid-template-columns: 1fr;
-        gap: clamp(0.8rem, 3vw, 1rem);
+            grid-template-columns: 1fr;
+            gap: clamp(0.8rem, 3vw, 1rem);
         }
         
         .html-item {
@@ -932,11 +778,6 @@
         .html-item img {
             max-width: 100%;
             height: auto;
-        }
-    
-
-        .video-previews {
-            grid-template-columns: 1fr;
         }
 
         .project-header {
@@ -971,7 +812,6 @@
             padding: 0 1rem;
         }
 
-        /* Store App Mobile Fix */
         .bar-img {
             max-width: 150px;
             margin-right: 8px;
@@ -980,6 +820,10 @@
         .store-app-btn {
             padding: 10px 20px;
             font-size: 0.9rem;
+        }
+
+        .youtube-short {
+            max-width: 350px;
         }
     }
 
@@ -1005,8 +849,9 @@
         .book-images {
             grid-template-columns: 1fr;
         }
-            .youtube-container {
-        border-radius: 12px;
+
+        .youtube-preview {
+            border-radius: 12px;
         }
         
         .youtube-play-button {
@@ -1018,10 +863,12 @@
             width: 50px;
             height: 50px;
         }
-            .project-row {
+
+        .project-row {
             padding: 1.2rem;
             margin: 1.2rem 0;
         }
+
         .html-gallery {
             gap: 0.8rem;
         }
@@ -1055,7 +902,6 @@
             padding: 0.5rem;
         }
 
-        /* Store App Small Mobile Fix */
         .bar-img {
             max-width: 120px;
             margin-right: 5px;
@@ -1068,11 +914,8 @@
             gap: 0.3rem;
         }
 
-        .video-item .btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
+        .youtube-short {
+            max-width: 300px;
         }
     }
 
@@ -1117,66 +960,51 @@
     <section class="projects" id="projects">
         <h2>Портфолио</h2>
 
-          <!-- Project 1 - Видео презентация -->
-<div class="project-row">
-    <div class="project-header">
-        <div>
-            <h3 class="project-title">Видео презентация</h3>
-            <div class="project-category">Данные более 10 источников + Google 
-                AI Studios. Вот такая развернутая презентация получилась.</div>
-        </div>
-        <div class="project-year">2025</div>
-    </div>
-
-    <!-- Обновленный YouTube контейнер -->
-    <div class="youtube-container" id="youtubePlayer">
-        <div class="youtube-preview" onclick="loadYouTubeVideo(this)">
-            <img src="https://img.youtube.com/vi/7rnCqhda_HA/maxresdefault.jpg" alt="Превью видео" class="youtube-thumbnail">
-            <div class="youtube-play-button">
-                <svg width="80" height="80" viewBox="0 0 80 80">
-                    <circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.9)" stroke="#667eea" stroke-width="2"/>
-                    <polygon points="32,24 32,56 56,40" fill="#667eea"/>
-                </svg>
+        <!-- Project 1 - Видео презентация -->
+        <div class="project-row">
+            <div class="project-header">
+                <div>
+                    <h3 class="project-title">Видео презентация</h3>
+                    <div class="project-category">Данные более 10 источников + Google AI Studios</div>
+                </div>
+                <div class="project-year">2025</div>
             </div>
-            <div class="youtube-overlay"></div>
-        </div>
-        <div class="youtube-iframe-container">
-            <iframe 
-                src="" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen
-                loading="lazy"
-            ></iframe>
-        </div>
-    </div>
 
-    <p>Google AI Studios выпускает супер-продвинутые инструменты, которые "переваривают" огромные объемы информации и синтезируют их в презентации или видео-презентации!
+            <!-- ПРОСТОЙ И РАБОЧИЙ YOUTUBE ПРЕВЬЮ -->
+            <div class="youtube-preview" onclick="openYouTubeVideo('7rnCqhda_HA')">
+                <img src="https://img.youtube.com/vi/7rnCqhda_HA/maxresdefault.jpg" alt="Превью видео" class="youtube-thumbnail" onerror="this.src='https://img.youtube.com/vi/7rnCqhda_HA/hqdefault.jpg'">
+                <div class="youtube-play-button">
+                    <svg width="80" height="80" viewBox="0 0 80 80">
+                        <circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.9)" stroke="#667eea" stroke-width="2"/>
+                        <polygon points="32,24 32,56 56,40" fill="#667eea"/>
+                    </svg>
+                </div>
+                <div class="youtube-overlay"></div>
+            </div>
 
-Возможно, кому-то моя презентация покажется долгой, но я старалась максимально подробно раскрыть тему, которая интересует каждого, кто занимается или планирует заниматься не просто "ремонтом", а преобразованием своего дома или рабочего пространства в уникальный вдохновляющий мир для себя, своих близких, друзей и клиентов. Ведь все мы хотим одного — жить и творить с удовольствием!</p>
-    <!-- В разделе с видео презентацией после <p> -->
-<div class="sources-accordion">
-    <div class="sources-header" onclick="toggleSources(this)">
-        <span>📚 Основные Источники:</span>
-        <svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8">
-            <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" fill="none"/>
-        </svg>
-    </div>
-    <div class="sources-content">
-        <ul class="sources-list">
-            <li><a href="https://vc.ru/design/1696542-samyi-svezhii-trend-v-dizaine-2025-mocha-mousse-glavnyi-cvet-goda-dlya-sovremennogo-interera" target="_blank">Самый свежий тренд в дизайне 2025</a></li>
-            <li><a href="https://vobox.ru/publications/idei-dlya-doma-i-dachi/japandi/?srsltid=AfmBOorehY25flwRJj2RbdP5drt5mJMCXKWf0wmN2J0IvzpPA0qBZFn3" target="_blank">Джапанди- новый стиль интерьера</a></li>
-            <li><a href="https://www.archdaily.com/1024436/pantone-announces-mocha-mousse-as-color-of-the-year-2025" target="_blank">ArchDaily Mocha Mousse</a></li>
-            <li><a href="https://hoff.ru/blog/tsvet-goda-2025-mocha-mousse-kak-on-smotritsya-v-interere/" target="_blank">Hoff Блог</a></li>
-        </ul>
-    </div>
-</div>
-    <div class="project-tech">
-        
-        <strong>Технологии:</strong> Google AI Studios, Photoshop, Davinci Resolve.
-    </div>
-</div>
+            <p>Google AI Studios выпускает супер-продвинутые инструменты, которые "переваривают" огромные объемы информации и синтезируют их в презентации или видео-презентации!</p>
+            
+            <div class="sources-accordion">
+                <div class="sources-header" onclick="toggleSources(this)">
+                    <span>📚 Основные Источники:</span>
+                    <svg class="accordion-arrow" width="12" height="8" viewBox="0 0 12 8">
+                        <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                </div>
+                <div class="sources-content">
+                    <ul class="sources-list">
+                        <li><a href="https://vc.ru/design/1696542-samyi-svezhii-trend-v-dizaine-2025-mocha-mousse-glavnyi-cvet-goda-dlya-sovremennogo-interera" target="_blank">Самый свежий тренд в дизайне 2025</a></li>
+                        <li><a href="https://vobox.ru/publications/idei-dlya-doma-i-dachi/japandi/?srsltid=AfmBOorehY25flwRJj2RbdP5drt5mJMCXKWf0wmN2J0IvzpPA0qBZFn3" target="_blank">Джапанди- новый стиль интерьера</a></li>
+                        <li><a href="https://www.archdaily.com/1024436/pantone-announces-mocha-mousse-as-color-of-the-year-2025" target="_blank">ArchDaily Mocha Mousse</a></li>
+                        <li><a href="https://hoff.ru/blog/tsvet-goda-2025-mocha-mousse-kak-on-smotritsya-v-interere/" target="_blank">Hoff Блог</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="project-tech">
+                <strong>Технологии:</strong> Google AI Studios, Photoshop, Davinci Resolve.
+            </div>
+        </div>
 
         <!-- Project 2 - 4 images -->
         <div class="project-row">
@@ -1203,7 +1031,7 @@
                 </div>
             </div>
 
-            <p>Создание сайта для актуального агроусадебного бизнеса. С удовольствием создавала сайт с нуля от "скелета", логотипа и обработки фото до размещения на хостинге и регистрации в БелГИЭ. В перспективе подключение PayPal. Имела место идея о подключении онлайн-бронирования через CRM, но сошлись во мнении, что для малого бизнеса она нерентабельна.</p>
+            <p>Создание сайта для актуального агроусадебного бизнеса. С удовольствием создавала сайт с нуля от "скелета", логотипа и обработки фото до размещения на хостинге и регистрации в БелГИЭ.</p>
             
             <div class="project-tech">
                 <strong>Технологии:</strong> HTML5, CSS, JavaScript, Generative AI, Adobe Photoshop.
@@ -1236,16 +1064,15 @@
                 </div>
             </div>
             
+            <h4>О проекте</h4>
+            <p>Устали заставлять ребенка учиться читать? Современная адаптация детской книги в интерактивную версию для планшета, компьютера и мобильного.</p>
             
-                <h4>О проекте</h4>
-                <p>Устали заставлять ребенка учиться читать? Современная адаптация детской книги в интерактивную  версию для планшета, компьютера и мобильного. Красивые картинки привлекают внимание, активные кнопки с диалогами рыбок вовлекают ребёнка в сюжет, а правдивые факты об океане и его жителях развивают кругозор.</p>
-                <div class="project-tech" style="margin: 0.8rem 0;">
-                    <strong>Стек:</strong> Структура: HTML5, CSS, JavaScript; Дизайн обложки: Adobe Photoshop; Картинки: Generative AI.
-   
-                <a href="project3/mermaid/mermaid1.html" class="btn">Читать книгу</a>
+            <div class="project-tech" style="margin: 0.8rem 0;">
+                <strong>Стек:</strong> Структура: HTML5, CSS, JavaScript; Дизайн обложки: Adobe Photoshop; Картинки: Generative AI.
             </div>
+            
+            <a href="project3/mermaid/mermaid1.html" class="btn">Читать книгу</a>
         </div>
-
 
         <!-- Project 4 Figma- 4 images -->
         <div class="project-row">
@@ -1272,107 +1099,89 @@
                 </div>
             </div>
 
-            <p>Приветствую в моем мире дизайна! Здесь вы найдете не просто пиксели, а воплощение идей в самых разных форматах. От постов для соцсетей до дизайна сайтов. Мои работы — это погружение в продуманные детали, где каждый элемент служит своей цели, будь то веб-проект, мобильное приложение или совершенно новый взгляд на предметный дизайн.</p>
+            <p>Приветствую в моем мире дизайна! Здесь вы найдете не просто пиксели, а воплощение идей в самых разных форматах.</p>
+            
             <div class="project-tech">
                 <strong>Технологии:</strong> Figma, Photoshop.
             </div>
-            
-        <!-- Video Project 1 - Store App -->
+        </div>
+
+        <!-- Video Project - Store App -->
         <div class="project-row">
             <div class="project-header">
                 <div>
                     <h3 class="project-title">Store app</h3>
-                    <div class="project-category"> Приложение для товарного и бухгалтерского учета</div>
+                    <div class="project-category">Приложение для товарного и бухгалтерского учета</div>
                 </div>
                 <div class="project-year">2024</div>
             </div>
-        
-            <div class="video-previews">
-                <div class="video-item">
-                    <div class="video-icon">📱</div>
-                    <h4>Python Демо</h4>
-                    <p>Обзор пользовательского интерфейса</p>
-                    <div class="store-app-block">
-                        <a href="https://youtu.be/V9gFIPHuxeg?si=cKo7cnHEGqs-mvQw" class="store-app-btn">
-                            Смотреть видео 
-                            <img src="bar.webp" alt="Магазин разливных напитков" class="bar-img">
-                        </a>
-                    </div>
-                </div>
-            </div>
 
-            <p>Моя небольшая программа для учета товаров и формаирования отчетов, удобная для малого бизнеса (язык программирования: Python)</p>
+            <div class="youtube-preview" onclick="openYouTubeVideo('evA-V66w2rY')">
+                <img src="bar.webp" alt="Превью видео Store App" class="youtube-thumbnail" onerror="this.src='https://img.youtube.com/vi/evA-V66w2rY/hqdefault.jpg'">
+                <div class="youtube-play-button">
+                    <svg width="80" height="80" viewBox="0 0 80 80">
+                        <circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.9)" stroke="#667eea" stroke-width="2"/>
+                        <polygon points="32,24 32,56 56,40" fill="#667eea"/>
+                    </svg>
+                </div>
+                <div class="youtube-overlay"></div>
+            </div>
+            
+            <p>Моя небольшая программа для учета товаров и формирования отчетов, удобная для малого бизнеса (язык программирования: Python)</p>
             
             <div class="project-tech">
                 <strong>Технологии:</strong> Python, Tkinter, Pandas, SQLite.
             </div>
         </div>
-        <!-- HTML5 Шпаргалка -->
-<div class="project-row">
-    <div class="project-header">
-        <div>
-            <h3 class="project-title">HTML5 & CSS Конспект-шпаргалка для разработчиков</h3>
-            <div class="project-category">Educational Resource • Frontend Documentation</div>
-        </div>
-        <div class="project-year">2024</div>
-    </div>
-    
-    <div class="html-gallery">
-        <div class="html-item" onclick="openModal('conspect.webp')">
-            <img src="conspect.webp" alt="Шпоргалка по информатике">
-        </div>
-        
-    </div>
 
-    
-        <h4>О проекте</h4>
-        <p>В процессе глубокого изучения веб-разработки я столкнулась с необходимостью систематизировать знания HTML5 и CSS. Вместо того чтобы использовать готовые материалы, я создала собственную интерактивную шпаргалку, которая объединяет теорию с практическими примерами.</p>
-        
-        <p><strong>Ключевые особенности:</strong></p>
-        <ul style="margin: 1rem 0; padding-left: 1.5rem;">
-            <li>Полное покрытие семантических тегов HTML5 с реальными use-cases</li>
-            <li>Интерактивные демонстрации CSS свойств и анимаций</li>
-            <li>Адаптивный дизайн с мобильным бургер-меню</li>
-            <li>Практические примеры верстки с пояснениями</li>
-            <li>Готовые сниппеты для быстрого использования</li>
-        </ul>
-        
-        <p>Этот проект стал не просто сборником информации, а живым документом, который продолжает развиваться вместе с моими знаниями. Я верю, что такой подход к обучению через создание полезных ресурсов может помочь и другим разработчикам.</p>
-   
-    
-    <div class="project-tech">
-        <strong>Технологии:</strong> HTML5, CSS3, JavaScript, Mobile-First Design, Semantic Markup, CSS Grid & Flexbox.
-    </div>
-    
-    <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-        <a href="Conspect.html" class="btn">Смотреть "шпору"</a>
-        <a href="https://github.com/Marya-Kiseliova/HTML5-conspect/blob/main/Conspect.html" class="btn btn-outline">Исходный код</a>
-    </div>
-</div>
-        <!-- Video Project 2 -->
+        <!-- HTML5 Шпаргалка -->
+        <div class="project-row">
+            <div class="project-header">
+                <div>
+                    <h3 class="project-title">HTML5 & CSS Конспект-шпаргалка для разработчиков</h3>
+                    <div class="project-category">Educational Resource • Frontend Documentation</div>
+                </div>
+                <div class="project-year">2024</div>
+            </div>
+            
+            <div class="html-gallery">
+                <div class="html-item" onclick="openModal('conspect.webp')">
+                    <img src="conspect.webp" alt="Шпаргалка по информатике">
+                </div>
+            </div>
+
+            <h4>О проекте</h4>
+            <p>В процессе глубокого изучения веб-разработки я столкнулась с необходимостью систематизировать знания HTML5 и CSS.</p>
+            
+            <div class="project-tech">
+                <strong>Технологии:</strong> HTML5, CSS3, JavaScript, Mobile-First Design, Semantic Markup, CSS Grid & Flexbox.
+            </div>
+            
+            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="Conspect.html" class="btn">Смотреть "шпору"</a>
+                <a href="https://github.com/Marya-Kiseliova/HTML5-conspect/blob/main/Conspect.html" class="btn btn-outline">Исходный код</a>
+            </div>
+        </div>
+
+        <!-- Video Project 2 - AI video Shorts -->
         <div class="project-row">
             <div class="project-header">
                 <div>
                     <h3 class="project-title">AI video</h3>
-                    <div class="project-category"> Игровой эксперимент в стиле киберпанка• Mobile</div>
+                    <div class="project-category">Игровой эксперимент в стиле киберпанка • Mobile</div>
                 </div>
                 <div class="project-year">2025</div>
             </div>
 
-            <div class="book-images">
-                <div class="book-image" onclick="openModal('project5/5.1.png')">
-                    <img src="project5/5.1.png" alt="Start of game">
+            <div class="youtube-preview youtube-short" onclick="openYouTubeVideo('500ywmW3ivk')">
+                <img src="https://img.youtube.com/vi/500ywmW3ivk/maxresdefault.jpg" alt="Превью AI video" class="youtube-thumbnail" onerror="this.src='https://img.youtube.com/vi/500ywmW3ivk/hqdefault.jpg'">
+                <div class="youtube-play-button">
+                    <svg width="80" height="80" viewBox="0 0 80 80">
+                        <circle cx="40" cy="40" r="38" fill="rgba(255,255,255,0.9)" stroke="#667eea" stroke-width="2"/>
+                        <polygon points="32,24 32,56 56,40" fill="#667eea"/>
+                    </svg>
                 </div>
-                <div class="book-image" onclick="openModal('project5/5.2.png')">
-                    <img src="project5/5.2.png" alt="Fight">
-                </div>
-                <div class="book-image" onclick="openModal('project5/5.3.png')">
-                    <img src="project5/5.3.png" alt="Girl with motobike">
-                </div>
-            </div>
-
-            <div style="text-align: center; margin: 1rem 0;">
-                <a href="https://youtube.com/shorts/500ywmW3ivk?si=BigC9xMT1Ou97wIg" class="btn">Смотреть видео 👁️ 👁️</a>
+                <div class="youtube-overlay"></div>
             </div>
 
             <p>Мой эксперимент в духе киберпанка с использованием бесплатных генеративных ИИ инструментов и библиотеки звуков Pixabay.</p>
@@ -1434,7 +1243,6 @@
             this.classList.toggle('active');
             navLinks.classList.toggle('active');
             
-            // Блокировка прокрутки тела при открытом меню
             if (this.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
@@ -1495,57 +1303,18 @@
             }
         });
 
-            // Функция для загрузки YouTube видео
-        function loadYouTubeVideo(previewElement) {
-            const container = previewElement.closest('.youtube-container');
-            const iframeContainer = container.querySelector('.youtube-iframe-container');
-            const iframe = iframeContainer.querySelector('iframe');
-            
-            // Устанавливаем src с autoplay=1
-            iframe.src = "https://www.youtube.com/embed/7rnCqhda_HA?autoplay=1&modestbranding=1&rel=0";
-            
-            // Показываем iframe и скрываем превью
-            container.classList.add('video-loaded');
-            
-            // Добавляем класс для плавного появления
-            setTimeout(() => {
-                iframeContainer.style.opacity = '1';
-            }, 50);
+        // ПРОСТАЯ И РАБОЧАЯ ФУНКЦИЯ ДЛЯ YOUTUBE ВИДЕО
+        function openYouTubeVideo(videoId) {
+            // Открываем видео в новой вкладке
+            window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
         }
 
-        // Закрытие видео при клике на модальное окно (если видео открыто)
-        document.getElementById('imageModal').addEventListener('click', function(e) {
-            const youtubeContainers = document.querySelectorAll('.youtube-container');
-            youtubeContainers.forEach(container => {
-                if (container.classList.contains('video-loaded')) {
-                    // Можно добавить логику паузы видео при необходимости
-                }
-            });
-        });
-                // Функция для аккордеона
+        // Функция для аккордеона
         function toggleSources(header) {
             const accordion = header.parentElement;
             accordion.classList.toggle('active');
         }
 
-        // Функция для выпадающего списка
-        function toggleSourcesDropdown(button) {
-            const dropdown = button.parentElement;
-            dropdown.classList.toggle('active');
-        }
-
-        // Закрытие выпадающих списков при клике вне их
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.sources-dropdown')) {
-                document.querySelectorAll('.sources-dropdown').forEach(dropdown => {
-                    dropdown.classList.remove('active');
-                });
-            }
-            
-            if (!e.target.closest('.sources-accordion')) {
-                // Можно добавить авто-закрытие других аккордеонов если нужно
-            }
-        });
         // Scroll animations for project rows
         function checkVisibility() {
             const projectRows = document.querySelectorAll('.project-row');
@@ -1581,6 +1350,5 @@
             }
         });
     </script>
-    
 </body>
 </html>
