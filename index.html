@@ -582,12 +582,14 @@
     }
 
     @media (min-width: 769px) {
-        .contact-links {
-            grid-template-columns: repeat(3, 1fr);
-            max-width: 900px;
-            gap: 2rem;
-        }
+    .contact-links {
+        grid-template-columns: repeat(2, minmax(180px, 1fr));
+        max-width: 520px;
+        gap: 1.2rem;
+        margin-left: auto;
+        margin-right: auto;
     }
+}
 
     .contact-link {
         padding: 1.2rem 2rem;
