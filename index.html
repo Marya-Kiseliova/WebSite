@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Основные SEO мета-теги -->
-    <title>Мария Киселёва | Frontend Developer & Web Designer | Создание сайтов недорого в Бресте</title>
-    <meta name="description" content="💻 Frontend Developer & UI/UX Designer из Бреста. Создаю современные адаптивные сайты недорого. Веб-дизайн, разработка, SEO оптимизация. Беларусь">
-    <meta name="keywords" content="frontend разработчик, веб-дизайнер, создание сайтов Брест, сайт недорого, web designer, фронтенд разработка, промпт инженер, Мария Киселёва, Беларусь">
+    <title>Мария Киселёва | Промт-инженер & UI/UX Designer | Обучение работе с ИИ в Бресте</title>
+    <meta name="description" content="🧠 Промт-инженер & UI/UX Designer из Бреста. Обучаю работе с ИИ-инструментами: языковые модели, генеративные нейросети, создание контента. Беларусь">
+    <meta name="keywords" content="промт-инженер, обучение ИИ, работа с нейросетями, ИИ-инструменты, языковые модели, генеративные ИИ, Мария Киселёва, Брест, Беларусь">
     <meta name="author" content="Мария Киселёва">
     
     <!-- Гео-метатеги для продвижения в Беларуси -->
@@ -17,26 +17,26 @@
     <meta name="ICBM" content="52.093754, 23.685271">
     
     <!-- Open Graph для соцсетей -->
-    <meta property="og:title" content="Мария Киселёва | Frontend Developer & Web Designer | Брест">
-    <meta property="og:description" content="Создание современных сайтов недорого. Frontend разработка, веб-дизайн, UI/UX дизайн в Бресте">
+    <meta property="og:title" content="Мария Киселёва | Промт-инженер & UI/UX Designer | Брест">
+    <meta property="og:description" content="Обучение работе с ИИ-инструментами. Промт-инженеринг. Генеративные нейросети, языковые модели, создание контента с помощью ИИ">
     <meta property="og:image" content="https://ваш-сайт.ru/logo.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ваш-сайт.ru">
-    <meta property="og:site_name" content="Мария Киселёва - Frontend Developer">
+    <meta property="og:site_name" content="Мария Киселёва - Промт-инженер">
     <meta property="og:locale" content="ru_RU">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Мария Киселёва | Frontend Developer | Брест">
-    <meta name="twitter:description" content="Создание сайтов недорого. Веб-дизайн и разработка в Беларуси">
+    <meta name="twitter:title" content="Мария Киселёва | Промт-инженер | Брест">
+    <meta name="twitter:description" content="Обучение работе с ИИ-инструментами. Промт-инженеринг в Беларуси">
     <meta name="twitter:image" content="https://ваш-сайт.ru/logo.jpg">
     
     <!-- Дополнительные SEO теги -->
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ваш-сайт.ru">
-    <meta name="subject" content="Веб-разработка и дизайн">
+    <meta name="subject" content="Промт-инженеринг и обучение ИИ">
     
     <!-- Структурированные данные (JSON-LD) -->
     <script type="application/ld+json">
@@ -44,8 +44,8 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Мария Киселёва",
-        "jobTitle": "Frontend Developer & Web Designer",
-        "description": "Frontend разработчик и веб-дизайнер из Бреста. Создание современных адаптивных сайтов.",
+        "jobTitle": "Prompt Engineer & UI/UX Designer",
+        "description": "Промт-инженер и UI/UX дизайнер из Бреста. Обучение работе с ИИ-инструментами.",
         "url": "https://ваш-сайт.ru",
         "address": {
             "@type": "PostalAddress",
@@ -54,12 +54,12 @@
         },
         "hasOccupation": {
             "@type": "Occupation",
-            "name": "Frontend Developer",
+            "name": "Prompt Engineer",
             "occupationLocation": {
                 "@type": "City",
                 "name": "Брест"
             },
-            "skills": "HTML, CSS, JavaScript, UI/UX Design, Responsive Web Design"
+            "skills": "Промт-инженеринг, UI/UX Design, Generative AI, Работа с нейросетями"
         },
         "sameAs": [
             "https://github.com/Marya-Kiseliova",
@@ -379,8 +379,8 @@
     }
 
     /* Анимации для контента окон */
-    .website-animation,
-    .seo-animation,
+    .prompt-animation,
+    .ai-tools-animation,
     .content-animation {
         display: flex;
         flex-direction: column;
@@ -391,118 +391,104 @@
         flex: 1;
     }
 
-    .browser-window {
-        width: 140px;
-        height: 90px;
-        background: white;
-        border-radius: 12px;
-        position: relative;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        overflow: hidden;
-        transition: all 0.3s ease;
+    .prompt-icon {
+        font-size: 5rem;
+        animation: pulse 2s ease-in-out infinite;
     }
 
-    .browser-window:hover {
-        transform: scale(1.05);
-    }
-
-    .browser-header {
-        height: 15px;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        display: flex;
-        align-items: center;
-        padding: 0 10px;
-        gap: 5px;
-    }
-
-    .browser-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.7);
-        transition: all 0.3s ease;
-    }
-
-    .browser-dot:hover {
-        background: rgba(255, 255, 255, 1);
-        transform: scale(1.2);
-    }
-
-    .browser-content {
-        height: calc(100% - 15px);
-        background: linear-gradient(45deg, #f0f4ff, #e3f2fd);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.8rem;
-        color: var(--primary);
-        font-weight: 600;
-    }
-
-    /* SEO анимация */
-    .magnifying-glass {
-        width: 80px;
-        height: 80px;
-        border: 4px solid var(--accent);
-        border-radius: 50%;
-        position: relative;
-        animation: searchFloat 3s ease-in-out infinite;
-    }
-
-    .magnifying-glass::after {
-        content: '';
-        position: absolute;
-        width: 25px;
-        height: 4px;
-        background: var(--accent);
-        bottom: -18px;
-        right: -12px;
-        transform: rotate(45deg);
-        border-radius: 2px;
-    }
-
-    @keyframes searchFloat {
+    @keyframes pulse {
         0%, 100% {
-            transform: translateY(0px) rotate(0deg);
+            transform: scale(1);
         }
         50% {
-            transform: translateY(-10px) rotate(5deg);
+            transform: scale(1.1);
         }
     }
 
-    .seo-text {
-        font-size: 1.8rem;
+    .prompt-text {
+        font-size: 1.6rem;
         font-weight: 700;
         display: flex;
-        gap: 0.3rem;
+        gap: 0.5rem;
         justify-content: center;
-        background: linear-gradient(135deg, var(--accent), #5fd0d2);
+        flex-wrap: wrap;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        text-shadow: 
-            -1px -1px 0 white,
-            1px -1px 0 rgba(123, 161, 171, 0.3),
-            -1px 1px 0 rgba(69, 131, 139, 0.3),
-            1px 1px 0 rgba(131, 131, 205, 0.3);
     }
 
-    .seo-letter {
+    .prompt-letter {
         display: inline-block;
         opacity: 0;
         transform: translateY(20px);
         animation: letterReveal 0.5s ease forwards;
     }
 
-    .seo-letter:nth-child(1) { animation-delay: 1.4s; }
-    .seo-letter:nth-child(2) { animation-delay: 1.5s; }
-    .seo-letter:nth-child(3) { animation-delay: 1.6s; }
-    .seo-letter:nth-child(4) { animation-delay: 1.7s; }
-    .seo-letter:nth-child(5) { animation-delay: 1.8s; }
+    .prompt-letter:nth-child(1) { animation-delay: 1.0s; }
+    .prompt-letter:nth-child(2) { animation-delay: 1.1s; }
+    .prompt-letter:nth-child(3) { animation-delay: 1.2s; }
+    .prompt-letter:nth-child(4) { animation-delay: 1.3s; }
+    .prompt-letter:nth-child(5) { animation-delay: 1.4s; }
+    .prompt-letter:nth-child(6) { animation-delay: 1.5s; }
+    .prompt-letter:nth-child(7) { animation-delay: 1.6s; }
 
     @keyframes letterReveal {
         to {
             opacity: 1;
             transform: translateY(0);
+        }
+    }
+
+    /* AI Tools - иконки нейросетей */
+    .ai-icons {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .ai-icon-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 2.2rem;
+        transition: all 0.3s ease;
+        animation: floatIcon 3s ease-in-out infinite;
+    }
+
+    .ai-icon-item:nth-child(2) {
+        animation-delay: 0.5s;
+    }
+
+    .ai-icon-item:nth-child(3) {
+        animation-delay: 1s;
+    }
+
+    .ai-icon-item:nth-child(4) {
+        animation-delay: 1.5s;
+    }
+
+    .ai-icon-item:hover {
+        transform: scale(1.2) rotate(-5deg);
+    }
+
+    .ai-icon-item span {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--primary);
+        background: rgba(255, 255, 255, 0.7);
+        padding: 0.2rem 0.6rem;
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+    }
+
+    @keyframes floatIcon {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-8px);
         }
     }
 
@@ -693,13 +679,12 @@
             font-size: 1.6rem;
         }
         
-        .seo-text {
-            font-size: 1.5rem;
+        .prompt-text {
+            font-size: 1.3rem;
         }
 
-        .magnifying-glass {
-            width: 70px;
-            height: 70px;
+        .ai-icon-item {
+            font-size: 1.8rem;
         }
     }
 
@@ -722,8 +707,8 @@
             font-size: 1.4rem;
         }
         
-        .seo-text {
-            font-size: 1.3rem;
+        .prompt-text {
+            font-size: 1.1rem;
         }
         
         .contact-links {
@@ -733,6 +718,14 @@
         .contact-link {
             padding: 1rem 1.5rem;
             font-size: 0.9rem;
+        }
+
+        .ai-icons {
+            gap: 1rem;
+        }
+
+        .ai-icon-item {
+            font-size: 1.5rem;
         }
     }
 
@@ -787,50 +780,64 @@
     </section>
 
     <section class="animated-windows" id="services">
-        <!-- Первое окошко - создание сайта -->
+        <!-- Первое окошко - Промт-инженеринг -->
         <div class="window window-1">
-            <h2 class="window-title">Создам уникальный сайт</h2>
-            <div class="website-animation">
-                <div class="browser-window">
-                    <div class="browser-header">
-                        <div class="browser-dot"></div>
-                        <div class="browser-dot"></div>
-                        <div class="browser-dot"></div>
-                    </div>
-                    <div class="browser-content">
-                        your_site.com
-                    </div>
-                </div>
+            <h2 class="window-title">Промт-инженеринг</h2>
+            <div class="prompt-animation">
+                <div class="prompt-icon">🧠</div>
                 <div class="window-accent">
-                    Современный дизайн для мобильных, планшетов и десктопов, который реально адаптируется под разрешение любых экранов.
+                    Искусство создания точных запросов. Научу формулировать промпты так, чтобы нейросети выдавали идеальный результат с первого раза.
+                </div>
+                <div class="prompt-text">
+                    <span class="prompt-letter">P</span>
+                    <span class="prompt-letter">R</span>
+                    <span class="prompt-letter">O</span>
+                    <span class="prompt-letter">M</span>
+                    <span class="prompt-letter">P</span>
+                    <span class="prompt-letter">T</span>
+                    <span class="prompt-letter">⚡</span>
                 </div>
             </div>
         </div>
 
-        <!-- Второе окошко - SEO -->
+        <!-- Второе окошко - ИИ-инструменты -->
         <div class="window window-2">
-            <h2 class="window-title">Настрою SEO</h2>
-            <div class="window-accent">
-                Поисковые системы "полюбят" ваш website.
-            </div>
-            <div class="seo-animation">
-                <div class="magnifying-glass"></div>
-                <div class="seo-text">
-                    <span class="seo-letter">П</span>
-                    <span class="seo-letter">О</span>
-                    <span class="seo-letter">И</span>
-                    <span class="seo-letter">С</span>
-                    <span class="seo-letter">К</span>
+            <h2 class="window-title">Работа с ИИ-инструментами</h2>
+            <div class="ai-tools-animation">
+                <div class="window-accent">
+                    Освоение современных ИИ-инструментов — от языковых моделей до генеративных нейросетей. Генерация контента, изображений, видео, текстов.
+                </div>
+                <div class="ai-icons">
+                    <div class="ai-icon-item">
+                        🤖
+                        <span>LLM</span>
+                    </div>
+                    <div class="ai-icon-item">
+                        🎨
+                        <span>GenAI</span>
+                    </div>
+                    <div class="ai-icon-item">
+                        🖼️
+                        <span>Image</span>
+                    </div>
+                    <div class="ai-icon-item">
+                        🎬
+                        <span>Video</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Третье окошко - Контент -->
+        <!-- Третье окошко - Обучение -->
         <div class="window window-3">
-            <h2 class="window-title">Помогу с наполнением</h2>
+            <h2 class="window-title">Обучение</h2>
             <div class="content-animation">
                 <div class="window-accent">
-                    Генерация оригинальных изображений, видео и текстов при помощи ИИ-инструментов. Экономия времени и ресурсов на создание качественного контента.
+                    Практические навыки работы с нейросетями от А до Я. Помогу внедрить ИИ-технологии в вашу работу, бизнес или творчество.
+                </div>
+                <div style="font-size: 3rem;">🚀</div>
+                <div class="window-accent" style="font-size: 1rem; opacity: 0.8;">
+                    Индивидуальный подход — для новичков и профессионалов
                 </div>
             </div>
         </div>
@@ -845,7 +852,6 @@
     <section class="contact" id="contact">
         <h2>Давайте работать вместе</h2>
         <div class="contact-links">
-
             <a href="mailto:m.yasinskaya12@gmail.com" class="contact-link">✉️ Email</a>
             <a href="https://github.com/Marya-Kiseliova" class="contact-link">💻 GitHub</a>
         </div>
@@ -853,13 +859,13 @@
 
     <!-- Скрытый текст для SEO -->
     <div class="seo-hidden">
-        <h1>Frontend разработчик в Бресте</h1>
-        <p>Мария Киселёва - профессиональный веб-дизайнер и фронтенд разработчик из Бреста. Создание качественных сайтов недорого с адаптивным дизайном и SEO оптимизацией. Предлагаю услуги по разработке, дизайну и наполнению сайтов для бизнеса в Беларуси.</p>
+        <h1>Промт-инженер в Бресте</h1>
+        <p>Мария Киселёва - профессиональный промт-инженер и UI/UX дизайнер из Бреста. Обучение работе с ИИ-инструментами: языковые модели, генеративные нейросети, создание контента. Помогаю освоить современные технологии и внедрить их в работу, бизнес и творчество.</p>
     </div>
 
     <script>
         // Эффект печатающегося текста
-        const typewriterText = "AI-специалист & UI/UX Designer";
+        const typewriterText = "Промт-инженер & UI/UX Designer";
         const typewriterElement = document.getElementById('typewriter');
         let i = 0;
 
