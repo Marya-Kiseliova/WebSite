@@ -517,7 +517,7 @@
         color: white;
     }
 
-    /* Modal */
+    /* ===== УЛУЧШЕННОЕ МОДАЛЬНОЕ ОКНО ===== */
     .modal {
         display: none;
         position: fixed;
@@ -525,33 +525,63 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        z-index: 2000;
+        background: rgba(0, 0, 0, 0.92);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        animation: modalFadeIn 0.3s ease;
+    }
+
+    @keyframes modalFadeIn {
+        from {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .modal-content {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+        display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    .modal-content {
-        width: 90%;
-        height: 90%;
-        max-width: none;
-        max-height: none;
-    }
     .modal-content img {
-        width: 100%;
-        height: 100%;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 90vh;
         object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     }
+
     .close-modal {
-        position: absolute;
+        position: fixed;
         top: 20px;
         right: 30px;
         color: white;
-        font-size: 2rem;
+        font-size: 3rem;
         cursor: pointer;
         background: none;
         border: none;
-        z-index: 2001;
+        z-index: 10000;
+        transition: all 0.3s ease;
+        font-family: 'Inter', sans-serif;
+        opacity: 0.8;
+    }
+
+    .close-modal:hover {
+        opacity: 1;
+        transform: rotate(90deg);
+        color: var(--primary);
     }
 
     /* Навыки */
@@ -970,6 +1000,21 @@
             padding: 0.6rem 0.8rem 0.9rem;
             font-size: 0.75rem;
         }
+
+        /* Modal Mobile */
+        .modal {
+            padding: 1rem;
+        }
+        
+        .modal-content img {
+            max-height: 80vh;
+        }
+        
+        .close-modal {
+            top: 10px;
+            right: 15px;
+            font-size: 2.5rem;
+        }
     }
 
     @media (max-width: 480px) {
@@ -1153,24 +1198,24 @@
                 ⬇️ Примеры моих работ.
             </p>
 
-            <!-- ГАЛЕРЕЯ РАБОТ -->
+            <!-- ГАЛЕРЕЯ РАБОТ (ИСПРАВЛЕНО) -->
             <div class="ai-gallery-grid">
-                <div class="ai-gallery-item" onclick="openModal('пост0.jpg')">
+                <div class="ai-gallery-item" onclick="openModal('ai-works/пост0.jpg')">
                     <img src="ai-works/пост0.jpg" alt="AI-фотосессия товара до и после" loading="lazy" width="600" height="600">
                     <div class="ai-gallery-caption">📸 Товарная съёмка</div>
                 </div>
 
-                <div class="ai-gallery-item" onclick="openModal('пост1.jpg')">
+                <div class="ai-gallery-item" onclick="openModal('ai-works/пост1.jpg')">
                     <img src="ai-works/пост1.jpg" alt="AI-фотосессия товара до и после" loading="lazy" width="600" height="600">
                     <div class="ai-gallery-caption">🎨 Креативная обработка</div>
                 </div>
 
-                <div class="ai-gallery-item" onclick="openModal('пост2.jpg')">
+                <div class="ai-gallery-item" onclick="openModal('ai-works/пост2.jpg')">
                     <img src="ai-works/пост2.jpg" alt="AI-фотосессия товара до и после" loading="lazy" width="600" height="600">
                     <div class="ai-gallery-caption">✨ Премиум-визуал</div>
                 </div>
 
-                <div class="ai-gallery-item" onclick="openModal('пост3.jpg')">
+                <div class="ai-gallery-item" onclick="openModal('ai-works/пост3.jpg')">
                     <img src="ai-works/пост3.jpg" alt="AI-фотосессия товара до и после" loading="lazy" width="600" height="600">
                     <div class="ai-gallery-caption">🌟 AI-улучшение</div>
                 </div>
@@ -1445,10 +1490,10 @@
         </div>
     </section>
 
-    <!-- Modal -->
-    <div id="imageModal" class="modal">
-        <button class="close-modal" onclick="closeModal()">&times;</button>
-        <div class="modal-content">
+    <!-- Modal (ИСПРАВЛЕНО) -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <button class="close-modal" onclick="event.stopPropagation(); closeModal();">&times;</button>
+        <div class="modal-content" onclick="event.stopPropagation();">
             <img id="modalImage" src="" alt="">
         </div>
     </div>
@@ -1516,10 +1561,12 @@
             });
         });
 
-        // Modal functions
+        // Modal functions (ИСПРАВЛЕНО)
         function openModal(src) {
-            document.getElementById('modalImage').src = src;
-            document.getElementById('imageModal').style.display = 'flex';
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            modalImage.src = src;
+            modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
@@ -1528,9 +1575,9 @@
             document.body.style.overflow = '';
         }
 
-        // Close modal on outside click
-        document.getElementById('imageModal').addEventListener('click', function(e) {
-            if (e.target === this) {
+        // Закрытие модального окна по Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
                 closeModal();
             }
         });
