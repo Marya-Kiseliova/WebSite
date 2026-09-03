@@ -1,3 +1,5 @@
+Конечно! Я обновил страницу проектов, приведя её в полное соответствие со стилем главной страницы. Все кнопки действий теперь имеют тот же стеклянный, бело-оранжевый вид с анимацией, а блоки с источниками стали лаконичными и фиолетовыми.
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -21,6 +23,8 @@
         --light: #f7fafc;
         --glass-bg: rgba(255, 255, 255, 0.12);
         --glass-border: rgba(255, 255, 255, 0.18);
+        --violet: #7654bd;
+        --violet-dark: #553694;
     }
 
     * {
@@ -301,6 +305,86 @@
         white-space: nowrap;
     }
 
+    /* ===== СТЕКЛЯННАЯ КНОПКА (как на главной) ===== */
+    .btn-glass {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 54px;
+        padding: 14px 34px;
+        border: none;
+        border-radius: 999px;
+        font-size: 16px;
+        font-weight: 720;
+        letter-spacing: 0.02em;
+        color: #2a1a44;
+        background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 235, 220, 0.7) 40%, rgba(255, 210, 185, 0.6) 70%, rgba(255, 240, 230, 0.8) 100%);
+        background-size: 300% 300%;
+        box-shadow: 
+            0 12px 40px rgba(190, 120, 70, 0.30),
+            0 4px 0 rgba(255, 255, 255, 0.8) inset,
+            0 -4px 12px rgba(160, 100, 60, 0.15) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+        animation: glass-shimmer 3.5s ease-in-out infinite alternate;
+        position: relative;
+        overflow: hidden;
+        font-family: 'Inter', sans-serif;
+    }
+    .btn-glass::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 999px;
+        background: linear-gradient(105deg, 
+            rgba(255, 255, 255, 0) 0%, 
+            rgba(255, 255, 255, 0.5) 20%, 
+            rgba(255, 255, 255, 0) 40%, 
+            rgba(255, 255, 255, 0.3) 60%, 
+            rgba(255, 255, 255, 0) 80%
+        );
+        background-size: 300% 100%;
+        pointer-events: none;
+        animation: glass-sheen 4s ease-in-out infinite alternate;
+    }
+    @keyframes glass-sheen {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+    }
+    @keyframes glass-shimmer {
+        0% { background-position: 0% 20%; box-shadow: 0 12px 40px rgba(190, 120, 70, 0.25), 0 4px 0 rgba(255,255,255,0.8) inset, 0 -4px 12px rgba(160,100,60,0.12) inset, 0 0 0 1px rgba(255,255,255,0.4); }
+        50% { background-position: 100% 80%; box-shadow: 0 16px 50px rgba(210, 140, 80, 0.40), 0 4px 0 rgba(255,255,255,0.9) inset, 0 -4px 16px rgba(180,110,70,0.20) inset, 0 0 0 1.5px rgba(255,255,255,0.6); }
+        100% { background-position: 0% 20%; box-shadow: 0 12px 40px rgba(190, 120, 70, 0.25), 0 4px 0 rgba(255,255,255,0.8) inset, 0 -4px 12px rgba(160,100,60,0.12) inset, 0 0 0 1px rgba(255,255,255,0.4); }
+    }
+    .btn-glass:hover,
+    .btn-glass:focus-visible {
+        transform: scale(1.04) translateY(-3px);
+        box-shadow: 
+            0 20px 56px rgba(200, 140, 80, 0.45),
+            0 4px 0 rgba(255, 255, 255, 0.9) inset,
+            0 -6px 20px rgba(180, 110, 70, 0.25) inset,
+            0 0 0 2px rgba(255, 255, 255, 0.7);
+        background-size: 350% 350%;
+        outline: none;
+    }
+    .btn-glass:active {
+        transform: scale(0.97) translateY(0px);
+        box-shadow: 
+            0 6px 20px rgba(160, 100, 60, 0.25),
+            0 2px 0 rgba(255, 255, 255, 0.6) inset,
+            0 -2px 8px rgba(140, 80, 40, 0.10) inset,
+            0 0 0 1px rgba(255, 255, 255, 0.3);
+    }
+    .btn-group .btn-glass {
+        min-height: 48px;
+        padding: 10px 26px;
+        font-size: 15px;
+    }
+
     /* ===== YOUTUBE PREVIEW ===== */
     .youtube-preview {
         max-width: 750px;
@@ -370,21 +454,21 @@
         object-fit: cover;
     }
 
-    /* ===== SOURCES ACCORDION ===== */
+    /* ===== ИСТОЧНИКИ — ФИОЛЕТОВЫЙ ТЕКСТ ===== */
     .sources-accordion {
         margin: 1.2rem 0;
         border-radius: 16px;
-        background: rgba(102, 126, 234, 0.05);
-        border: 1px solid rgba(102, 126, 234, 0.1);
+        background: rgba(118, 84, 189, 0.04);
+        border: 1px solid rgba(118, 84, 189, 0.12);
         overflow: hidden;
         transition: all 0.3s ease;
     }
 
     .sources-header {
         padding: 1rem 1.5rem;
-        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-        color: white;
-        font-weight: 600;
+        background: transparent;
+        color: var(--violet-dark);
+        font-weight: 700;
         cursor: pointer;
         display: flex;
         justify-content: space-between;
@@ -398,13 +482,14 @@
     }
 
     .sources-header:hover {
-        background: linear-gradient(135deg, var(--primary-dark), var(--accent));
-        transform: translateY(-1px);
+        color: var(--violet);
+        background: rgba(118, 84, 189, 0.04);
     }
 
     .accordion-arrow {
         transition: transform 0.3s ease;
         flex-shrink: 0;
+        stroke: var(--violet-dark);
     }
 
     .sources-accordion.active .accordion-arrow {
@@ -422,27 +507,24 @@
     }
 
     .sources-list {
-        padding: 1.2rem 1.5rem;
+        padding: 0 1.5rem 1.2rem;
         list-style: none;
     }
 
     .sources-list li {
-        margin-bottom: 0.6rem;
-        padding: 0.7rem 1rem;
-        background: rgba(255, 255, 255, 0.7);
-        border-radius: 10px;
-        border-left: 3px solid var(--primary);
+        margin-bottom: 0.4rem;
+        padding: 0.4rem 0;
+        border-bottom: 1px solid rgba(118, 84, 189, 0.06);
         transition: all 0.3s ease;
     }
 
-    .sources-list li:hover {
-        transform: translateX(5px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    .sources-list li:last-child {
+        border-bottom: none;
     }
 
     .sources-list a {
         text-decoration: none;
-        color: var(--dark);
+        color: var(--violet-dark);
         font-weight: 500;
         display: block;
         transition: color 0.3s ease;
@@ -450,7 +532,8 @@
     }
 
     .sources-list a:hover {
-        color: var(--primary);
+        color: var(--violet);
+        padding-left: 4px;
     }
 
     /* ===== GALLERIES ===== */
@@ -615,39 +698,6 @@
     }
 
     /* ===== BUTTONS ===== */
-    .btn {
-        display: inline-block;
-        padding: 0.7rem 1.8rem;
-        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-        color: white;
-        text-decoration: none;
-        border-radius: 30px;
-        font-weight: 600;
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-        border: none;
-        cursor: pointer;
-        margin: 0.2rem;
-        font-family: 'Inter', sans-serif;
-    }
-
-    .btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.35);
-    }
-
-    .btn-outline {
-        background: transparent;
-        border: 2px solid var(--primary);
-        color: var(--primary);
-    }
-
-    .btn-outline:hover {
-        background: var(--primary);
-        color: white;
-        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-    }
-
     .btn-group {
         display: flex;
         gap: 0.8rem;
@@ -1004,11 +1054,7 @@
         }
 
         .sources-list {
-            padding: 1rem;
-        }
-
-        .sources-list li {
-            padding: 0.6rem 0.8rem;
+            padding: 0 1.2rem 1rem;
         }
 
         .sources-list a {
@@ -1038,9 +1084,15 @@
             font-size: 0.9rem;
         }
 
-        .btn {
-            padding: 0.6rem 1.4rem;
-            font-size: 0.85rem;
+        .btn-glass {
+            min-height: 44px;
+            padding: 10px 20px;
+            font-size: 13px;
+        }
+        .btn-group .btn-glass {
+            min-height: 40px;
+            padding: 8px 18px;
+            font-size: 12px;
         }
 
         .btn-group {
@@ -1152,9 +1204,15 @@
             padding: 0.6rem 1rem;
         }
 
-        .btn {
-            padding: 0.5rem 1.2rem;
-            font-size: 0.8rem;
+        .btn-glass {
+            min-height: 40px;
+            padding: 8px 16px;
+            font-size: 12px;
+        }
+        .btn-group .btn-glass {
+            min-height: 36px;
+            padding: 6px 14px;
+            font-size: 11px;
         }
 
         .text-block {
@@ -1225,6 +1283,9 @@
         .skill-tag {
             opacity: 1;
             transform: none;
+        }
+        .btn-glass::before {
+            animation: none;
         }
     }
     </style>
@@ -1309,7 +1370,7 @@
             </div>
 
             <div class="btn-group">
-                <a href="#contact" class="btn">Заказать фотосессию</a>
+                <a href="#contact" class="btn-glass">Заказать фотосессию</a>
             </div>
         </div>
 
@@ -1389,8 +1450,8 @@
                 <strong>Технологии:</strong> HTML5, CSS, JavaScript, Generative AI, Adobe Photoshop.
             </div>
             
-            <div class="mt-2">
-                <a href="https://marya-kiseliova.github.io/Usadiba_U_Vodi/" class="btn">Посмотреть сайт</a>
+            <div class="btn-group">
+                <a href="https://marya-kiseliova.github.io/Usadiba_U_Vodi/" class="btn-glass">Посмотреть сайт</a>
             </div>
         </div>
 
@@ -1423,8 +1484,8 @@
                 <strong>Стек:</strong> Структура: HTML5, CSS, JavaScript; Дизайн обложки: Adobe Photoshop; Картинки: Generative AI.
             </div>
             
-            <div class="mt-2">
-                <a href="project3/mermaid/mermaid1.html" class="btn">Читать книгу</a>
+            <div class="btn-group">
+                <a href="project3/mermaid/mermaid1.html" class="btn-glass">Читать книгу</a>
             </div>
         </div>
 
@@ -1512,8 +1573,8 @@
             </div>
             
             <div class="btn-group">
-                <a href="Conspect.html" class="btn">Смотреть шпору</a>
-                <a href="https://github.com/Marya-Kiseliova/HTML5-conspect/blob/main/Conspect.html" class="btn btn-outline">Исходный код</a>
+                <a href="Conspect.html" class="btn-glass">Смотреть шпору</a>
+                <a href="https://github.com/Marya-Kiseliova/HTML5-conspect/blob/main/Conspect.html" class="btn-glass" style="background: transparent; border: 2px solid rgba(255,215,200,0.5); box-shadow: none; color: #2a1a44;">Исходный код</a>
             </div>
         </div>
 
@@ -1678,3 +1739,4 @@
     </script>
 </body>
 </html>
+```
