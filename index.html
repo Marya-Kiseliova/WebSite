@@ -1,4 +1,4 @@
-Вот обновлённый HTML-код с двумя стеклянными, глянцевыми кнопками и улучшенной адаптацией для iPhone SE и Samsung S8+.
+Конечно! Вот обновлённый код с кнопками, которые стали ещё более «стеклянными» и яркими — с усиленным глянцем, глубоким свечением и более живой анимацией, чтобы на них точно хотелось нажать.
 ```html
 <!DOCTYPE html>
 <html lang="ru">
@@ -263,39 +263,79 @@
       letter-spacing: -0.018em;
     }
 
-    /* ===== СТЕКЛЯННАЯ ГЛЯНЦЕВАЯ КНОПКА (обе) ===== */
+    /* ===== СУПЕР-СТЕКЛЯННАЯ ГЛЯНЦЕВАЯ КНОПКА ===== */
     .btn-glass {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 48px;
-      padding: 12px 28px;
+      min-height: 54px;
+      padding: 14px 34px;
       border: none;
       border-radius: 999px;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 720;
-      color: #2d1f4a;
-      background: linear-gradient(145deg, rgba(255,245,235,0.85) 0%, rgba(255,225,210,0.75) 40%, rgba(255,240,230,0.85) 70%, rgba(255,255,255,0.9) 100%);
-      background-size: 220% 220%;
-      box-shadow: 0 8px 28px rgba(180, 110, 60, 0.20), 0 2px 0 rgba(255,255,255,0.7) inset, 0 -2px 8px rgba(180, 120, 80, 0.08) inset;
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
+      letter-spacing: 0.02em;
+      color: #2a1a44;
+      background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 235, 220, 0.7) 40%, rgba(255, 210, 185, 0.6) 70%, rgba(255, 240, 230, 0.8) 100%);
+      background-size: 300% 300%;
+      box-shadow: 
+        0 12px 40px rgba(190, 120, 70, 0.30),
+        0 4px 0 rgba(255, 255, 255, 0.8) inset,
+        0 -4px 12px rgba(160, 100, 60, 0.15) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       text-decoration: none;
-      transition: all 0.25s ease;
       cursor: pointer;
-      animation: glass-shimmer 4s ease-in-out infinite alternate;
-      border: 1px solid rgba(255,255,255,0.4);
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+      animation: glass-shimmer 3.5s ease-in-out infinite alternate;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Дополнительный глянцевый блик поверх кнопки */
+    .btn-glass::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 999px;
+      background: linear-gradient(105deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.5) 20%, 
+        rgba(255, 255, 255, 0) 40%, 
+        rgba(255, 255, 255, 0.3) 60%, 
+        rgba(255, 255, 255, 0) 80%
+      );
+      background-size: 300% 100%;
+      pointer-events: none;
+      animation: glass-sheen 4s ease-in-out infinite alternate;
+    }
+    @keyframes glass-sheen {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    @keyframes glass-shimmer {
+      0% { background-position: 0% 20%; box-shadow: 0 12px 40px rgba(190, 120, 70, 0.25), 0 4px 0 rgba(255,255,255,0.8) inset, 0 -4px 12px rgba(160,100,60,0.12) inset, 0 0 0 1px rgba(255,255,255,0.4); }
+      50% { background-position: 100% 80%; box-shadow: 0 16px 50px rgba(210, 140, 80, 0.40), 0 4px 0 rgba(255,255,255,0.9) inset, 0 -4px 16px rgba(180,110,70,0.20) inset, 0 0 0 1.5px rgba(255,255,255,0.6); }
+      100% { background-position: 0% 20%; box-shadow: 0 12px 40px rgba(190, 120, 70, 0.25), 0 4px 0 rgba(255,255,255,0.8) inset, 0 -4px 12px rgba(160,100,60,0.12) inset, 0 0 0 1px rgba(255,255,255,0.4); }
     }
     .btn-glass:hover,
     .btn-glass:focus-visible {
-      transform: scale(1.02) translateY(-2px);
-      box-shadow: 0 14px 40px rgba(190, 120, 70, 0.30), 0 2px 0 rgba(255,255,255,0.8) inset, 0 -2px 8px rgba(180, 120, 80, 0.12) inset;
-      background-size: 260% 260%;
+      transform: scale(1.04) translateY(-3px);
+      box-shadow: 
+        0 20px 56px rgba(200, 140, 80, 0.45),
+        0 4px 0 rgba(255, 255, 255, 0.9) inset,
+        0 -6px 20px rgba(180, 110, 70, 0.25) inset,
+        0 0 0 2px rgba(255, 255, 255, 0.7);
+      background-size: 350% 350%;
       outline: none;
     }
-    @keyframes glass-shimmer {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
+    .btn-glass:active {
+      transform: scale(0.97) translateY(0px);
+      box-shadow: 
+        0 6px 20px rgba(160, 100, 60, 0.25),
+        0 2px 0 rgba(255, 255, 255, 0.6) inset,
+        0 -2px 8px rgba(140, 80, 40, 0.10) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.3);
     }
 
     /* ===== ABOUT ===== */
@@ -464,9 +504,9 @@
     }
     .portfolio .btn-glass {
       margin-top: 24px;
-      min-height: 44px;
-      padding: 10px 22px;
-      font-size: 14px;
+      min-height: 48px;
+      padding: 12px 26px;
+      font-size: 15px;
     }
 
     /* ===== FOOTER ===== */
@@ -597,7 +637,7 @@
       .hero h1 { font-size: clamp(1.8rem, 10vw, 2.4rem); }
       .hero-name { font-size: 1.1rem; }
       .hero-role { font-size: 0.85rem; }
-      .btn-glass { min-height: 40px; padding: 8px 16px; font-size: 13px; }
+      .btn-glass { min-height: 44px; padding: 10px 18px; font-size: 13px; }
       .section-title { font-size: clamp(1.6rem, 8vw, 2.4rem); }
       .about-copy p { font-size: 0.9rem; }
       .service-card { padding: 18px 14px; }
@@ -608,12 +648,14 @@
       .glass-art { min-height: 200px; }
       .glass-art img { min-height: 200px; }
       .portfolio h2 { font-size: clamp(1.5rem, 8vw, 2.2rem); }
+      .portfolio .btn-glass { min-height: 40px; padding: 8px 16px; font-size: 12px; }
     }
 
     /* ===== reduced motion ===== */
     @media (prefers-reduced-motion: reduce) {
       * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
       .reveal { opacity: 1; transform: none; }
+      .btn-glass::before { animation: none; }
     }
   </style>
 </head>
