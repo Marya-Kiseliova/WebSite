@@ -255,7 +255,7 @@
     }
     .hero-role {
       max-width: 620px;
-      margin: 8px auto 0;
+      margin: 8px auto 24px; /* УВЕЛИЧИЛ ОТСТУП СНИЗУ ДО 24px */
       color: rgba(74,53,116,0.82);
       font-size: clamp(0.95rem, 1.6vw, 1.3rem);
       font-weight: 540;
@@ -442,7 +442,7 @@
     .service-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 20px; /* увеличен отступ между карточками */
+      gap: 20px;
     }
     .service-card {
       display: flex;
@@ -478,7 +478,7 @@
 
     /* ===== PORTFOLIO ===== */
     .portfolio {
-      padding: 70px 0 80px; /* увеличен нижний отступ, чтобы отделить от футера */
+      padding: 70px 0 80px;
       background: var(--paper-soft);
       text-align: center;
     }
@@ -580,7 +580,7 @@
       color: rgba(255, 255, 255, 0.85);
     }
 
-    /* ===== MEDIA (планшеты и больше) ===== */
+    /* ===== MEDIA ===== */
     @media (min-width: 640px) {
       .container { width: min(calc(100% - 40px), var(--content)); }
       .site-header { height: 80px; padding: 0 8px; }
@@ -629,12 +629,11 @@
       .nav-links a { font-size: 14px; padding: 10px 16px; }
     }
 
-    /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ (до 640px) ===== */
     @media (max-width: 639px) {
       .container { width: min(calc(100% - 20px), 1160px); }
       .hero { padding: 80px 0 30px; min-height: 90vh; }
       .hero h1 { font-size: clamp(1.8rem, 9vw, 2.6rem); }
-      .hero-role { font-size: 0.95rem; }
+      .hero-role { font-size: 0.95rem; margin-bottom: 20px; } /* на мобильных тоже увеличиваем */
       .btn-glass { min-height: 48px; padding: 12px 24px; font-size: 14px; }
       .about-grid { gap: 30px; }
       .glass-art { min-height: 200px; }
@@ -655,7 +654,7 @@
       .hero { padding: 76px 0 24px; min-height: 85vh; }
       .hero h1 { font-size: clamp(1.5rem, 8vw, 2.0rem); }
       .hero-name { font-size: 1rem; }
-      .hero-role { font-size: 0.85rem; }
+      .hero-role { font-size: 0.85rem; margin-bottom: 16px; }
       .btn-glass { min-height: 42px; padding: 10px 16px; font-size: 13px; }
       .section-title { font-size: clamp(1.4rem, 7vw, 2rem); }
       .about-copy p { font-size: 0.9rem; }
@@ -672,7 +671,6 @@
       .footer-ai-credit { font-size: 11px; }
     }
 
-    /* ===== reduced motion ===== */
     @media (prefers-reduced-motion: reduce) {
       * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
       .reveal { opacity: 1; transform: none; }
