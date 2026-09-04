@@ -679,7 +679,7 @@
     }
     .sources-list a:hover { color: var(--violet); padding-left: 4px; }
 
-    /* ===== SKILLS ===== */
+    /* ===== SKILLS - НОВЫЙ СТЕКЛЯННЫЙ СТИЛЬ ===== */
     .skills-tags {
       display: flex;
       flex-wrap: wrap;
@@ -690,22 +690,29 @@
       margin: 0 auto;
     }
     .skill-tag {
-      background: linear-gradient(135deg, var(--violet), var(--violet-dark));
-      color: white;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 16px; /* скругленные углы, не эллипс */
+      color: #292345;
       padding: 0.6rem 1.4rem;
-      border-radius: 30px;
       font-weight: 500;
       font-size: 0.9rem;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(118, 84, 189, 0.20);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
       opacity: 0;
       transform: translateY(30px);
       animation: fadeInUp 0.6s ease forwards;
     }
     .skill-tag:hover {
       transform: scale(1.06) translateY(-3px);
-      box-shadow: 0 8px 25px rgba(118, 84, 189, 0.30);
+      background: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+      border-color: rgba(255, 255, 255, 0.6);
     }
+
+    /* анимация появления (оставляем как есть) */
     .skill-tag:nth-child(1) { animation-delay: 0.05s; }
     .skill-tag:nth-child(2) { animation-delay: 0.10s; }
     .skill-tag:nth-child(3) { animation-delay: 0.15s; }
@@ -765,8 +772,8 @@
     }
     .footer-contact-links {
       display: flex;
-      flex-direction: row;        /* ИЗМЕНЕНО: теперь в строку */
-      flex-wrap: wrap;            /* перенос при нехватке места */
+      flex-direction: row;
+      flex-wrap: wrap;
       align-items: center;
       gap: 12px;
     }
@@ -964,10 +971,10 @@
     <!-- ===== ГЕРОЙ ===== -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content reveal is-visible">
-        <p class="eyebrow">Портфолио</p>
-        <h1 id="hero-title">Мои проекты</h1>
+        <p class="eyebrow">Моя нейролаборатория</p>
+        <h1 id="hero-title">AI-workspace</h1>
         <p class="hero-name">Мария Киселёва</p>
-        <p class="hero-role">Здесь собраны работы, созданные с помощью современных ИИ-инструментов и веб-технологий.</p>
+        <p class="hero-role">Здесь собраны работы, созданные с помощью современных ИИ-инструментов</p>
         <a class="btn-glass" href="#projects">Смотреть проекты</a>
       </div>
     </section>
@@ -976,8 +983,18 @@
     <section class="projects-section" id="projects">
       <div class="container">
         <div class="reveal">
-          <p class="section-kicker">Реализованные работы</p>
-          <h2 class="section-title">Проекты</h2>
+          <!-- НОВЫЙ ТЕКСТ -->
+          <p class="section-kicker">
+            С самого начала изучения нейросетей я сознательно бралась не только за то, в чём уже разбиралась, 
+            но и за совершенно новые для себя направления: монтаж видео, товарную фотосъёмку, программирование.
+          </p>
+          <p class="section-kicker" style="margin-top: 0.8em; font-weight: 500; text-transform: none; letter-spacing: 0; font-size: 1rem; color: var(--ink); opacity: 0.9;">
+            Я не прячу ранние работы. Они показывают реальный путь — от долгого и мучительного к быстрому и системному.
+          </p>
+          <p class="section-kicker" style="margin-top: 0.8em; font-weight: 500; text-transform: none; letter-spacing: 0; font-size: 1rem; color: var(--ink); opacity: 0.9;">
+            Если хотите научиться так же превращать идеи в рабочие решения с помощью ИИ — добро пожаловать.
+          </p>
+          <h2 class="section-title" style="margin-top: 1.5rem;">Мои проекты</h2>
         </div>
 
         <div class="projects-grid">
@@ -1181,7 +1198,7 @@
       </div>
     </section>
 
-    <!-- ===== НАВЫКИ ===== -->
+    <!-- ===== НАВЫКИ (НОВЫЙ СТЕКЛЯННЫЙ СТИЛЬ) ===== -->
     <div class="skills-tags" id="skills-tags">
       <span class="skill-tag">HTML5</span>
       <span class="skill-tag">CSS3</span>
@@ -1195,7 +1212,7 @@
     </div>
   </main>
 
-   <!-- FOOTER -->
+  <!-- FOOTER -->
   <footer class="site-footer" id="contact">
     <div class="container">
       <div class="footer-main">
@@ -1208,7 +1225,7 @@
       </div>
       <div class="footer-bottom">
         <div class="footer-ai-credit">
-          Этот вебсайт — отличный пример того, как можно создавать веб-страницы с помощью AI, не будучи программистом.
+          Этот сайт — пример того, как можно собирать рабочие веб-страницы, опираясь на ИИ.
         </div>
       </div>
     </div>
