@@ -261,7 +261,7 @@
       letter-spacing: -0.018em;
     }
 
-    /* ===== СУПЕР-СТЕКЛЯННАЯ ГЛЯНЦЕВАЯ КНОПКА ===== */
+    /* ===== СТЕКЛЯННАЯ ГЛЯНЦЕВАЯ КНОПКА ===== */
     .btn-glass {
       display: inline-flex;
       align-items: center;
@@ -289,8 +289,8 @@
       animation: glass-shimmer 3.5s ease-in-out infinite alternate;
       position: relative;
       overflow: hidden;
+      font-family: inherit;
     }
-    /* Дополнительный глянцевый блик поверх кнопки */
     .btn-glass::before {
       content: '';
       position: absolute;
@@ -458,19 +458,8 @@
       transform: translateY(-4px);
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.78), 0 28px 54px rgba(84,61,141,0.14);
     }
-    .service-number {
-      display: grid;
-      width: 30px;
-      height: 30px;
-      place-items: center;
-      border: 1px solid rgba(118,84,189,0.2);
-      border-radius: 50%;
-      color: var(--violet);
-      font-size: 11px;
-      font-weight: 760;
-    }
     .service-card h3 {
-      margin-top: 22px;
+      margin-top: 0;
       color: var(--violet-dark);
       font-size: clamp(1.2rem, 3.8vw, 1.8rem);
       font-weight: 740;
@@ -549,25 +538,25 @@
       line-height: 0.98;
       text-wrap: balance;
     }
-    .contact-links {
+    /* Контакты в футере — стеклянные кнопки */
+    .footer-contact-links {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 8px;
+      gap: 12px;
     }
-    .contact-links a {
-      padding-bottom: 2px;
-      border-bottom: 1px solid rgba(255,255,255,0.46);
-      color: #fff;
-      font-weight: 680;
-      transition: border-color 160ms ease, opacity 160ms ease;
-      font-size: 0.95rem;
+    .footer-contact-links .btn-glass {
+      min-height: 44px;
+      padding: 10px 24px;
+      font-size: 14px;
+      background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 235, 220, 0.8) 40%, rgba(255, 210, 185, 0.7) 70%, rgba(255, 240, 230, 0.9) 100%);
+      box-shadow: 0 8px 30px rgba(190, 120, 70, 0.25), 0 2px 0 rgba(255,255,255,0.8) inset, 0 -2px 8px rgba(160,100,60,0.10) inset, 0 0 0 1px rgba(255,255,255,0.4);
+      color: #2a1a44;
+      width: auto;
     }
-    .contact-links a:hover,
-    .contact-links a:focus-visible {
-      border-color: #fff;
-      opacity: 0.78;
-      outline: none;
+    .footer-contact-links .btn-glass:hover {
+      transform: scale(1.04) translateY(-3px);
+      box-shadow: 0 16px 45px rgba(200, 140, 80, 0.40), 0 4px 0 rgba(255,255,255,0.9) inset, 0 -4px 16px rgba(180,110,70,0.20) inset, 0 0 0 2px rgba(255,255,255,0.6);
     }
     .footer-bottom {
       position: relative;
@@ -579,7 +568,14 @@
       color: rgba(255,255,255,0.7);
       font-size: 12px;
     }
-    .footer-name { color: #fff; font-weight: 740; }
+    .footer-ai-credit {
+      margin-top: 8px;
+      font-size: 13px;
+      opacity: 0.75;
+      max-width: 600px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.85);
+    }
 
     /* ===== MEDIA (планшеты и больше) ===== */
     @media (min-width: 640px) {
@@ -615,6 +611,7 @@
       .service-grid { grid-template-columns: repeat(2, 1fr); }
       .services-header { flex-direction: row; align-items: end; justify-content: space-between; }
       .footer-main { grid-template-columns: 1fr auto; align-items: end; }
+      .footer-contact-links { flex-direction: row; align-items: center; gap: 12px; }
       .footer-bottom { flex-direction: row; align-items: center; justify-content: space-between; }
     }
 
@@ -647,6 +644,8 @@
       .glass-art img { min-height: 200px; }
       .portfolio h2 { font-size: clamp(1.5rem, 8vw, 2.2rem); }
       .portfolio .btn-glass { min-height: 40px; padding: 8px 16px; font-size: 12px; }
+      .footer-contact-links .btn-glass { min-height: 38px; padding: 8px 14px; font-size: 12px; }
+      .footer-ai-credit { font-size: 11px; }
     }
 
     /* ===== reduced motion ===== */
@@ -680,10 +679,9 @@
     <!-- HERO -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content reveal is-visible">
-        <p class="eyebrow">Prompt Engineer & UI/UX Designer</p>
+        <p class="eyebrow">Prompt Engineering</p>
         <h1 id="hero-title">Трансформация идеи в реальность</h1>
-        <p class="hero-name">Я Мария Киселёва</p>
-        <p class="hero-role">Помогаю осваивать современные ИИ-инструменты и превращать идеи в понятные визуальные решения.</p>
+        <p class="hero-role">Создание сайтов, брендбуков, AI-агентов и многое другое при помощи искусственного интеллекта.</p>
         <!-- СТЕКЛЯННАЯ кнопка 1 -->
         <a class="btn-glass" href="Projects.html">Посмотреть портфолио</a>
       </div>
@@ -696,7 +694,7 @@
           <p class="section-kicker">Мария Киселёва</p>
           <h2 class="section-title" id="about-title">Обо мне</h2>
           <p>Мария Киселёва — специалист по работе с нейронными сетями. Помогаю освоить современные технологии и внедрить их в работу, бизнес и творчество.</p>
-          <p>Создание и дизайн сайтов, брэндбуков, AI-агентов </p>
+          <p>Реализация идеи в проект в 3 шага.</p>
           <div class="tags" aria-label="Основные направления">
             <span class="tag">Промт-инженеринг</span>
             <span class="tag">ИИ-инструменты</span>
@@ -721,15 +719,15 @@
         </div>
         <div class="service-grid">
           <article class="service-card reveal">
-            <div><span class="service-number">01</span><h3>Промт-инженеринг</h3></div>
+            <div><h3>Промт-инженеринг</h3></div>
             <p>Искусство создания точных запросов. Научу формулировать промты так, чтобы нейросети выдавали не просто пиксели, а результат, который нужен для вашей работы.</p>
           </article>
           <article class="service-card reveal">
-            <div><span class="service-number">02</span><h3>Работа с ИИ-инструментами</h3></div>
+            <div><h3>Работа с ИИ-инструментами</h3></div>
             <p>Освоение современных ИИ-инструментов — от языковых моделей до генеративных нейросетей. Превращение идеи в концепт, а концепта — в визуал.</p>
           </article>
           <article class="service-card reveal">
-            <div><span class="service-number">03</span><h3>Обучение</h3></div>
+            <div><h3>Обучение</h3></div>
             <p>Практические навыки работы с нейросетями от А до Я. Помогу внедрить ИИ-технологии в работу, бизнес или творчество. Формат обучения: офлайн, онлайн или гибрид.</p>
           </article>
         </div>
@@ -752,16 +750,16 @@
     <div class="container">
       <div class="footer-main">
         <h2>Работа с AI — шаг в будущее</h2>
-        <div class="contact-links" aria-label="Контакты">
-          <a href="mailto:m.yasinskaya12@gmail.com">Email</a>
-          <a href="https://github.com/Marya-Kiseliova">GitHub</a>
+        <div class="footer-contact-links" aria-label="Контакты">
+          <a href="mailto:m.yasinskaya12@gmail.com" class="btn-glass">Email</a>
+          <a href="https://github.com/Marya-Kiseliova" class="btn-glass">GitHub</a>
+          <a href="https://www.youtube.com/@%D0%9C%D0%B0%D1%80%D1%8F-%D0%9A%D0%B8%D1%81%D0%B5%D0%BB%D1%91%D0%B2%D0%B0/shorts" target="_blank" class="btn-glass">YouTube</a>
         </div>
       </div>
       <div class="footer-bottom">
         <div class="footer-ai-credit">
-        Этот вебсайт — отличный пример того, как можно создавать веб-страницы с помощью AI, не будучи программистом.
-      </div>
-      
+          Этот вебсайт — отличный пример того, как можно создавать веб-страницы с помощью AI, не будучи программистом.
+        </div>
       </div>
     </div>
   </footer>
@@ -811,4 +809,3 @@
   </script>
 </body>
 </html>
-```
