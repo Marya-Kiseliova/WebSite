@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-  <title>Мария Киселёва | Промт-инженер & UI/UX Designer | Обучение работе с ИИ в Бресте</title>
-  <meta name="description" content="Промт-инженер & UI/UX Designer из Бреста. Обучаю работе с ИИ-инструментами: языковые модели, генеративные нейросети, создание контента. Беларусь" />
-  <meta name="keywords" content="промт-инженер, обучение ИИ, работа с нейросетями, ИИ-инструменты, языковые модели, генеративные ИИ, Мария Киселёва, Брест, Беларусь" />
+  <title>Мария Киселёва | Промт-инженер & UI/UX Designer</title>
+  <meta name="description" content="Промт-инженер & UI/UX Designer из Бреста. Обучаю работе с ИИ-инструментами." />
+  <meta name="keywords" content="промт-инженер, обучение ИИ, работа с нейросетями, Мария Киселёва, Брест" />
   <meta name="author" content="Мария Киселёва" />
-  <meta property="og:title" content="Мария Киселёва | Промт-инженер & UI/UX Designer | Брест" />
-  <meta property="og:description" content="Обучение работе с ИИ-инструментами. Промт-инженеринг. Генеративные нейросети, языковые модели, создание контента с помощью ИИ" />
+  <meta property="og:title" content="Мария Киселёва | Промт-инженер & UI/UX Designer" />
+  <meta property="og:description" content="Обучение работе с ИИ-инструментами. Промт-инженеринг." />
   <meta property="og:type" content="website" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://ваш-сайт.ru" />
@@ -25,7 +25,7 @@
   </script>
 
   <style>
-    /* ===== RESET & BASE (mobile-first) ===== */
+    /* ===== RESET & BASE ===== */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       min-width: 320px;
@@ -41,7 +41,7 @@
     img, video { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
     .container {
-      width: min(calc(100% - 24px), 1160px);
+      width: min(calc(100% - 32px), 1160px);
       margin-inline: auto;
     }
 
@@ -70,7 +70,7 @@
     }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-    /* ===== HEADER (fixed) ===== */
+    /* ===== HEADER ===== */
     .site-header {
       position: fixed;
       inset: 0 0 auto;
@@ -222,7 +222,7 @@
       to { transform: scale(1.07) translate3d(0.7%, 0.4%, 0); }
     }
     .hero-content {
-      width: min(920px, calc(100% - 24px));
+      width: min(920px, calc(100% - 32px));
       padding: 20px 4px;
       text-align: center;
     }
@@ -238,17 +238,18 @@
       max-width: 860px;
       margin-inline: auto;
       color: #6541a8;
-      font-size: clamp(2.2rem, 11vw, 4.5rem);
+      font-size: clamp(2.0rem, 10vw, 4.5rem);
       font-weight: 760;
-      letter-spacing: -0.052em;
-      line-height: 1.08;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
       text-wrap: balance;
+      word-break: break-word;
       text-shadow: 0 8px 32px rgba(255,236,224,0.22);
     }
     .hero-name {
       margin-top: 12px;
       color: #5f4199;
-      font-size: clamp(1.2rem, 5.5vw, 2rem);
+      font-size: clamp(1.1rem, 5vw, 2rem);
       font-weight: 740;
       letter-spacing: -0.025em;
     }
@@ -259,9 +260,11 @@
       font-size: clamp(0.95rem, 1.6vw, 1.3rem);
       font-weight: 540;
       letter-spacing: -0.018em;
+      word-break: break-word;
+      padding: 0 4px;
     }
 
-    /* ===== СТЕКЛЯННАЯ ГЛЯНЦЕВАЯ КНОПКА ===== */
+    /* ===== СТЕКЛЯННАЯ КНОПКА ===== */
     .btn-glass {
       display: inline-flex;
       align-items: center;
@@ -439,7 +442,7 @@
     .service-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 16px;
+      gap: 20px; /* увеличен отступ между карточками */
     }
     .service-card {
       display: flex;
@@ -473,9 +476,9 @@
       line-height: 1.62;
     }
 
-    /* ===== PORTFOLIO (секция) ===== */
+    /* ===== PORTFOLIO ===== */
     .portfolio {
-      padding: 60px 0;
+      padding: 70px 0 80px; /* увеличен нижний отступ, чтобы отделить от футера */
       background: var(--paper-soft);
       text-align: center;
     }
@@ -488,9 +491,10 @@
       letter-spacing: -0.055em;
       line-height: 1.04;
       text-wrap: balance;
+      padding: 0 8px;
     }
     .portfolio .btn-glass {
-      margin-top: 24px;
+      margin-top: 28px;
       min-height: 48px;
       padding: 12px 26px;
       font-size: 15px;
@@ -498,7 +502,7 @@
 
     /* ===== FOOTER ===== */
     .site-footer {
-      padding: 60px 0 24px;
+      padding: 60px 0 30px;
       color: rgba(255,255,255,0.9);
       background: #7455bd;
       background-image: linear-gradient(125deg, #7048c1 0%, #586fdd 30%, #a05fc2 64%, #dd7f91 82%, #6278dd 100%);
@@ -538,7 +542,6 @@
       line-height: 0.98;
       text-wrap: balance;
     }
-    /* Контакты в футере — стеклянные кнопки */
     .footer-contact-links {
       display: flex;
       flex-direction: column;
@@ -564,7 +567,7 @@
       flex-direction: column;
       align-items: flex-start;
       gap: 10px;
-      padding-top: 20px;
+      padding-top: 24px;
       color: rgba(255,255,255,0.7);
       font-size: 12px;
     }
@@ -608,7 +611,7 @@
       }
       .glass-art { min-height: 340px; }
       .glass-art img { min-height: 340px; }
-      .service-grid { grid-template-columns: repeat(2, 1fr); }
+      .service-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
       .services-header { flex-direction: row; align-items: end; justify-content: space-between; }
       .footer-main { grid-template-columns: 1fr auto; align-items: end; }
       .footer-contact-links { flex-direction: row; align-items: center; gap: 12px; }
@@ -626,25 +629,46 @@
       .nav-links a { font-size: 14px; padding: 10px 16px; }
     }
 
-    /* ===== ДОПОЛНИТЕЛЬНЫЕ ФИКСЫ ДЛЯ МАЛЕНЬКИХ ЭКРАНОВ (iPhone SE, S8+) ===== */
-    @media (max-width: 380px) {
-      .hero { padding: 76px 0 28px; min-height: 95svh; }
-      .hero h1 { font-size: clamp(1.8rem, 10vw, 2.4rem); }
-      .hero-name { font-size: 1.1rem; }
-      .hero-role { font-size: 0.85rem; }
-      .btn-glass { min-height: 44px; padding: 10px 18px; font-size: 13px; }
-      .section-title { font-size: clamp(1.6rem, 8vw, 2.4rem); }
-      .about-copy p { font-size: 0.9rem; }
-      .service-card { padding: 18px 14px; }
-      .service-card h3 { font-size: 1.1rem; }
-      .service-card p { font-size: 13px; }
-      .footer-main h2 { font-size: clamp(1.6rem, 10vw, 2.4rem); }
-      .container { width: min(calc(100% - 16px), 1160px); }
+    /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ (до 640px) ===== */
+    @media (max-width: 639px) {
+      .container { width: min(calc(100% - 20px), 1160px); }
+      .hero { padding: 80px 0 30px; min-height: 90vh; }
+      .hero h1 { font-size: clamp(1.8rem, 9vw, 2.6rem); }
+      .hero-role { font-size: 0.95rem; }
+      .btn-glass { min-height: 48px; padding: 12px 24px; font-size: 14px; }
+      .about-grid { gap: 30px; }
       .glass-art { min-height: 200px; }
       .glass-art img { min-height: 200px; }
-      .portfolio h2 { font-size: clamp(1.5rem, 8vw, 2.2rem); }
-      .portfolio .btn-glass { min-height: 40px; padding: 8px 16px; font-size: 12px; }
-      .footer-contact-links .btn-glass { min-height: 38px; padding: 8px 14px; font-size: 12px; }
+      .service-card { padding: 20px 16px; }
+      .service-card h3 { font-size: 1.2rem; }
+      .service-card p { font-size: 13px; }
+      .portfolio { padding: 50px 0 60px; }
+      .portfolio h2 { font-size: clamp(1.5rem, 8vw, 2.4rem); }
+      .portfolio .btn-glass { min-height: 44px; padding: 10px 20px; font-size: 14px; }
+      .footer-main h2 { font-size: clamp(1.8rem, 10vw, 3rem); }
+      .footer-contact-links .btn-glass { min-height: 40px; padding: 8px 18px; font-size: 13px; }
+      .footer-ai-credit { font-size: 12px; }
+      .site-footer { padding: 40px 0 20px; }
+    }
+
+    @media (max-width: 380px) {
+      .hero { padding: 76px 0 24px; min-height: 85vh; }
+      .hero h1 { font-size: clamp(1.5rem, 8vw, 2.0rem); }
+      .hero-name { font-size: 1rem; }
+      .hero-role { font-size: 0.85rem; }
+      .btn-glass { min-height: 42px; padding: 10px 16px; font-size: 13px; }
+      .section-title { font-size: clamp(1.4rem, 7vw, 2rem); }
+      .about-copy p { font-size: 0.9rem; }
+      .service-card { padding: 16px 12px; }
+      .service-card h3 { font-size: 1.0rem; }
+      .service-card p { font-size: 12px; }
+      .footer-main h2 { font-size: clamp(1.5rem, 9vw, 2.2rem); }
+      .container { width: min(calc(100% - 12px), 1160px); }
+      .glass-art { min-height: 160px; }
+      .glass-art img { min-height: 160px; }
+      .portfolio h2 { font-size: clamp(1.3rem, 7vw, 1.8rem); }
+      .portfolio .btn-glass { min-height: 38px; padding: 8px 14px; font-size: 12px; }
+      .footer-contact-links .btn-glass { min-height: 36px; padding: 6px 14px; font-size: 12px; }
       .footer-ai-credit { font-size: 11px; }
     }
 
@@ -681,8 +705,7 @@
       <div class="hero-content reveal is-visible">
         <p class="eyebrow">Prompt Engineering</p>
         <h1 id="hero-title">Трансформация идеи в реальность</h1>
-        <p class="hero-role">Создание сайтов, брендбуков, AI-агентов и многое другое при помощи искусственного интеллекта без навков программирования.</p>
-        <!-- СТЕКЛЯННАЯ кнопка 1 -->
+        <p class="hero-role">Создание сайтов, брендбуков, AI-агентов и многое другое при помощи искусственного интеллекта без навыков программирования.</p>
         <a class="btn-glass" href="Projects.html">Посмотреть портфолио</a>
       </div>
     </section>
@@ -714,7 +737,9 @@
           <div>
             <p class="section-kicker">Услуги</p>
             <h2 class="section-title" id="services-title">Профессиональные направления</h2>
-        
+          </div>
+          <p>Практическая работа с ИИ — от точного запроса до готового решения.</p>
+        </div>
         <div class="service-grid">
           <article class="service-card reveal">
             <div><h3>Промт-инженеринг</h3></div>
@@ -722,11 +747,11 @@
           </article>
           <article class="service-card reveal">
             <div><h3>Работа с ИИ-инструментами</h3></div>
-            <p>Практическая работа с ИИ — от точного запроса до готового решения: аналитика, бизнес план, изучение языков, написание сайтов, фотосессии товаров и др. </p>
+            <p>Практическая работа с ИИ — от точного запроса до готового решения: аналитика, бизнес план, изучение языков, написание сайтов, фотосессии товаров и др.</p>
           </article>
           <article class="service-card reveal">
             <div><h3>Обучение</h3></div>
-            <p> Создание персонального консультанта в любой сфере, работающего только на основе загруженных вами данных (от диетолога до юриста).  Формат обучения: офлайн, онлайн или гибрид.</p>
+            <p>Создание персонального консультанта в любой сфере, работающего только на основе загруженных вами данных (от диетолога до юриста). Формат обучения: офлайн, онлайн или гибрид.</p>
           </article>
         </div>
       </div>
@@ -735,9 +760,7 @@
     <!-- PORTFOLIO -->
     <section class="portfolio" aria-labelledby="portfolio-title">
       <div class="container reveal">
- 
         <h2 id="portfolio-title">Идеи, собранные в работающие решения</h2>
-        <!-- СТЕКЛЯННАЯ кнопка 2 -->
         <a class="btn-glass" href="Projects.html">Посмотреть проекты</a>
       </div>
     </section>
